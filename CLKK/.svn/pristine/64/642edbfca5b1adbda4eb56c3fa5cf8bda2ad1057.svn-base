@@ -1,0 +1,40 @@
+﻿<div class="container-fluid" style="height: calc(100vh - 60px);">
+    <div class="row">
+        <div class="col-md-8">
+            <h2 class="text-center text-uppercase" style="color: #333; padding-bottom: 10px">Hệ thống quản lý dữ liệu quan trắc</h2>
+            <img style="width: 100%; height: auto; object-fit: cover; margin-bottom: 20px" src="../../Images/background.jpg">
+        </div>
+        <div class="col-md-4" style="padding-top: 10rem">
+            <img alt="" style="margin: 0 auto;display: block;height: 72px; width: 72px;border-radius: 50%;border: 1px solid #e7dbdb;object-fit: cover;margin-bottom: 15px;" src="/Images/noavatar.jpg">
+            <h4 style="font-weight: 300; margin-bottom: 15px"><b>Đăng nhập</b></h4>
+            <form>
+                <div class="form-group">
+                    <label class="text-normal text-dark font-weight-bold">Mã đăng nhập</label>
+                    <input type="text" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label class="text-normal text-dark font-weight-bold">Mật khẩu</label>
+                    <input type="password" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                    <div class="d-flex" style="margin-left: 12px; justify-content: space-between">
+                        <div class="peer">
+                            <div class="checkbox checkbox-circle checkbox-info peers ai-c">
+                                <input type="checkbox" id="inputCall1"
+                                       name="inputCheckboxesCall" class="peer" ng-model="login.remer"> <label for="inputCall1" class="peers peer-greed js-sb ai-c"><span class="peer peer-greed">Ghi nhớ mật khẩu</span></label>
+                            </div>
+                        </div>
+                        <div class="peer" style="text-align: right;color:#CE7A58; margin-top: 10px"><a ng-click="QuenMatKhau()">Quên mật khẩu</a></div>
+                    </div>
+                    <div class="peer" style="margin-top: 20px;"><button class="btn btn-primary" style="width: 100%;" ng-click="Login()"><span ng-show="$parent.loadding"><i class="la la-refresh spinning"></i></span><span class="font-weight-bold">Truy cập</span></button></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+<div style="background-color: #63bbc5; color: white; height: 50px;">
+    <div style="position: relative ;top: 17px; right: 10px; text-align: right">
+        <h5>Copyright © CUCO</h5>
+    </div>
+</div>

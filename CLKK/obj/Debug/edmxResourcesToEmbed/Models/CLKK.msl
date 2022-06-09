@@ -1,0 +1,560 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CLKKModelStoreContainer" CdmEntityContainer="CLKKEntities">
+    <EntitySetMapping Name="CMS_Album">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_Album">
+        <MappingFragment StoreEntitySet="CMS_Album">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Des" ColumnName="Des" />
+          <ScalarProperty Name="Album_Name" ColumnName="Album_Name" />
+          <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+          <ScalarProperty Name="Album_ID" ColumnName="Album_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_Comments">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_Comments">
+        <MappingFragment StoreEntitySet="CMS_Comments">
+          <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="News_ID" ColumnName="News_ID" />
+          <ScalarProperty Name="Comments_ID" ColumnName="Comments_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_Config">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_Config">
+        <MappingFragment StoreEntitySet="CMS_Config">
+          <ScalarProperty Name="Parent_ID" ColumnName="Parent_ID" />
+          <ScalarProperty Name="IsType" ColumnName="IsType" />
+          <ScalarProperty Name="IsFlag" ColumnName="IsFlag" />
+          <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+          <ScalarProperty Name="Module_Icon" ColumnName="Module_Icon" />
+          <ScalarProperty Name="Module_Name" ColumnName="Module_Name" />
+          <ScalarProperty Name="Module_ID" ColumnName="Module_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_ContactUs">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_ContactUs">
+        <MappingFragment StoreEntitySet="CMS_ContactUs">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="Nick" ColumnName="Nick" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="ContactUs_Name" ColumnName="ContactUs_Name" />
+          <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+          <ScalarProperty Name="ContactUs_ID" ColumnName="ContactUs_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_DocType">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_DocType">
+        <MappingFragment StoreEntitySet="CMS_DocType">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+          <ScalarProperty Name="Des" ColumnName="Des" />
+          <ScalarProperty Name="DocType_Name" ColumnName="DocType_Name" />
+          <ScalarProperty Name="DocType_ID" ColumnName="DocType_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_Document">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_Document">
+        <MappingFragment StoreEntitySet="CMS_Document">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+          <ScalarProperty Name="IsDownload" ColumnName="IsDownload" />
+          <ScalarProperty Name="IsURL" ColumnName="IsURL" />
+          <ScalarProperty Name="FileGenKey" ColumnName="FileGenKey" />
+          <ScalarProperty Name="FileSource" ColumnName="FileSource" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="EffectDate" ColumnName="EffectDate" />
+          <ScalarProperty Name="PromDate" ColumnName="PromDate" />
+          <ScalarProperty Name="SignerName" ColumnName="SignerName" />
+          <ScalarProperty Name="NoCode" ColumnName="NoCode" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="Filed_ID" ColumnName="Filed_ID" />
+          <ScalarProperty Name="Provider_ID" ColumnName="Provider_ID" />
+          <ScalarProperty Name="DocType_ID" ColumnName="DocType_ID" />
+          <ScalarProperty Name="Document_Name" ColumnName="Document_Name" />
+          <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+          <ScalarProperty Name="Document_ID" ColumnName="Document_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_Domain">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_Domain">
+        <MappingFragment StoreEntitySet="CMS_Domain">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+          <ScalarProperty Name="OutOfDate" ColumnName="OutOfDate" />
+          <ScalarProperty Name="InOfDate" ColumnName="InOfDate" />
+          <ScalarProperty Name="Domain_Address" ColumnName="Domain_Address" />
+          <ScalarProperty Name="Domain_Name" ColumnName="Domain_Name" />
+          <ScalarProperty Name="Domain_ID" ColumnName="Domain_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_Email">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_Email">
+        <MappingFragment StoreEntitySet="CMS_Email">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Email_ID" ColumnName="Email_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_Gallery">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_Gallery">
+        <MappingFragment StoreEntitySet="CMS_Gallery">
+          <ScalarProperty Name="IsHot" ColumnName="IsHot" />
+          <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+          <ScalarProperty Name="FileSource" ColumnName="FileSource" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="Album_ID" ColumnName="Album_ID" />
+          <ScalarProperty Name="Gallery_ID" ColumnName="Gallery_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_Map">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_Map">
+        <MappingFragment StoreEntitySet="CMS_Map">
+          <ScalarProperty Name="Link_Map" ColumnName="Link_Map" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Map_ID" ColumnName="Map_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_Media">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_Media">
+        <MappingFragment StoreEntitySet="CMS_Media">
+          <ScalarProperty Name="Dislike" ColumnName="Dislike" />
+          <ScalarProperty Name="IsLike" ColumnName="IsLike" />
+          <ScalarProperty Name="IsView" ColumnName="IsView" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="IsUrl" ColumnName="IsUrl" />
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="FlvImage" ColumnName="FlvImage" />
+          <ScalarProperty Name="IsType" ColumnName="IsType" />
+          <ScalarProperty Name="SlideGroup_ID" ColumnName="SlideGroup_ID" />
+          <ScalarProperty Name="SlideShow_Name" ColumnName="SlideShow_Name" />
+          <ScalarProperty Name="SlideShow_ID" ColumnName="SlideShow_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_MediaGroup">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_MediaGroup">
+        <MappingFragment StoreEntitySet="CMS_MediaGroup">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+          <ScalarProperty Name="IsPlay" ColumnName="IsPlay" />
+          <ScalarProperty Name="Des" ColumnName="Des" />
+          <ScalarProperty Name="IsPosition" ColumnName="IsPosition" />
+          <ScalarProperty Name="IsHot" ColumnName="IsHot" />
+          <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+          <ScalarProperty Name="SlideGroup_Name" ColumnName="SlideGroup_Name" />
+          <ScalarProperty Name="SlideGroup_ID" ColumnName="SlideGroup_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_News">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_News">
+        <MappingFragment StoreEntitySet="CMS_News">
+          <ScalarProperty Name="Users_ID" ColumnName="Users_ID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsVisitor" ColumnName="IsVisitor" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="NewType" ColumnName="NewType" />
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="IsHot" ColumnName="IsHot" />
+          <ScalarProperty Name="News_Name" ColumnName="News_Name" />
+          <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+          <ScalarProperty Name="News_ID" ColumnName="News_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_Notice">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_Notice">
+        <MappingFragment StoreEntitySet="CMS_Notice">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+          <ScalarProperty Name="IsVisitor" ColumnName="IsVisitor" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="IsWriter" ColumnName="IsWriter" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="IsHot" ColumnName="IsHot" />
+          <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+          <ScalarProperty Name="Notice_Name" ColumnName="Notice_Name" />
+          <ScalarProperty Name="Notice_ID" ColumnName="Notice_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_Question">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_Question">
+        <MappingFragment StoreEntitySet="CMS_Question">
+          <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+          <ScalarProperty Name="ReplyCreatedDate" ColumnName="ReplyCreatedDate" />
+          <ScalarProperty Name="ReplyName" ColumnName="ReplyName" />
+          <ScalarProperty Name="ReplyContents" ColumnName="ReplyContents" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="SenderNickName" ColumnName="SenderNickName" />
+          <ScalarProperty Name="SenderEmail" ColumnName="SenderEmail" />
+          <ScalarProperty Name="SenderMobile" ColumnName="SenderMobile" />
+          <ScalarProperty Name="SenderTelephone" ColumnName="SenderTelephone" />
+          <ScalarProperty Name="SenderAddress" ColumnName="SenderAddress" />
+          <ScalarProperty Name="SenderSex" ColumnName="SenderSex" />
+          <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+          <ScalarProperty Name="Department_Name" ColumnName="Department_Name" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+          <ScalarProperty Name="Question_Name" ColumnName="Question_Name" />
+          <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_SlideShow">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_SlideShow">
+        <MappingFragment StoreEntitySet="CMS_SlideShow">
+          <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+          <ScalarProperty Name="Des" ColumnName="Des" />
+          <ScalarProperty Name="IsUrl" ColumnName="IsUrl" />
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="SlideShow_Name" ColumnName="SlideShow_Name" />
+          <ScalarProperty Name="SlideShow_ID" ColumnName="SlideShow_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_Social">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_Social">
+        <MappingFragment StoreEntitySet="CMS_Social">
+          <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+          <ScalarProperty Name="Des" ColumnName="Des" />
+          <ScalarProperty Name="IsUrl" ColumnName="IsUrl" />
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="Social_Name" ColumnName="Social_Name" />
+          <ScalarProperty Name="Social_ID" ColumnName="Social_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_Topic">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_Topic">
+        <MappingFragment StoreEntitySet="CMS_Topic">
+          <ScalarProperty Name="Topic_Type" ColumnName="Topic_Type" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="Users_ID" ColumnName="Users_ID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsMenu" ColumnName="IsMenu" />
+          <ScalarProperty Name="Parent_ID" ColumnName="Parent_ID" />
+          <ScalarProperty Name="Topic_Name" ColumnName="Topic_Name" />
+          <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_TopicFlag">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_TopicFlag">
+        <MappingFragment StoreEntitySet="CMS_TopicFlag">
+          <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TopicFlag_Name" ColumnName="TopicFlag_Name" />
+          <ScalarProperty Name="TopicFlag_ID" ColumnName="TopicFlag_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_TopicLink">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_TopicLink">
+        <MappingFragment StoreEntitySet="CMS_TopicLink">
+          <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+          <ScalarProperty Name="IsUrl" ColumnName="IsUrl" />
+          <ScalarProperty Name="TopicLink_Name" ColumnName="TopicLink_Name" />
+          <ScalarProperty Name="TopicLink_ID" ColumnName="TopicLink_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_UserConfig">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_UserConfig">
+        <MappingFragment StoreEntitySet="CMS_UserConfig">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsUpdate" ColumnName="IsUpdate" />
+          <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+          <ScalarProperty Name="IsCreate" ColumnName="IsCreate" />
+          <ScalarProperty Name="Module_ID" ColumnName="Module_ID" />
+          <ScalarProperty Name="UserGroup_ID" ColumnName="UserGroup_ID" />
+          <ScalarProperty Name="UserConfig_ID" ColumnName="UserConfig_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_UserCounter">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_UserCounter">
+        <MappingFragment StoreEntitySet="CMS_UserCounter">
+          <ScalarProperty Name="sum" ColumnName="sum" />
+          <ScalarProperty Name="onlineYear" ColumnName="onlineYear" />
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="onlineMonth" ColumnName="onlineMonth" />
+          <ScalarProperty Name="month" ColumnName="month" />
+          <ScalarProperty Name="onlineWeek" ColumnName="onlineWeek" />
+          <ScalarProperty Name="week" ColumnName="week" />
+          <ScalarProperty Name="onlineDay" ColumnName="onlineDay" />
+          <ScalarProperty Name="day" ColumnName="day" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_UserGroup">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_UserGroup">
+        <MappingFragment StoreEntitySet="CMS_UserGroup">
+          <ScalarProperty Name="UserGroup_Name" ColumnName="UserGroup_Name" />
+          <ScalarProperty Name="UserGroup_ID" ColumnName="UserGroup_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMS_Users">
+      <EntityTypeMapping TypeName="CLKKModel.CMS_Users">
+        <MappingFragment StoreEntitySet="CMS_Users">
+          <ScalarProperty Name="UserGroup_ID" ColumnName="UserGroup_ID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Users_Name" ColumnName="Users_Name" />
+          <ScalarProperty Name="Users_ID" ColumnName="Users_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Setting">
+      <EntityTypeMapping TypeName="CLKKModel.Setting">
+        <MappingFragment StoreEntitySet="Setting">
+          <ScalarProperty Name="EN" ColumnName="EN" />
+          <ScalarProperty Name="VN" ColumnName="VN" />
+          <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TD_CoquanQuanly">
+      <EntityTypeMapping TypeName="CLKKModel.TD_CoquanQuanly">
+        <MappingFragment StoreEntitySet="TD_CoquanQuanly">
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="CapCha_ID" ColumnName="CapCha_ID" />
+          <ScalarProperty Name="Vido" ColumnName="Vido" />
+          <ScalarProperty Name="Kinhdo" ColumnName="Kinhdo" />
+          <ScalarProperty Name="Mota" ColumnName="Mota" />
+          <ScalarProperty Name="Diadanh_ID" ColumnName="Diadanh_ID" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="DaumoiLienhe" ColumnName="DaumoiLienhe" />
+          <ScalarProperty Name="MaCoquan" ColumnName="MaCoquan" />
+          <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="CoquanQuanly_Ten" ColumnName="CoquanQuanly_Ten" />
+          <ScalarProperty Name="CoquanQuanly_ID" ColumnName="CoquanQuanly_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TD_Diadanh">
+      <EntityTypeMapping TypeName="CLKKModel.TD_Diadanh">
+        <MappingFragment StoreEntitySet="TD_Diadanh">
+          <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="CapCha_ID" ColumnName="CapCha_ID" />
+          <ScalarProperty Name="Diadanh_Ten" ColumnName="Diadanh_Ten" />
+          <ScalarProperty Name="Diadanh_ID" ColumnName="Diadanh_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TD_Loaiquantrac">
+      <EntityTypeMapping TypeName="CLKKModel.TD_Loaiquantrac">
+        <MappingFragment StoreEntitySet="TD_Loaiquantrac">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+          <ScalarProperty Name="Loaiquantrac_Ten" ColumnName="Loaiquantrac_Ten" />
+          <ScalarProperty Name="Loaiquantrac_ID" ColumnName="Loaiquantrac_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TD_PPLaymau">
+      <EntityTypeMapping TypeName="CLKKModel.TD_PPLaymau">
+        <MappingFragment StoreEntitySet="TD_PPLaymau">
+          <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="PPLaymau_Mota" ColumnName="PPLaymau_Mota" />
+          <ScalarProperty Name="PPLaymau_Code" ColumnName="PPLaymau_Code" />
+          <ScalarProperty Name="PPLaymau_ID" ColumnName="PPLaymau_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TD_QCVN">
+      <EntityTypeMapping TypeName="CLKKModel.TD_QCVN">
+        <MappingFragment StoreEntitySet="TD_QCVN">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+          <ScalarProperty Name="SoQCVN" ColumnName="SoQCVN" />
+          <ScalarProperty Name="QCVN_ID" ColumnName="QCVN_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TD_Tramquantrac">
+      <EntityTypeMapping TypeName="CLKKModel.TD_Tramquantrac">
+        <MappingFragment StoreEntitySet="TD_Tramquantrac">
+          <ScalarProperty Name="Nguoitao" ColumnName="Nguoitao" />
+          <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
+          <ScalarProperty Name="QCVN_Heso2" ColumnName="QCVN_Heso2" />
+          <ScalarProperty Name="QCVN_Heso1" ColumnName="QCVN_Heso1" />
+          <ScalarProperty Name="LoaiQCVN" ColumnName="LoaiQCVN" />
+          <ScalarProperty Name="QCVN_ID" ColumnName="QCVN_ID" />
+          <ScalarProperty Name="Mota" ColumnName="Mota" />
+          <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+          <ScalarProperty Name="TansuatNhanDL" ColumnName="TansuatNhanDL" />
+          <ScalarProperty Name="CoquanQuanly_ID" ColumnName="CoquanQuanly_ID" />
+          <ScalarProperty Name="Loai" ColumnName="Loai" />
+          <ScalarProperty Name="Diadanh_ID" ColumnName="Diadanh_ID" />
+          <ScalarProperty Name="Vido" ColumnName="Vido" />
+          <ScalarProperty Name="Kinhdo" ColumnName="Kinhdo" />
+          <ScalarProperty Name="MaTram" ColumnName="MaTram" />
+          <ScalarProperty Name="Loaiquantrac_ID" ColumnName="Loaiquantrac_ID" />
+          <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="Tramquantrac_Ten" ColumnName="Tramquantrac_Ten" />
+          <ScalarProperty Name="Tramquantrac_ID" ColumnName="Tramquantrac_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TD_ThongsoKetqua">
+      <EntityTypeMapping TypeName="CLKKModel.TD_ThongsoKetqua">
+        <MappingFragment StoreEntitySet="TD_ThongsoKetqua">
+          <ScalarProperty Name="Thongso_ID" ColumnName="Thongso_ID" />
+          <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+          <ScalarProperty Name="Giatrithongso" ColumnName="Giatrithongso" />
+          <ScalarProperty Name="Donvi" ColumnName="Donvi" />
+          <ScalarProperty Name="Tenthongso" ColumnName="Tenthongso" />
+          <ScalarProperty Name="ThongsoKetqua_ID" ColumnName="ThongsoKetqua_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TD_Laymau">
+      <EntityTypeMapping TypeName="CLKKModel.TD_Laymau">
+        <MappingFragment StoreEntitySet="TD_Laymau">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="Nguoitao" ColumnName="Nguoitao" />
+          <ScalarProperty Name="DataLoggerID" ColumnName="DataLoggerID" />
+          <ScalarProperty Name="Noidunglenh" ColumnName="Noidunglenh" />
+          <ScalarProperty Name="Sochai" ColumnName="Sochai" />
+          <ScalarProperty Name="Tramquantrac_ID" ColumnName="Tramquantrac_ID" />
+          <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+          <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
+          <ScalarProperty Name="TenLenh" ColumnName="TenLenh" />
+          <ScalarProperty Name="Laymau_ID" ColumnName="Laymau_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TD_Thongso">
+      <EntityTypeMapping TypeName="CLKKModel.TD_Thongso">
+        <MappingFragment StoreEntitySet="TD_Thongso">
+          <ScalarProperty Name="AQI" ColumnName="AQI" />
+          <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
+          <ScalarProperty Name="Tramquantrac_ID" ColumnName="Tramquantrac_ID" />
+          <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="Nguoitao" ColumnName="Nguoitao" />
+          <ScalarProperty Name="Ngaythuchien" ColumnName="Ngaythuchien" />
+          <ScalarProperty Name="Laymau_ID" ColumnName="Laymau_ID" />
+          <ScalarProperty Name="Thongso_ID" ColumnName="Thongso_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TD_Thongsomau">
+      <EntityTypeMapping TypeName="CLKKModel.TD_Thongsomau">
+        <MappingFragment StoreEntitySet="TD_Thongsomau">
+          <ScalarProperty Name="Delta" ColumnName="Delta" />
+          <ScalarProperty Name="Min" ColumnName="Min" />
+          <ScalarProperty Name="Max" ColumnName="Max" />
+          <ScalarProperty Name="Nguoitao" ColumnName="Nguoitao" />
+          <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
+          <ScalarProperty Name="PPLaymau_ID" ColumnName="PPLaymau_ID" />
+          <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="Donvi" ColumnName="Donvi" />
+          <ScalarProperty Name="Loaiquantrac_ID" ColumnName="Loaiquantrac_ID" />
+          <ScalarProperty Name="Thongsomau_Ten" ColumnName="Thongsomau_Ten" />
+          <ScalarProperty Name="Thongsomau_ID" ColumnName="Thongsomau_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TD_Kiemduyet">
+      <EntityTypeMapping TypeName="CLKKModel.TD_Kiemduyet">
+        <MappingFragment StoreEntitySet="TD_Kiemduyet">
+          <ScalarProperty Name="Khongcogiatri" ColumnName="Khongcogiatri" />
+          <ScalarProperty Name="Thongsomau_Ten" ColumnName="Thongsomau_Ten" />
+          <ScalarProperty Name="Nguoitao" ColumnName="Nguoitao" />
+          <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
+          <ScalarProperty Name="Loaiquantrac_ID" ColumnName="Loaiquantrac_ID" />
+          <ScalarProperty Name="Ngoaikhoang" ColumnName="Ngoaikhoang" />
+          <ScalarProperty Name="Giatriam" ColumnName="Giatriam" />
+          <ScalarProperty Name="Tramquantrac_ID" ColumnName="Tramquantrac_ID" />
+          <ScalarProperty Name="Kiemduyet_ID" ColumnName="Kiemduyet_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

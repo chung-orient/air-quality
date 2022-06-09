@@ -1,0 +1,135 @@
+﻿<div>
+    <div id="header" class="header navbar navbar-default navbar-fixed-top mynav">
+        <!-- begin container -->
+        <div class="container-fluid">
+            <!-- begin navbar-header -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a style="display:none !important" class="visible-xs btn-map-menu" href="/mobile-map"><i class="fa fa-globe"></i> BẢN ĐỒ</a>
+                <a href="/" class="navbar-brand">
+                    <img class="hidden-xs hidden-sm" style="width: 145px" src="Images/banner.png">
+                    <img class="visible-xs visible-sm" style="height: 48px" src="/images/logo-xs.png">
+                </a>
+            </div>
+            <!-- end navbar-header -->
+            <!-- begin navbar-collapse -->
+            <div class="navbar-collapse collapse" id="header-navbar" style="padding-right: 20px; height: 1px;" aria-expanded="false">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/"><i class="la la-home"></i> Trang chủ</a></li>
+                    <li><a ng-click="goMenu('tintuc')">Tin tức</a></li>
+                    <li class="">
+                        <a href="javascript:;" data-toggle="dropdown" aria-expanded="false">Thư viện <b class="caret"></b></a>
+                        <ul class="dropdown-menu submenu">
+                            <li><a href="/thu-vien/1">Quan trắc chất lượng không khí</a></li>
+                            <li><a href="/thu-vien/2">Ô nhiễm không khí</a></li>
+                            <li><a href="/thu-vien/3">Báo cáo CLKK</a></li>
+                            <li><a href="/thu-vien/4">Câu hỏi thường gặp</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/lien-he">Liên hệ</a></li>
+                    <li><a href="/lien-ket">Liên kết</a></li>
+                    <li><a ng-click="goMenu('login')">Đăng nhập</a></li>
+                </ul>
+            </div>
+            <!-- end navbar-collapse -->
+        </div>
+        <!-- end container -->
+    </div>
+    <div id="content" class="content" style="min-height: calc(100vh - 180px);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <h2 class="pageTitle">Tin tức</h2>
+                        </div>
+                        <div class="col-md-5">
+                            <a class="newsButton" href="?mode=1">Tin trong nước</a>
+                            <a class="newsButton" href="?mode=2">Tin quốc tế</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row news-item">
+                        <div class="col-sm-12">
+                            <article>
+                                <div class="col-md-4 col-sm-5 col-6" style="padding:0">
+                                    <div class="imgBox">
+                                        <div class="imgbg" style="background-image:url(/uploads/1618796029_xiyomw6o.jpg)"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-sm-7 col-6">
+                                    <a href="https://moitruongthudo.vn/thong-tin/nhieu-hoat-dong-huong-ung-ngay-trai-dat-2021"><h3>Nhiều hoạt động hưởng ứng Ngày Trái đất 2021</h3></a>
+                                    <div class="byline">
+                                        <span>19/04/2021</span>
+                                    </div>
+                                    <p>Ngày 18-4, Đại sứ quán Israel tổ chức chương trình “Sạch &amp; Xanh”, bao gồm lễ khai trương hệ thống tưới tiết kiệm và nhiều ho</p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="row news-item">
+                        <div class="col-sm-12">
+                            <article>
+                                <div class="col-md-4 col-sm-5 col-6" style="padding:0">
+                                    <div class="imgBox">
+                                        <div class="imgbg" style="background-image:url(/uploads/1617853025_pahbqig2.jpg)"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-sm-7 col-6">
+                                    <a href="https://moitruongthudo.vn/thong-tin/thuc-trang-va-giai-phap-ve-chat-luong-moi-truong-khong-khi"><h3>Thực trạng và giải pháp về chất lượng môi trường không khí</h3></a>
+                                    <div class="byline">
+                                        <span>08/04/2021</span>
+                                    </div>
+                                    <p>Theo Tổng cục Môi trường (Bộ Tài nguyên và Môi trường), năm 2021, Báo cáo hiện trạng môi trường quốc gia sẽ tập trung v&amp;ag</p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Tin tức mới cập nhật
+                        </div>
+                        <div class="panel-body">
+                            <div class="row news-item">
+                                <div class="col-sm-12">
+                                    <article>
+                                        <div class="col-md-4 col-sm-5 col-6" style="padding:0">
+                                            <div class="imgBoxRecent">
+                                                <div class="imgbg" style="background-image:url(/uploads/1618796029_xiyomw6o.jpg)"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 col-sm-7 col-6">
+                                            <a href="https://moitruongthudo.vn/thong-tin/nhieu-hoat-dong-huong-ung-ngay-trai-dat-2021">Nhiều hoạt động hưởng ứng Ngày Trái đất 2021</a>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                            <div class="row news-item">
+                                <div class="col-sm-12">
+                                    <article>
+                                        <div class="col-md-4 col-sm-5 col-6" style="padding:0">
+                                            <div class="imgBoxRecent">
+                                                <div class="imgbg" style="background-image:url(/uploads/1617853025_pahbqig2.jpg)"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 col-sm-7 col-6">
+                                            <a href="https://moitruongthudo.vn/thong-tin/thuc-trang-va-giai-phap-ve-chat-luong-moi-truong-khong-khi">Thực trạng và giải pháp về chất lượng môi trường không khí</a>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer id="footer"></footer>
+</div>

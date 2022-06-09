@@ -1,0 +1,118 @@
+﻿@{
+    Layout = null;
+    string domainName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+    string domainRoot = domainName; // "http://businessportal.vn";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preload" as="image" href="/assets/static/images/bg.jpg" crossorigin>
+    <title>Chất lượng không khí</title>
+    <link href="@Url.Content("~/Scripts/bootstrap.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Scripts/fontawesome-5.15.3/css/all.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Scripts/line-awesome/css/line-awesome.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Scripts/sweetalert2/sweetalert2.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Scripts/animate.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Scripts/toastr.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Scripts/angular-datepicker/datetimepicker.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Scripts/OwlCarousel/assets/owl.carousel.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Scripts/oiselect/select.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Scripts/customSelect/css/style.css")" rel="stylesheet" type="text/css" />
+    <link href="~/Content/style.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/style-responsive.min.css")" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet">
+</head>
+<body class="app" ng-app="os" ng-cloak>
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+    <script>
+        window.addEventListener('load', function load() {
+            const loader = document.getElementById('loader');
+            setTimeout(function () {
+                loader.classList.add('fadeOut');
+            }, 300);
+        });</script>
+    <div ng-controller="MainCtr">
+        <div id="header" class="header navbar navbar-default navbar-fixed-top mynav">
+            <!-- begin container -->
+            <div class="container-fluid">
+                <!-- begin navbar-header -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar" aria-expanded="false">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a style="display:none !important" class="visible-xs btn-map-menu" href="/mobile-map"><i class="fa fa-globe"></i> BẢN ĐỒ</a>
+                    <a href="/" class="navbar-brand">
+                        <img class="hidden-xs hidden-sm" style="width: 145px" src="Images/banner.png">
+                        <img class="visible-xs visible-sm" style="height: 48px" src="/images/logo-xs.png">
+                    </a>
+                </div>
+                <!-- end navbar-header -->
+                <!-- begin navbar-collapse -->
+                <div class="navbar-collapse collapse" id="header-navbar" style="padding-right: 20px; height: 1px;" aria-expanded="false">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/"><i class="la la-home"></i> Trang chủ</a></li>
+                        <li><a ng-click="goMenu('tintuc')">Tin tức</a></li>
+                        <li class="">
+                            <a href="javascript:;" data-toggle="dropdown" aria-expanded="false">Thư viện <b class="caret"></b></a>
+                            <ul class="dropdown-menu submenu">
+                                <li ng-repeat="to in topics_thuvien"><a ng-click="goMenu('thuvien', to.Topic_ID)">{{to.Topic_Name}}</a></li>
+                            </ul>
+                        </li>
+                        <li><a ng-click="goMenu('lienhe')">Liên hệ</a></li>
+                        <li><a ng-click="goMenu('lienket')">Liên kết</a></li>
+                        <li><a ng-href="/login">Đăng nhập</a></li>
+                    </ul>
+                </div>
+                <!-- end navbar-collapse -->
+            </div>
+            <!-- end container -->
+        </div>
+        <ui-view></ui-view>
+        <footer id="footer"></footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
+    <script src="@Url.Content("~/Scripts/OwlCarousel/owl.carousel.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/customSelect/js/customSelect.js")"></script>
+    <script src="@Url.Content("~/Scripts/ckeditor/ckeditor.js")"></script>
+    <script src="@Url.Content("~/Scripts/ckfinder/ckfinder.js")"></script>
+    <script src="~/Scripts/ck-editor.js"></script>
+    <script src="~/Scripts/jquery.nicescroll.min.js"></script>
+    <script src="~/Scripts/angular-nicescroll.js"></script>
+    <link href="@Url.Content("~/Scripts/select2/select2.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/select2/select2.full.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/oiselect/select.min.js")"></script>
+    <script src="~/Scripts/Skin/angular-input-masks/angular-input-masks-dependencies.min.js"></script>
+    <script src="~/Scripts/Skin/angular-input-masks/angular-input-masks.min.js"></script>
+    <script src="~/Scripts/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="~/Scripts/angular-datepicker/datetimepicker.js"></script>
+    <script src="~/Scripts/angular-datepicker/dateTimeInput.js"></script>
+    <script src="~/Scripts/aes.js"></script>
+    @*<script src="@Url.Content("~/App/Chat/emoji.js")"></script>*@
+    <!--amchart Resoureces-->
+    <script src="~/Scripts/amcharts/amcharts.js"></script>
+    <script src="~/Scripts/amcharts/serial.js"></script>
+    <script src="~/Scripts/amcharts/radar.js"></script>
+    <script src="~/Scripts/amcharts/pie.js"></script>
+    <script src="~/Scripts/amcharts/plugins/export/export.min.js"></script>
+    <link href="~/Scripts/amcharts/plugins/export/export.css" rel="stylesheet" />
+    <script src="~/Scripts/amcharts/themes/light.js"></script>
+    <link href="@domainName/Scripts/fancybox/jquery.fancybox.min.css" rel="stylesheet" />
+    <script src="@domainName/Scripts/fancybox/jquery.fancybox.min.js"></script>
+    <!--amchart Resoureces Ends Here-->
+    <script type="text/javascript" src="@Url.Content("~/App/function.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/App/app.js")"></script>
+    <script src="~/Scripts/Stuk-jszip-25d401e/dist/jszip.min.js"></script>
+    <script src="~/Scripts/Stuk-jszip-25d401e/dist/jszip-utils.min.js"></script>
+    <script src="~/Scripts/angular-sanitize.js"></script>
+</body>
+</html>

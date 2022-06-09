@@ -1,0 +1,224 @@
+﻿<div id="Ad_CoquanQuanlyCtr">
+    <div class="bar-white-olook top-bar" style="padding:10px; background-color: #fff; margin-bottom: 10px">
+        <div class="d-flex">
+            <div class="col-md-4" style="padding-left:0px;">
+                <ul class="utop">
+                    <li>
+                        <div class="btn-active {{focusBtnAdd}}" ng-click="Modal_AddCoquanQuanly('add')" style="text-align:center;padding:4px 5px;">
+                            <i class="la la-plus-circle"></i>
+                            <span>Thêm mới</span>
+                        </div>
+                    </li>
+                    <li ng-if="checkLen > 0">
+                        <div class="btn-active {{checkLen == 0 ? 'notactive' : ''}}" ng-click="Del_CoquanQuanly(coquanquanlys)" style="text-align:center;">
+                            <i class="la la-trash"></i>
+                            <span>Xóa</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-active {{focusBtnImport}}" ng-click="ModalUpload()" style="text-align:center;">
+                            <i class="la la-upload"></i>
+                            <span>Import</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-active" ng-click="ExportExcelCoquanQuanly()" style="text-align:center;">
+                            <i class="la la-file-export"></i>
+                            <span>Export</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="utop" style="display: inline-block;width:max-content;">
+                    <li>
+                        <div class="searchbar adv-search true">
+                            <input style="width: 400px;padding:4px 30px;border:1px solid #63bbc5;" class="search_input {{focusSearch}}" type="text" ng-focus="focusSearch = true" ng-blur="focusSearch = false" placeholder="Tìm kiếm ..." ng-model="option.s" my-enter="search()">
+                            <a class="search_icon left-icon" ng-click="search()"><i class="fa fa-search {{option.s!=''}}"></i></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 action-right pR-0">
+                <ul class="utop">
+                    <li>
+                        <div class="btn-active dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            <span class="las la-sort-amount-up-alt"></span>
+                            <span>Sắp xếp</span>
+                        </div>
+                        <ul class="dropdown-menu list-tc" id="dropdownSort" role="menu" style="min-width: 100px;margin-top:0;">
+                            <li ng-repeat="t in ListSortCC track by t.id">
+                                <a ng-click="setSortCC(t)" class="{{t.id === opition.sortDetail}} d-b td-n pY-5 bgcH-grey-100 c-grey-700"><span class="{{t.typeStyle}}"></span><span> {{t.text}}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="btn-active" ng-click="Refresh()" style="text-align:center;">
+                            <i class="la la-sync"></i>
+                            <span>Refresh</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="divContent" style="padding-right:2px;">
+        <div class="row row-content bg-white top-page" style="margin:0;max-height: calc(100vh - 201px);min-height:calc(100vh - 201px); overflow-x:hidden;">
+            <table class="table table-condensed table-hover tbpad">
+                <thead>
+                    <tr>
+                        <th class="sticky text-center" width="40" align="center" style="padding:10px 15px;">
+                            <div class="checkbox checkbox-circle checkbox-info peers ai-c">
+                                <input type="checkbox" id="input_All" name="input_All" ng-model="CheckAll" ng-change="toggleAll(coquanquanlys, CheckAll)">
+                                <label class="p-0" for="input_All"></label>
+                            </div>
+                        </th>
+                        <th class="text-center row-danhmuc sticky" width="80">STT</th>
+                        <th class="row-danhmuc sticky">Tên cơ quan</th>
+                        <th class="text-center row-danhmuc sticky" width="120">Mã cơ quan</th>
+                        <th class="row-danhmuc sticky" width="180">Thuộc địa danh</th>
+                        <th class="text-center row-danhmuc sticky" width="120">Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody align="center">
+                    <tr class="row-dm" ng-repeat="t in coquanquanlys track by $index" ng-class="{'active-row': t.selectRow || t.checked, 'lock-dm': !t.Trangthai}" ng-mouseleave="t.hover = false" ng-mouseover="t.hover = true">
+                        <td width="40" align="center" style="padding:0px 15px;">
+                            <div ng-if="t.checked || t.hover" class="checkbox checkbox-circle checkbox-info peers ai-c">
+                                <input type="checkbox" id="input_{{t.CoquanQuanly_ID}}" name="input_{{t.CoquanQuanly_ID}}" ng-model="t.checked" ng-change="CheckChecked(coquanquanlys)">
+                                <label class="p-0" for="input_{{t.CoquanQuanly_ID}}"></label>
+                            </div>
+                        </td>
+                        <td class="text-center row-content-danhmuc" width="80" ng-bind="$index + 1 + paxpz"></td>
+                        <td class="row-ct-danhmuc" align="left" style="padding:5px !important;">
+                            <a ng-click="ModalViewEditCoquanQuanly(t)" ng-bind="t.Name"></a>
+                        </td>
+                        <td class="row-ct-danhmuc" align="center" width="120" style="padding:5px !important;">
+                            {{t.MaCoquan}}
+                        </td>
+                        <td class="row-ct-danhmuc" align="left" width="180" style="padding:5px !important;">
+                            <span ng-repeat="dd in diadanhchas" ng-if="dd.Diadanh_ID === t.Diadanh_ID">{{dd.Diadanh_Ten}}</span>
+                        </td>
+                        <td class="row-ct-danhmuc" width="120" style="text-align:left;">
+                            <div class="card-nhom bg{{t.Trangthai?'kh':'close'}}" style="white-space:normal;margin:5px auto;" ng-repeat="p in ListTrangthai" ng-if="t.Trangthai == p.value" ng-bind="p.text"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="col-md-12" ng-if="coquanquanlys.length == 0" style="margin:0px;text-align:center; font-weight:bold;">Không có dữ liệu trong bảng</div>
+
+            <pagination ng-if="option.noOfPages>1" num-pages="option.noOfPages" current-page="option.currentPage" class="pagination"></pagination>
+            <div class="pag-info" ng-if="option.Total>0">
+                <div class="btn-group" style="margin-right:5px">
+                    <a style="font-weight: 500;display: flex;background: #e9ecef;padding: 5px 10px;border-radius:3px" data-toggle="dropdown">
+                        <span class="title" style="margin-right:5px">{{option.numPerPage}}</span>
+                        <span class="arrow"><i class="ti-angle-down"></i></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" style="width: 80px;min-width: auto;margin-left: -20px;margin-top: -10px;">
+                        <li ng-repeat="p in option.Pages"><a ng-click="setPageSize(p)" class="d-b td-n pY-10 pX-10 bgcH-grey-100">{{p}}</a></li>
+                    </ul>
+                </div>
+                <span style="font-size:14px;font-weight:500">Hiển thị {{(option.currentPage-1)*option.numPerPage+1}}-{{(option.currentPage-1)*option.numPerPage+coquanquanlys.length}} của {{option.Total}}</span>
+            </div>
+        </div>
+    </div>
+    <!-- Modal add ly do -->
+    <div class="modal fades" id="ModalAddCoquanQuanly" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg animated zoomIn faster" style="margin: 1rem auto; max-width: 1000px">
+            <div class="modal-content no-border">
+                <div modal-movable class="modal-header head-modal no-border">
+                    <h4 class="modal-title">{{modalTitle}}</h4>
+                    <button type="button" class="close" data-dismiss="modal" ng-click="Close_Form('focusBtnAdd')">
+                        <i class="la la-times-circle"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="padding:10px 20px; max-height: calc(100vh - 175px); overflow-y: auto;">
+                    <form id="frCoquanQuanly" name="frCoquanQuanly">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">Tên cơ quan</label>
+                                    <input ng-model="CoquanQuanly.CoquanQuanly_Ten" style="font-weight:500" type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">Mã cơ quan</label>
+                                    <input ng-model="CoquanQuanly.MaCoquan" style="font-weight:500" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">Đầu mối liên hệ</label>
+                                    <input ng-model="CoquanQuanly.DaumoiLienhe" style="font-weight:500" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">Mô tả</label>
+                                    <textarea ng-model="CoquanQuanly.Mota" style="font-weight:500" type="text" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">SĐT</label>
+                                    <input ng-model="CoquanQuanly.SDT" style="font-weight:500" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">Địa danh</label>
+                                    <select data-js-select2 class="form-control text-company" ng-model="CoquanQuanly.Diadanh_ID" ng-options="item.Diadanh_ID as item.Diadanh_Ten for item in diadanhchas"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">Cấp cha</label>
+                                    <select data-js-select2 class="form-control text-company" ng-model="CoquanQuanly.CapCha_ID" ng-options="item.CoquanQuanly_ID as item.CoquanQuanly_Ten for item in coquanquanlychas"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="fw-500">Kinh độ</label>
+                                    <input ng-model="CoquanQuanly.Kinhdo" style="font-weight:500" type="number" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="fw-500">Vĩ độ</label>
+                                    <input ng-model="CoquanQuanly.Vido" style="font-weight:500" type="number" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">
+                                        Trạng thái
+                                    </label>
+                                    <label class="switch" style="margin: 5px">
+                                        <input type="checkbox" ng-model="CoquanQuanly.Trangthai" ng-checked="CoquanQuanly.Trangthai" />
+                                        <span class="slider">
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">Thứ tự<span style="color:red;"> (*) </span></label>
+                                    <input ng-model="CoquanQuanly.STT" style="font-weight:500" type="number" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer" style="border-top:none!important;display:block;font-weight:500">
+                    <button type="button" class="btn btn-secondary btnCancelFrom" data-dismiss="modal" ng-click="Close_Form('focusBtnAdd')" style="float:left">Thoát</button>
+                    <button type="button" class="btn btn-primary btnAddForm" ng-click="Add_CoquanQuanly(frCoquanQuanly)" style="float:right">Lưu lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-include="'/App/Danhmuc/ModalImport_LA.html'"></div>
+    <div ng-include="'/App/Danhmuc/ModalUploadData.html'"></div>
+</div>

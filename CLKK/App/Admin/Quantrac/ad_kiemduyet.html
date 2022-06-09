@@ -1,0 +1,132 @@
+﻿<div id="Ad_KiemduyetCtr">
+    <div class="bar-white-olook top-bar" style="padding:10px; background-color: #fff; margin-bottom: 10px">
+        <div class="d-flex">
+            <div class="col-md-4" style="padding-left:0px;">
+                <ul class="utop">
+                    <li>
+                        <div class="btn-active dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            <span ng-if="!ob.Loaiquantrac">Loại quan trắc</span>
+                            <span ng-if="ob.Loaiquantrac">{{ob.Loaiquantrac.Loaiquantrac_Ten}}</span>
+                        </div>
+                        <ul class="dropdown-menu list-tc" id="dropdownSort" role="menu" style="min-width: 100px;margin-top:0;">
+                            <li ng-repeat="t in loaiquantracs track by t.Loaiquantrac_ID">
+                                <a ng-click="changeTypeKiemduyet(t)" class="{{t.Loaiquantrac_ID === ob.Loaiquantrac.Loaiquantrac_ID}} d-b td-n pY-5 bgcH-grey-100 c-grey-700"><span> {{t.Loaiquantrac_Ten}}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li ng-if="ob.Loaiquantrac">
+                        <div class="btn-active dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            <span ng-if="!ob.Tramquantrac">Trạm quan trắc</span>
+                            <span ng-if="ob.Tramquantrac">{{ob.Tramquantrac.Tramquantrac_Ten}}</span>
+                        </div>
+                        <ul class="dropdown-menu list-tc" id="dropdownSort" role="menu" style="min-width: 100px;margin-top:0;">
+                            <li ng-repeat="t in tramquantracs track by t.Tramquantrac_ID">
+                                <a ng-click="changeTramKiemduyet(t)" class="{{t.Tramquantrac_ID === ob.Tramquantrac.Tramquantrac_ID}} d-b td-n pY-5 bgcH-grey-100 c-grey-700"><span> {{t.Tramquantrac_Ten}}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="utop" style="display: inline-block;width:max-content;">
+                    <li>
+                        <div class="searchbar adv-search true">
+                            <input style="width: 400px;padding:4px 30px;border:1px solid #63bbc5;" class="search_input {{focusSearch}}" type="text" ng-focus="focusSearch = true" ng-blur="focusSearch = false" placeholder="Tìm kiếm ..." ng-model="option.s" my-enter="search()">
+                            <a class="search_icon left-icon" ng-click="search()"><i class="fa fa-search {{option.s!=''}}"></i></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 action-right pR-0">
+                <ul class="utop">
+                    <li ng-if="kiemduyets && kiemduyets.length > 0">
+                        <div class="btn-active" ng-click="Add_Kiemduyet()" style="text-align:center;">
+                            <i class="la la-save"></i>
+                            <span>Lưu lại</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-active" ng-click="Refresh()" style="text-align:center;">
+                            <i class="la la-sync"></i>
+                            <span>Refresh</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="divContent" style="padding-right:2px;">
+        <div class="row row-content bg-white top-page" style="margin:0;max-height: calc(100vh - 201px);min-height:calc(100vh - 201px); overflow-x:hidden;">
+            <table class="table table-condensed table-hover tbpad">
+                <thead>
+                    <tr>
+                        <th class="text-center row-danhmuc sticky" width="80">STT</th>
+                        <th class="row-danhmuc sticky">Thông số</th>
+                        <th class="text-center row-danhmuc sticky" width="150">Thiết bị lỗi</th>
+                        <th class="text-center row-danhmuc sticky" width="150">Giá trị âm</th>
+                        <th class="text-center row-danhmuc sticky" width="150">Ngoài phạm vi</th>
+                    </tr>
+                </thead>
+                <tbody align="center">
+                    <tr class="row-dm" ng-repeat="t in kiemduyets track by $index" ng-class="{'active-row': t.selectRow || t.checked, 'lock-dm': !t.Trangthai}" ng-mouseleave="t.hover = false" ng-mouseover="t.hover = true">
+                        <td class="text-center row-content-danhmuc" width="80" ng-bind="$index + 1"></td>
+
+                        <td class="row-ct-danhmuc" align="left" style="padding:5px !important;">
+                            <span ng-bind="t.Thongsomau_Ten"></span>
+                        </td>
+
+                        <td class="row-ct-danhmuc" align="left" style="display: flex; justify-content: center" align="left" width="150">
+                            <label class="switch" style="position:relative; top: -10px;">
+                                <input type="checkbox" ng-model="t.Khongcogiatri" ng-checked="t.Khongcogiatri" />
+                                <span class="slider">
+                                </span>
+                            </label>
+                        </td>
+
+                        <td class="row-ct-danhmuc" align="left" width="150">
+                            <label class="switch" style="position:relative; top: -10px; ; left: 35px">
+                                <input type="checkbox" ng-model="t.Giatriam" ng-checked="t.Giatriam" />
+                                <span class="slider">
+                                </span>
+                            </label>
+                        </td>
+
+                        <td class="row-ct-danhmuc" align="left" width="150">
+                            <label class="switch" style="position:relative; top: -10px; left: 35px">
+                                <input type="checkbox" ng-model="t.Ngoaikhoang" ng-checked="t.Ngoaikhoang" />
+                                <span class="slider">
+                                </span>
+                            </label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="col-md-12" ng-if="kiemduyets.length == 0" style="margin:0px;text-align:center; font-weight:bold;">Không có dữ liệu trong bảng</div>
+        </div>
+    </div>
+</div>
+<script>
+    $('.adv-search .dropdown-menu').on('click', function (event) {
+        event.stopPropagation();
+    });
+    $('.dropdown-date a.dropdown-toggle').click(function () {
+        var subMenu = $(this).next('.dropdown-menu');
+        subMenu.toggleClass('show');
+    });
+    $(".adv-search .dropdown-menu .dropdown, .adv-search .dropdown-menu .dropup").click(function () {
+        var dropdownClassCheck = $(this).hasClass('dropdown');
+        var buttonOffset = $(this).offset().top;
+        var scrollboxOffset = $('.adv-search').offset().top;
+        var buttonHeight = $(this).height();
+        var scrollBoxHeight = $('.adv-search').height();
+        var dropDownButtonHeight = $(this).children('ul').height();
+        dropdownSpaceCheck = scrollBoxHeight > buttonOffset - scrollboxOffset + buttonHeight + dropDownButtonHeight;
+        if (dropdownClassCheck && !dropdownSpaceCheck) {
+            $(this).removeClass('dropdown').addClass('dropup');
+        }
+        else if (!dropdownClassCheck && dropdownSpaceCheck) {
+            $(this).removeClass('dropup').addClass('dropdown');
+        }
+    })
+</script>

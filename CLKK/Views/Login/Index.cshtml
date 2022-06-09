@@ -1,0 +1,215 @@
+﻿
+@{
+    Layout = null;
+    string domainName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+    string domainRoot = domainName; // "http://businessportal.vn";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preload" as="image" href="/assets/static/images/bg.jpg" crossorigin>
+    <title>Chất lượng không khí</title>
+    <link href="@Url.Content("~/Scripts/bootstrap.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Scripts/fontawesome-5.15.3/css/all.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Scripts/line-awesome/css/line-awesome.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Scripts/sweetalert2/sweetalert2.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Scripts/animate.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Scripts/toastr.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Scripts/angular-datepicker/datetimepicker.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Scripts/OwlCarousel/assets/owl.carousel.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Scripts/oiselect/select.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Scripts/customSelect/css/style.css")" rel="stylesheet" type="text/css" />
+    <link href="~/Content/style.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/style-responsive.min.css")" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet">
+</head>
+<body>
+    <div ng-app="os" ng-cloak class="app container-fluid" style="height: calc(100vh - 60px);">
+        <div id="loader">
+            <div class="spinner"></div>
+        </div>
+        <script>
+            window.addEventListener('load', function load() {
+                const loader = document.getElementById('loader');
+                setTimeout(function () {
+                    loader.classList.add('fadeOut');
+                }, 300);
+            });</script>
+        <div ng-if="!isLogin" ng-controller="LoginCtr">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 class="text-center text-uppercase" style="color: #333; padding-bottom: 10px">Hệ thống quản lý dữ liệu quan trắc</h2>
+                    <img style="width: 100%; height: auto; object-fit: cover; margin-bottom: 20px" src="../../Images/background.jpg">
+                </div>
+                <div class="col-md-4" style="padding-top: 10rem">
+                    <img alt="" style="margin: 0 auto;display: block;height: 72px; width: 72px;border-radius: 50%;border: 1px solid #e7dbdb;object-fit: cover;margin-bottom: 15px;" src="/Images/noavatar.jpg">
+                    <h4 style="font-weight: 300; margin-bottom: 15px"><b>Đăng nhập</b></h4>
+                    <form>
+                        <div class="form-group">
+                            <label class="text-normal text-dark font-weight-bold">Mã đăng nhập</label>
+                            <input ng-model="login.Users_Name" type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-normal text-dark font-weight-bold">Mật khẩu</label>
+                            <input ng-model="login.Password" type="password" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <div class="d-flex" style="margin-left: 12px; justify-content: space-between">
+                                <div class="peer">
+                                    <div class="checkbox checkbox-circle checkbox-info peers ai-c">
+                                        <input type="checkbox" id="inputCall1"
+                                               name="inputCheckboxesCall" class="peer" ng-model="login.remer"> <label for="inputCall1" class="peers peer-greed js-sb ai-c"><span class="peer peer-greed">Ghi nhớ mật khẩu</span></label>
+                                    </div>
+                                </div>
+                                <div class="peer" style="text-align: right;color:#CE7A58; margin-top: 10px"><a ng-click="QuenPassword()">Quên mật khẩu</a></div>
+                            </div>
+                            <div class="peer" style="margin-top: 20px;"><button class="btn btn-primary" style="width: 100%;" ng-click="Login()"><span ng-show="$parent.loadding"><i class="la la-refresh spinning"></i></span><span class="font-weight-bold">Truy cập</span></button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div style="background-color: #63bbc5; color: white; height: 50px;">
+                <div style="position: relative ;top: 17px; right: 10px; text-align: right">
+                    <h5>Copyright © CUCO</h5>
+                </div>
+            </div>
+        </div>
+        <div ng-if="isLogin" ng-controller="LoginCtr">
+            <head>
+                <!-- Required meta tags -->
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                <link rel="stylesheet" href="App/Admin/fonts/icomoon/style.css">
+                <link rel="stylesheet" href="App/Admin/css/owl.carousel.min.css">
+                <!-- Bootstrap CSS -->
+                <link rel="stylesheet" href="App/Admin/css/bootstrap.min.css">
+                <!-- Style -->
+                <link rel="stylesheet" href="App/Admin/css/style.css">
+                <title>Trang quản trị</title>
+                <style>
+
+                    .nav-menu {
+                        font-size: 16px;
+                    }
+                </style>
+            </head>
+            <body id="bodyAdmin">
+                <aside class="sidebar">
+                    <div class="toggle">
+                        <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
+                            <span></span>
+                        </a>
+                    </div>
+                    <div class="side-inner">
+                        <div class="logo-wrap">
+                            <div class="logo">
+                                <span>C</span>
+                            </div>
+                            <span class="logo-text">Quản trị hệ thống</span>
+                        </div>
+                        <!--<div class="search-form">
+                            <form action="#">
+                                <span class="wrap-icon">
+                                    <span class="icon-search2"></span>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Search...">
+                            </form>
+                        </div>-->
+                        <div class="nav-menu">
+                            <ul>
+                                <li ng-class="{'active': !link}"><a href="#" class="d-flex align-items-center"><span class="wrap-icon icon-home2 mr-3"></span><span class="menu-text">Trang chủ</span></a></li>
+                                <li ng-click="goMenu('ad_tintuc')" ng-class="{'active': link === 'ad_tintuc'}"><a class="d-flex align-items-center" style="padding-left: 23px"><span style="font-size: 1.6rem" class="wrap-icon icon-newspaper-o mr-3"></span><span class="menu-text">Tin tức</span></a></li>
+                                <li ng-click="goMenu('ad_topic')" ng-class="{'active': link === 'ad_topic'}"><a class="d-flex align-items-center" style="padding-left: 23px"><span style="font-size: 1.6rem" class="wrap-icon icon-folder-open-o mr-3"></span><span class="menu-text">Chủ đề</span></a></li>
+                                <li ng-click="goMenu('ad_diadanh')" ng-class="{'active': link === 'ad_diadanh'}"><a class="d-flex align-items-center" style="padding-left: 23px"><span class="wrap-icon icon-globe mr-3"></span><span class="menu-text">Địa danh</span></a></li>
+                                <li ng-click="goMenu('ad_coquanquanly')" ng-class="{'active': link === 'ad_coquanquanly'}"><a class="d-flex align-items-center" style="padding-left: 23px"><span class="wrap-icon icon-industry mr-3"></span><span class="menu-text">Cơ quan quản lý</span></a></li>
+                                <li ng-click="goMenu('ad_loaiquantrac')" ng-class="{'active': link === 'ad_loaiquantrac'}"><a class="d-flex align-items-center" style="padding-left: 23px"><span class="wrap-icon icon-location_city mr-3"></span><span class="menu-text">Loại quan trắc</span></a></li>
+                                <li ng-click="goMenu('ad_qcvn')" ng-class="{'active': link === 'ad_qcvn'}"><a class="d-flex align-items-center" style="padding-left: 23px"><span class="wrap-icon icon-barcode mr-3"></span><span class="menu-text">QCVN</span></a></li>
+                                <li ng-click="goMenu('ad_tramquantrac')" ng-class="{'active': link === 'ad_qcvn'}"><a class="d-flex align-items-center"><span style="font-size: 1.6rem" class="wrap-icon icon-university mr-3"></span><span class="menu-text">Quản lý trạm</span></a></li>
+                                <li ng-click="goMenu('ad_thongsomau')" ng-class="{'active': link === 'ad_thongsomau'}"><a class="d-flex align-items-center" style="padding-left: 23px"><span class="wrap-icon icon-square mr-3"></span><span class="menu-text">Thông số mẫu</span></a></li>
+                                <li ng-click="goMenu('ad_thongso')" ng-class="{'active': link === 'ad_thongso'}"><a class="d-flex align-items-center" style="padding-left: 23px"><span class="wrap-icon icon-check-square-o mr-3"></span><span class="menu-text">Giám sát trực tuyến</span></a></li>
+                                <li ng-click="goMenu('ad_laymau')" ng-class="{'active': link === 'ad_laymau'}"><a class="d-flex align-items-center" style="padding-left: 23px"><span class="wrap-icon icon-calendar-times-o mr-3"></span><span class="menu-text">Điều khiển lấy mẫu</span></a></li>
+                                <li ng-click="goMenu('ad_kiemduyet')" ng-class="{'active': link === 'ad_kiemduyet'}"><a class="d-flex align-items-center" style="padding-left: 23px"><span class="wrap-icon icon-check-circle-o mr-3"></span><span class="menu-text">Kiểm duyệt dữ liệu</span></a></li>
+                                <li ng-click="goMenu('ad_dubao')" ng-class="{'active': link === 'ad_dubao'}"><a class="d-flex align-items-center" style="padding-left: 23px;font-size: 1.6rem"><span class="wrap-icon icon-line-chart mr-3"></span><span class="menu-text">Dự báo</span></a></li>
+                                <li ng-click="goMenu('ad_bieudo')" ng-class="{'active': link === 'ad_bieudo'}"><a class="d-flex align-items-center" style="padding-left: 23px;font-size: 1.6rem"><span class="wrap-icon icon-signal mr-3"></span><span class="menu-text">Biểu đồ dữ liệu</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+                <main>
+                    <div class="site-section">
+                        <div class="d-flex" style="position: absolute; right: 20px">
+                            <a href="#" style="color: #b1b1b1; font-size: 1.6rem; margin-right: 15px"><span class="wrap-icon icon-envelope mr-3"></span></a>
+                            <a href="#" style="color: #b1b1b1; font-size: 1.6rem; margin-right: 15px"><span class="wrap-icon icon-bell mr-3"></span></a>
+                            <a class="d-flex align-items-center" ng-click="Logout()" style="color: #b1b1b1; font-size: 1.6rem"><span class="wrap-icon icon-sign-out mr-3"></span><span>Đăng xuất</span></a>
+                        </div>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h1>Phần mềm quản lý dữ liệu quan trắc tự động</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="body">
+                                <ui-view></ui-view>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+                <script src="App/Admin/js/jquery-3.3.1.min.js"></script>
+                <script src="App/Admin/js/popper.min.js"></script>
+                <script src="App/Admin/js/bootstrap.min.js"></script>
+                <script src="App/Admin/js/main.js"></script>
+            </body>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
+    <script src="@Url.Content("~/Scripts/OwlCarousel/owl.carousel.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/customSelect/js/customSelect.js")"></script>
+    <script src="@Url.Content("~/Scripts/ckeditor/ckeditor.js")"></script>
+    <script src="@Url.Content("~/Scripts/ckfinder/ckfinder.js")"></script>
+    <script src="~/Scripts/ck-editor.js"></script>
+    <script src="~/Scripts/jquery.nicescroll.min.js"></script>
+    <script src="~/Scripts/angular-nicescroll.js"></script>
+    <link href="@Url.Content("~/Scripts/select2/select2.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/select2/select2.full.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/oiselect/select.min.js")"></script>
+    <script src="~/Scripts/Skin/angular-input-masks/angular-input-masks-dependencies.min.js"></script>
+    <script src="~/Scripts/Skin/angular-input-masks/angular-input-masks.min.js"></script>
+    <script src="~/Scripts/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="~/Scripts/angular-datepicker/datetimepicker.js"></script>
+    <script src="~/Scripts/angular-datepicker/dateTimeInput.js"></script>
+    <script src="~/Scripts/aes.js"></script>
+    @*<script src="@Url.Content("~/App/Chat/emoji.js")"></script>*@
+    <!--amchart Resoureces-->
+    <script src="~/Scripts/amcharts/amcharts.js"></script>
+    <script src="~/Scripts/amcharts/serial.js"></script>
+    <script src="~/Scripts/amcharts/amstock.js"></script>
+    <script src="~/Scripts/amcharts/radar.js"></script>
+    <script src="~/Scripts/amcharts/pie.js"></script>
+    <script src="~/Scripts/amcharts/plugins/export/export.min.js"></script>
+    <link href="~/Scripts/amcharts/plugins/export/export.css" rel="stylesheet" />
+    <script src="~/Scripts/amcharts/themes/light.js"></script>
+    <link href="@domainName/Scripts/fancybox/jquery.fancybox.min.css" rel="stylesheet" />
+    <script src="@domainName/Scripts/fancybox/jquery.fancybox.min.js"></script>
+    <!--amchart Resoureces Ends Here-->
+    <script type="text/javascript" src="@Url.Content("~/App/function.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/App/app.js")"></script>
+    <script src="~/Scripts/Stuk-jszip-25d401e/dist/jszip.min.js"></script>
+    <script src="~/Scripts/Stuk-jszip-25d401e/dist/jszip-utils.min.js"></script>
+    <script src="~/Scripts/angular-sanitize.js"></script>
+</body>
+</html>

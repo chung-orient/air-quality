@@ -1,0 +1,274 @@
+﻿<div id="Ad_TintucCtr">
+    <div class="bar-white-olook top-bar" style="padding:10px; background-color: #fff; margin-bottom: 10px">
+        <div class="d-flex">
+            <div class="col-md-4" style="padding-left:0px;">
+                <ul class="utop">
+                    <li>
+                        <div class="btn-active {{focusBtnAdd}}" ng-click="Modal_AddTintuc('add')" style="text-align:center;padding:4px 5px;">
+                            <i class="la la-plus-circle"></i>
+                            <span>Thêm mới</span>
+                        </div>
+                    </li>
+                    <li ng-if="checkLen > 0">
+                        <div class="btn-active {{checkLen == 0 ? 'notactive' : ''}}" ng-click="Del_Tintuc(tintucs)" style="text-align:center;">
+                            <i class="la la-trash"></i>
+                            <span>Xóa</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="utop" style="display: inline-block;width:max-content;">
+                    <li>
+                        <div class="searchbar adv-search true">
+                            <input style="width: 400px;padding:4px 30px;border:1px solid #63bbc5;" class="search_input {{focusSearch}}" type="text" ng-focus="focusSearch = true" ng-blur="focusSearch = false" placeholder="Tìm kiếm ..." ng-model="option.s" my-enter="search()">
+                            <a class="search_icon left-icon" ng-click="search()"><i class="fa fa-search {{option.s!=''}}"></i></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 action-right pR-0">
+                <ul class="utop">
+                    <li>
+                        <div class="btn-active dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            <span class="las la-sort-amount-up-alt"></span>
+                            <span>Sắp xếp</span>
+                        </div>
+                        <ul class="dropdown-menu list-tc" id="dropdownSort" role="menu" style="min-width: 100px;margin-top:0;">
+                            <li ng-repeat="t in ListSortCC track by t.id">
+                                <a ng-click="setSortCC(t)" class="{{t.id === opition.sortDetail}} d-b td-n pY-5 bgcH-grey-100 c-grey-700"><span class="{{t.typeStyle}}"></span><span> {{t.text}}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="btn-active" ng-click="RefreshCC()" style="text-align:center;">
+                            <i class="la la-sync"></i>
+                            <span>Refresh</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="divContent" style="padding-right:2px;">
+        <div class="row row-content bg-white top-page" style="margin:0;max-height: calc(100vh - 201px);min-height:calc(100vh - 201px); overflow-x:hidden;">
+            <table class="table table-condensed table-hover tbpad">
+                <thead>
+                    <tr>
+                        <th class="sticky text-center" width="40" align="center" style="padding:10px 15px;">
+                            <div class="checkbox checkbox-circle checkbox-info peers ai-c">
+                                <input type="checkbox" id="input_All" name="input_All" ng-model="CheckAll" ng-change="toggleAll(tintucs, CheckAll)">
+                                <label class="p-0" for="input_All"></label>
+                            </div>
+                        </th>
+                        <th class="text-center row-danhmuc sticky" width="80">STT</th>
+                        <th class="row-danhmuc sticky">Tiêu đề</th>
+                        <th class="text-center row-danhmuc sticky" width="150">Ngày tạo</th>
+                        <th class="text-center row-danhmuc sticky" width="120">Kiểu tin</th>
+                        <th class="row-danhmuc sticky" width="120">Ảnh đại diện</th>
+                        <th class="text-center row-danhmuc sticky" width="120">Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody align="center">
+                    <tr class="row-dm" ng-repeat="t in tintucs track by $index" ng-class="{'active-row': t.selectRow || t.checked, 'lock-dm': !t.IsActive}" ng-mouseleave="t.hover = false" ng-mouseover="t.hover = true">
+                        <td width="40" align="center" style="padding:0px 15px;">
+                            <div ng-if="t.checked || t.hover" class="checkbox checkbox-circle checkbox-info peers ai-c">
+                                <input type="checkbox" id="input_{{t.News_ID}}" name="input_{{t.News_ID}}" ng-model="t.checked" ng-change="CheckChecked(tintucs)">
+                                <label class="p-0" for="input_{{t.News_ID}}"></label>
+                            </div>
+                        </td>
+                        <td class="text-center row-content-danhmuc" width="80" ng-bind="$index + 1 + paxpz"></td>
+                        <td class="row-ct-danhmuc" align="left" style="padding:5px !important;">
+                            <a ng-click="ModalViewEditTintuc(t)" ng-bind-html="t.News_Name"></a>
+                        </td>
+                        <td class="row-ct-danhmuc" width="120" ng-bind="t.CreatedBy | date: 'HH:mm dd/MM/yyyy'"></td>
+                        <td class="row-ct-danhmuc" width="120">
+                            <span ng-repeat="ty in ListNewType" ng-if="ty.value === t.NewType">{{ty.text}}</span>
+                        </td>
+                        <td width="120">
+                            <div class="box-logoimg img-list" tooltip-placement="bottom" uib-tooltip-html="tooltipanh">
+                                <img ng-click="openmodalImg(t)" class="thumb" ngf-thumbnail="fileUrl + (t.Images || '/Content/noimg.png')" ngf-size="{centerCrop: true}" />
+                            </div>
+                        </td>
+                        <td class="row-ct-danhmuc" width="120" style="text-align:left;">
+                            <div class="card-nhom bg{{t.IsActive?'kh':'close'}}" style="white-space:normal;margin:5px auto;" ng-repeat="p in ListTrangthai" ng-if="t.IsActive == p.value" ng-bind="p.text"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="col-md-12" ng-if="tintucs.length == 0" style="margin:0px;text-align:center; font-weight:bold;">Không có dữ liệu trong bảng</div>
+
+            <pagination ng-if="option.noOfPages>1" num-pages="option.noOfPages" current-page="option.currentPage" class="pagination"></pagination>
+            <div class="pag-info" ng-if="option.Total>0">
+                <div class="btn-group" style="margin-right:5px">
+                    <a style="font-weight: 500;display: flex;background: #e9ecef;padding: 5px 10px;border-radius:3px" data-toggle="dropdown">
+                        <span class="title" style="margin-right:5px">{{option.numPerPage}}</span>
+                        <span class="arrow"><i class="ti-angle-down"></i></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" style="width: 80px;min-width: auto;margin-left: -20px;margin-top: -10px;">
+                        <li ng-repeat="p in option.Pages"><a ng-click="setPageSize(p)" class="d-b td-n pY-10 pX-10 bgcH-grey-100">{{p}}</a></li>
+                    </ul>
+                </div>
+                <span style="font-size:14px;font-weight:500">Hiển thị {{(option.currentPage-1)*option.numPerPage+1}}-{{(option.currentPage-1)*option.numPerPage+tintucs.length}} của {{option.Total}}</span>
+            </div>
+        </div>
+    </div>
+    <!-- Modal add ly do -->
+    <div class="modal fades" id="ModalAddTintuc" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg animated zoomIn faster" style="margin: 1rem auto; max-width: 1000px">
+            <div class="modal-content no-border">
+                <div modal-movable class="modal-header head-modal no-border">
+                    <h4 class="modal-title">{{modalTitle}}</h4>
+                    <button type="button" class="close" data-dismiss="modal" ng-click="Close_Form('focusBtnAdd')">
+                        <i class="la la-times-circle"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="padding:10px 20px; max-height: calc(100vh - 175px); overflow-y: auto;">
+                    <form id="frTintuc" name="frTintuc">
+                        <div class="row">
+                            <div class="col-md-12" style="padding:0 15px">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label class="fw-500">Ảnh đại diện</label>
+                                                <div class="box-logoimg cur-p {{(Tintuc.Images || hinhanhtin) ? '' : ''}}" style="width:100%;">
+                                                    <input type='file' ngf-select="imageUpload($files)" accept=".png, .jpg, .jpeg, .gif" style="display:none" />
+                                                    <img style="object-fit:contain;" ng-click="inputFile($event)" ng-if="hinhanhtin||Tintuc.Images ||'/Content/noimg.png'" class="thumb" ngf-thumbnail="hinhanhtin || (fileUrl + (Tintuc.Images||'/Content/noimg.png'))" ngf-size="{centerCrop: true}" />
+                                                    <a ng-click="inputFile($event)"><i class="fas fa-pencil-alt ava"></i></a>
+                                                    <a ng-if="hinhanhtin || Tintuc.Images" ng-click="clearAnhnen()"><i class="fa fa-trash cancel"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group div-Tintuc">
+                                                    <label class="fw-500">Tên tin tức<span style="color:red;"> (*) </span></label>
+                                                    <input ng-model="Tintuc.News_Name" style="font-weight:500" type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="fw-500">Mô tả</label>
+                                                    <textarea ng-model="Tintuc.Description" style="font-weight:500" type="text" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">Chi tiết</label>
+                                    <textarea ng-model="Tintuc.Details" style="font-weight:500" type="text" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">Nội dung <span style="color: red">(*)</span></label>
+                                    <textarea type="text" class="form-control" ckeditors name="Contents" id="Contents" ng-model="Tintuc.Contents"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">Chủ đề</label>
+                                    <select data-js-select2 class="form-control text-company" ng-model="Tintuc.Topic_ID" ng-options="item.Topic_ID as item.Topic_Name for item in topics"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">Loại tin</label>
+                                    <select data-js-select2 class="form-control text-company" ng-model="Tintuc.NewType" ng-options="item.value as item.text for item in ListNewType"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="fw-500">Ngày tin tức</label>
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-5 p-0">
+                                            <div class="dropdown datetimeinput">
+                                                <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" ng-model="Tintuc.StartDate" placeholder="dd/MM/yyyy" data-date-time-input="DD/MM/YYYY" />
+                                                    </div>
+                                                </a>
+                                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                    <datetimepicker ng-model="Tintuc.StartDate" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',startView:'day', minView:'day' }"></datetimepicker>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 position-relative" style="top: 4px; left: 58px;">đến</div>
+                                        <div class="col-md-5 p-0">
+                                            <div class="dropdown datetimeinput">
+                                                <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" ng-model="Tintuc.EndDate" placeholder="dd/MM/yyyy" data-date-time-input="DD/MM/YYYY" />
+                                                    </div>
+                                                </a>
+                                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                    <datetimepicker ng-model="Tintuc.EndDate" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',startView:'day', minView:'day' }"></datetimepicker>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">
+                                        Tin hot
+                                    </label>
+                                    <label class="switch" style="margin: 5px">
+                                        <input type="checkbox" ng-model="Tintuc.IsHot" ng-checked="Tintuc.IsHot" />
+                                        <span class="slider">
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">
+                                        Trạng thái
+                                    </label>
+                                    <label class="switch" style="margin: 5px">
+                                        <input type="checkbox" ng-model="Tintuc.IsActive" ng-checked="Tintuc.IsActive" />
+                                        <span class="slider">
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">Thứ tự<span style="color:red;"> (*) </span></label>
+                                    <input ng-model="Tintuc.IsOrder" style="font-weight:500" type="number" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer" style="border-top:none!important;display:block;font-weight:500">
+                    <button type="button" class="btn btn-secondary btnCancelFrom" data-dismiss="modal" ng-click="Close_Form('focusBtnAdd')" style="float:left">Thoát</button>
+                    <button type="button" class="btn btn-primary btnAddForm" ng-click="Add_Tintuc(frTintuc)" style="float:right">Lưu lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-include="'/App/Danhmuc/ModalImport_LA.html'"></div>
+    <div ng-include="'/App/Danhmuc/ModalUploadData.html'"></div>
+</div>
+<script>
+    CKEDITOR.replace('Contents', { height: "150" ,toolbar: 'MyCustomToolbar' });
+</script>
+<style>
+    div.div-Tintuc span#cke_1_top, div.div-Tintuc span#cke_1_bottom {
+        display: none;
+    }
+    div.div-Tintuc body.cke_editable {
+        margin: 10px;
+    }
+</style>

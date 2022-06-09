@@ -1,0 +1,322 @@
+﻿<div id="Ad_ThongsomauCtr">
+    <div class="bar-white-olook top-bar" style="padding:10px; background-color: #fff; margin-bottom: 10px">
+        <div class="d-flex">
+            <div class="col-md-4" style="padding-left:0px;">
+                <ul class="utop">
+                    <li ng-if="ob.Loaiquantrac">
+                        <div class="btn-active {{focusBtnAdd}}" ng-click="Input_AddThongsomau()" style="text-align:center;padding:4px 5px;">
+                            <i class="la la-plus-circle"></i>
+                            <span>Thêm mới</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-active dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            <span ng-if="!ob.Loaiquantrac">Loại quan trắc</span>
+                            <span ng-if="ob.Loaiquantrac">{{ob.Loaiquantrac.Loaiquantrac_Ten}}</span>
+                        </div>
+                        <ul class="dropdown-menu list-tc" id="dropdownSort" role="menu" style="min-width: 100px;margin-top:0;">
+                            <li ng-repeat="t in loaiquantracs track by t.Loaiquantrac_ID">
+                                <a ng-click="changeTypeThongsomau(t)" class="{{t.Loaiquantrac_ID === ob.Loaiquantrac.Loaiquantrac_ID}} d-b td-n pY-5 bgcH-grey-100 c-grey-700"><span> {{t.Loaiquantrac_Ten}}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="utop" style="display: inline-block;width:max-content;">
+                    <li>
+                        <div class="searchbar adv-search true">
+                            <input style="width: 400px;padding:4px 30px;border:1px solid #63bbc5;" class="search_input {{focusSearch}}" type="text" ng-focus="focusSearch = true" ng-blur="focusSearch = false" placeholder="Tìm kiếm ..." ng-model="option.s" my-enter="search()">
+                            <a class="search_icon left-icon" ng-click="search()"><i class="fa fa-search {{option.s!=''}}"></i></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 action-right pR-0">
+                <ul class="utop">
+                    <li>
+                        <div class="btn-active dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            <span class="las la-sort-amount-up-alt"></span>
+                            <span>Sắp xếp</span>
+                        </div>
+                        <ul class="dropdown-menu list-tc" id="dropdownSort" role="menu" style="min-width: 100px;margin-top:0;">
+                            <li ng-repeat="t in ListSortCC track by t.id">
+                                <a ng-click="setSortCC(t)" class="{{t.id === opition.sortDetail}} d-b td-n pY-5 bgcH-grey-100 c-grey-700"><span class="{{t.typeStyle}}"></span><span> {{t.text}}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="btn-active" ng-click="Refresh()" style="text-align:center;">
+                            <i class="la la-sync"></i>
+                            <span>Refresh</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="divContent" style="padding-right:2px;">
+        <div class="row row-content bg-white top-page" style="margin:0;max-height: calc(100vh - 201px);min-height:calc(100vh - 201px); overflow-x:hidden;">
+            <table class="table table-condensed table-hover tbpad">
+                <thead>
+                    <tr>
+                        <th class="text-center row-danhmuc sticky" width="80">STT</th>
+                        <th class="row-danhmuc sticky">Tên <span style="color: red">(*)</span></th>
+                        <th class="text-center row-danhmuc sticky" width="150">Đơn vị <span style="color: red">(*)</span></th>
+                        <th class="text-center row-danhmuc sticky" width="120">Max</th>
+                        <th class="text-center row-danhmuc sticky" width="120">Min</th>
+                        <th class="text-center row-danhmuc sticky" width="120">Tham số cận max-min</th>
+                        <!--<th class="row-danhmuc sticky" width="200">Phương pháp lấy mẫu</th>-->
+                        <th class="text-center row-danhmuc sticky" width="150">Trạng thái</th>
+                        <th class="text-center row-danhmuc sticky" width="80"></th>
+                    </tr>
+                </thead>
+                <tbody align="center">
+                    <tr class="row-dm" ng-repeat="t in thongsomaus track by $index" ng-class="{'active-row': t.selectRow || t.checked, 'lock-dm': !t.Trangthai}" ng-mouseleave="t.hover = false" ng-mouseover="t.hover = true">
+                        <td class="text-center row-content-danhmuc" width="80" ng-bind="$index + 1 + paxpz"></td>
+
+                        <td ng-if="!t.isInput" class="row-ct-danhmuc" align="left" style="padding:5px !important;">
+                            <span ng-bind="t.Thongsomau_Ten"></span>
+                        </td>
+                        <td ng-if="t.isInput" class="row-ct-danhmuc" align="left" style="padding:5px !important;">
+                            <input class="form-control" ng-model="t.Thongsomau_Ten" required />
+                        </td>
+
+                        <td ng-if="!t.isInput" class="row-ct-danhmuc" align="center" width="120">
+                            {{t.Donvi}}
+                        </td>
+                        <td ng-if="t.isInput" class="row-ct-danhmuc" align="center" width="120">
+                            <input class="form-control" ng-model="t.Donvi" required />
+                        </td>
+
+                        <td ng-if="!t.isInput" class="row-ct-danhmuc" align="center" width="120">
+                            {{t.Max}}
+                        </td>
+                        <td ng-if="t.isInput" class="row-ct-danhmuc" align="center" width="120">
+                            <input type="number" class="form-control" ng-model="t.Max" />
+                        </td>
+
+                        <td ng-if="!t.isInput" class="row-ct-danhmuc" align="center" width="120">
+                            {{t.Min}}
+                        </td>
+                        <td ng-if="t.isInput" class="row-ct-danhmuc" align="center" width="120">
+                            <input type="number" class="form-control" ng-model="t.Min" />
+                        </td>
+
+                        <td ng-if="!t.isInput" class="row-ct-danhmuc" align="center" width="120">
+                            {{t.Delta}}
+                        </td>
+                        <td ng-if="t.isInput" class="row-ct-danhmuc" align="center" width="120">
+                            <input type="number" class="form-control" ng-model="t.Delta" />
+                        </td>
+
+                        <!--<td ng-if="!t.isInput" class="row-ct-danhmuc" align="left" width="150">
+        <span ng-repeat="pp in pplaymaus" ng-if="t.PPLaymau_ID === pp.PPLaymau_ID">{{pp.PPLaymau_Code}}</span>
+    </td>
+    <td ng-if="t.isInput" class="row-ct-danhmuc" align="left" width="150">
+        <select data-js-select2 class="form-control text-company" ng-model="t.PPLaymau_ID" ng-options="item.PPLaymau_ID as item.PPLaymau_Code for item in pplaymaus"></select>
+    </td>-->
+
+                        <td ng-if="!t.isInput" class="row-ct-danhmuc" width="150" style="text-align:left;">
+                            <div class="card-nhom bg{{t.Trangthai?'kh':'close'}}" style="white-space:normal;margin:5px auto; min-width: max-content" ng-repeat="p in ListTrangthai" ng-if="t.Trangthai == p.value" ng-bind="p.text"></div>
+                        </td>
+                        <td ng-if="t.isInput" class="row-ct-danhmuc" width="150" style="text-align:left;">
+                            <select data-js-select2 class="form-control text-company" ng-model="t.Trangthai" ng-options="item.value as item.text for item in ListTrangthai"></select>
+                        </td>
+
+                        <td ng-if="!t.isInput" class="row-ct-danhmuc" width="80" style="text-align:center;">
+                            <div class="d-flex">
+                                <a ng-click="Input_UpdateThongsomau(t)" uib-tooltip="Sửa"><i style="font-size:22px" class="la la-edit"></i></a>
+                                <a ng-click="Del_Thongsomau(thongsomaus, t)" uib-tooltip="Xoá"><i style="font-size:22px" class="la la-trash"></i></a>
+                            </div>
+                        </td>
+                        <td ng-if="t.isInput" class="row-ct-danhmuc" width="80" style="text-align:center;">
+                            <div class="d-flex">
+                                <a class="mR-5" ng-click="Add_Thongsomau(t)" uib-tooltip="Lưu lại"><i style="font-size:22px" class="la la-save"></i></a>
+                                <a ng-click="Cancel_UpdateThongsomau(t)" uib-tooltip="Huỷ bỏ"><i style="font-size:22px" class="la la-remove"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="col-md-12" ng-if="Thongsomaus.length == 0" style="margin:0px;text-align:center; font-weight:bold;">Không có dữ liệu trong bảng</div>
+        </div>
+    </div>
+    <!-- Modal add ly do -->
+    <div class="modal fades" id="ModalAddThongsomau" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg animated zoomIn faster" style="margin: 1rem auto; max-width: 1000px">
+            <div class="modal-content no-border">
+                <div modal-movable class="modal-header head-modal no-border">
+                    <h4 class="modal-title">{{modalTitle}}</h4>
+                    <button type="button" class="close" data-dismiss="modal" ng-click="Close_Form('focusBtnAdd')">
+                        <i class="la la-times-circle"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="padding:0;">
+                    <div class="modal-tab" style="padding:10px">
+                        <ul class="nav nav-tabs tasktab">
+                            <li><a class="active" data-toggle="tab" data-target="#Thongsomau">Thông tin chung</a></li>
+                            <li><a data-toggle="tab" data-target="#qcvn">QCVN</a></li>
+                        </ul>
+                    </div>
+                    <div style="padding:10px 20px;background-color:#fff">
+                        <div class="tab-content" style="padding: 0">
+                            <div id="Thongsomau" class="tab-pane fade in active" style="max-height:calc(100vh - 250px);overflow-y:auto;overflow-x:hidden">
+                                <form id="frThongsomau" name="frThongsomau">
+                                    <div class="row" style="margin-right: 0; margin-left: 0">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="fw-500">Tên trạm quan trắc</label>
+                                                <input ng-model="Thongsomau.Thongsomau_Ten" style="font-weight:500" type="text" class="form-control" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="fw-500">Loại quan trắc</label>
+                                                <select data-js-select2 class="form-control text-company" ng-model="Thongsomau.Loaiquantrac_ID" ng-options="item.Loaiquantrac_ID as item.Loaiquantrac_Ten for item in loaiquantracs"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="fw-500">Mã trạm</label>
+                                                <input ng-model="Thongsomau.MaTram" style="font-weight:500" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="fw-500">Kinh độ</label>
+                                                <input ng-model="Thongsomau.Kinhdo" style="font-weight:500" type="number" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="fw-500">Vĩ độ</label>
+                                                <input ng-model="Thongsomau.Vido" style="font-weight:500" type="number" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="fw-500">Địa danh</label>
+                                                <select data-js-select2 class="form-control text-company" ng-model="Thongsomau.Diadanh_ID" ng-options="item.Diadanh_ID as item.Diadanh_Ten for item in diadanhchas"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="fw-500">Cơ quan quản lý</label>
+                                                <select data-js-select2 class="form-control text-company" ng-model="Thongsomau.CoquanQuanly_ID" ng-options="item.CoquanQuanly_ID as item.CoquanQuanly_Ten for item in coquanquanlychas"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="fw-500">Tần suất nhận dữ liệu (phút)</label>
+                                                <input ng-model="Thongsomau.TansuatNhanDL" style="font-weight:500" type="number" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="fw-500">Địa chỉ</label>
+                                                <input ng-model="Thongsomau.Diachi" style="font-weight:500" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="fw-500">Mô tả</label>
+                                                <input ng-model="Thongsomau.Mota" style="font-weight:500" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="fw-500">
+                                                    Trạng thái
+                                                </label>
+                                                <label class="switch" style="margin: 5px">
+                                                    <input type="checkbox" ng-model="Thongsomau.Trangthai" ng-checked="Thongsomau.Trangthai" />
+                                                    <span class="slider">
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="fw-500">Thứ tự<span style="color:red;"> (*) </span></label>
+                                                <input ng-model="Thongsomau.STT" style="font-weight:500" type="number" class="form-control" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div id="qcvn" class="tab-pane fade" style="max-height:calc(100vh - 250px);overflow-y:auto">
+                                <div class="row col-md-12">
+                                    <div class="col-md-6">
+                                        <table class="table table-borderless">
+                                            <tbody>
+                                                <tr>
+                                                    <td><label class="fw-500 mT-15">QCVN <span style="color: red">*</span></label></td>
+                                                    <td>
+                                                        <select data-js-select2 class="form-control text-company" ng-model="Thongsomau.QCVN_ID" ng-options="item.QCVN_ID as item.SoQCVN for item in qcvns" required></select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="fw-500 mT-15">Loại trong QCVN <span style="color: red">*</span></label></td>
+                                                    <td>
+                                                        <select data-js-select2 class="form-control text-company" ng-model="Thongsomau.LoaiQCVN" ng-options="item.value as item.text for item in ListLoaiQCVN" required></select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="fw-500 mT-15">Hệ số 1 <span style="color: red">*</span>(Kq/Kp)</label></td>
+                                                    <td>
+                                                        <input ng-model="Thongsomau.QCVN_Heso1" style="font-weight:500" type="number" class="form-control" required>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label class="fw-500 mT-15">Hệ số 2 <span style="color: red">*</span>(Kf/Kv)</label></td>
+                                                    <td>
+                                                        <input ng-model="Thongsomau.QCVN_Heso2" style="font-weight:500" type="number" class="form-control" required>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer" style="border-top:none!important;display:block;font-weight:500">
+                    <button type="button" class="btn btn-secondary btnCancelFrom" data-dismiss="modal" ng-click="Close_Form('focusBtnAdd')" style="float:left">Thoát</button>
+                    <button type="button" class="btn btn-primary btnAddForm" ng-click="Add_Thongsomau(frThongsomau)" style="float:right">Lưu lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-include="'/App/Danhmuc/ModalImport_LA.html'"></div>
+    <div ng-include="'/App/Danhmuc/ModalUploadData.html'"></div>
+</div>
+<script>
+    $('.adv-search .dropdown-menu').on('click', function (event) {
+        event.stopPropagation();
+    });
+    $('.dropdown-date a.dropdown-toggle').click(function () {
+        var subMenu = $(this).next('.dropdown-menu');
+        subMenu.toggleClass('show');
+    });
+    $(".adv-search .dropdown-menu .dropdown, .adv-search .dropdown-menu .dropup").click(function () {
+        var dropdownClassCheck = $(this).hasClass('dropdown');
+        var buttonOffset = $(this).offset().top;
+        var scrollboxOffset = $('.adv-search').offset().top;
+        var buttonHeight = $(this).height();
+        var scrollBoxHeight = $('.adv-search').height();
+        var dropDownButtonHeight = $(this).children('ul').height();
+        dropdownSpaceCheck = scrollBoxHeight > buttonOffset - scrollboxOffset + buttonHeight + dropDownButtonHeight;
+        if (dropdownClassCheck && !dropdownSpaceCheck) {
+            $(this).removeClass('dropdown').addClass('dropup');
+        }
+        else if (!dropdownClassCheck && dropdownSpaceCheck) {
+            $(this).removeClass('dropup').addClass('dropdown');
+        }
+    })
+</script>

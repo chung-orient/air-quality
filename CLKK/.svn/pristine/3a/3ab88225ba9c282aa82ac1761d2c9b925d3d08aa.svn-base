@@ -1,0 +1,87 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="App/Admin/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="App/Admin/css/owl.carousel.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="App/Admin/css/bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="App/Admin/css/style.css">
+    <title>Trang quản trị</title>
+    <style>
+        .nav-menu{
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="toggle">
+            <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
+                <span></span>
+            </a>
+        </div>
+        <div class="side-inner">
+            <div class="logo-wrap">
+                <div class="logo">
+                    <span>C</span>
+                </div>
+                <span class="logo-text">Quản trị hệ thống</span>
+            </div>
+
+            <!--<div class="search-form">
+                <form action="#">
+                    <span class="wrap-icon">
+                        <span class="icon-search2"></span>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Search...">
+                </form>
+            </div>-->
+            <div class="nav-menu">
+                <ul>
+                    <li class="active"><a href="#" class="d-flex align-items-center"><span class="wrap-icon icon-home2 mr-3"></span><span class="menu-text">Trang chủ</span></a></li>
+                    <li><a href="#" class="d-flex align-items-center" style="padding-left: 27px"><span class="wrap-icon icon-map-marker mr-3"></span><span class="menu-text">Bản đồ các trạm</span></a></li>
+                    <li><a href="#" class="d-flex align-items-center"><span style="font-size: 1.6rem" class="wrap-icon icon-university mr-3"></span><span class="menu-text">Quản lý trạm</span></a></li>
+                    <li><a href="#" class="d-flex align-items-center"><span class="wrap-icon icon-check-square-o mr-3"></span><span class="menu-text">Giám sát trực tuyến</span></a></li>
+                    <li><a href="#" class="d-flex align-items-center"><span style="font-size: 1.6rem" class="wrap-icon icon-video-camera mr-3"></span><span class="menu-text">Camera giám sát</span></a></li>
+                    <li><a href="#" class="d-flex align-items-center"><span class="wrap-icon icon-location-arrow mr-3"></span><span class="menu-text">Chỉ số chất lượng</span></a></li>
+                    <li><a href="#" class="d-flex align-items-center"><span class="wrap-icon icon-cog mr-3"></span><span class="menu-text">Cấu hình</span></a></li>
+                </ul>
+            </div>
+        </div>
+
+    </aside>
+    <main>
+        <div class="site-section">
+            <div class="d-flex" style="position: absolute; right: 20px">
+                <a href="#" style="color: #b1b1b1; font-size: 1.6rem; margin-right: 15px"><span class="wrap-icon icon-envelope mr-3"></span></a>
+                <a href="#" style="color: #b1b1b1; font-size: 1.6rem; margin-right: 15px"><span class="wrap-icon icon-bell mr-3"></span></a>
+                <a class="d-flex align-items-center" href="#" style="color: #b1b1b1; font-size: 1.6rem"><span class="wrap-icon icon-sign-out mr-3"></span><span>Đăng xuất</span></a>
+            </div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>Phần mềm quản lý dữ liệu quan trắc tự động</h1>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <hr />
+            </div>
+        </div>
+    </main>
+
+
+    <script src="App/Admin/js/jquery-3.3.1.min.js"></script>
+    <script src="App/Admin/js/popper.min.js"></script>
+    <script src="App/Admin/js/bootstrap.min.js"></script>
+    <script src="App/Admin/js/main.js"></script>
+</body>
+</html>

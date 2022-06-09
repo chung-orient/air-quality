@@ -1,0 +1,111 @@
+﻿<div id="Ad_KiemduyetCtr">
+    <div class="bar-white-olook top-bar" style="padding:10px; background-color: #fff; margin-bottom: 10px">
+        <div class="d-flex">
+            <div class="col-md-4" style="padding-left:0px;">
+                <ul class="utop">
+                    <li>
+                        <div class="btn-active dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            <span ng-if="!ob.Loaiquantrac">Loại quan trắc</span>
+                            <span ng-if="ob.Loaiquantrac">{{ob.Loaiquantrac.Loaiquantrac_Ten}}</span>
+                        </div>
+                        <ul class="dropdown-menu list-tc" id="dropdownSort" role="menu" style="min-width: 100px;margin-top:0;">
+                            <li ng-repeat="t in loaiquantracs track by t.Loaiquantrac_ID">
+                                <a ng-click="changeTypeKiemduyet(t)" class="{{t.Loaiquantrac_ID === ob.Loaiquantrac.Loaiquantrac_ID}} d-b td-n pY-5 bgcH-grey-100 c-grey-700"><span> {{t.Loaiquantrac_Ten}}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li ng-if="ob.Loaiquantrac">
+                        <div class="btn-active dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            <span ng-if="!ob.Tramquantrac">Trạm quan trắc</span>
+                            <span ng-if="ob.Tramquantrac">{{ob.Tramquantrac.Tramquantrac_Ten}}</span>
+                        </div>
+                        <ul class="dropdown-menu list-tc" id="dropdownSort" role="menu" style="min-width: 100px;margin-top:0;">
+                            <li ng-repeat="t in tramquantracs track by t.Tramquantrac_ID">
+                                <a ng-click="changeTramKiemduyet(t)" class="{{t.Tramquantrac_ID === ob.Tramquantrac.Tramquantrac_ID}} d-b td-n pY-5 bgcH-grey-100 c-grey-700"><span> {{t.Tramquantrac_Ten}}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="utop" style="display: inline-block;width:max-content;">
+                    <li>
+                        <div class="searchbar adv-search true">
+                            <input style="width: 400px;padding:4px 30px;border:1px solid #63bbc5;" class="search_input {{focusSearch}}" type="text" ng-focus="focusSearch = true" ng-blur="focusSearch = false" placeholder="Tìm kiếm ..." ng-model="option.s" my-enter="search()">
+                            <a class="search_icon left-icon" ng-click="search()"><i class="fa fa-search {{option.s!=''}}"></i></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 action-right pR-0">
+                <ul class="utop">
+                    <li ng-if="kiemduyets && kiemduyets.length > 0">
+                        <div class="btn-active" ng-click="Add_Kiemduyet()" style="text-align:center;">
+                            <i class="la la-save"></i>
+                            <span>Lưu lại</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-active" ng-click="Refresh()" style="text-align:center;">
+                            <i class="la la-sync"></i>
+                            <span>Refresh</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="divContent" style="padding-right:2px;">
+        <div class="row row-content bg-white top-page" style="margin:0;padding: 15px;max-height: calc(100vh - 201px);min-height:calc(100vh - 201px); overflow-x:hidden;">
+            <div class="col-md-12">
+                <div style="box-shadow: 0 2px 4px rgb(0 0 0 / 23%);" class="card">
+                    <div class="header-card" style="border-bottom: 1px solid #d1d1d1; background-color: #e6e6e6; height: 30px; padding: 5px; color: black">
+                        <span class="header-title">Biểu đồ thông số quan trắc</span>
+                    </div>
+                    <div class="card-body" style="height: 600px">
+                        <!--<div style="margin-bottom: 10px; width: fit-content">
+                            <div class="btn-active dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                <span ng-if="!ob.Thongsomau">Tất cả</span>
+                                <span ng-if="ob.Thongsomau">{{ob.Thongsomau.Thongsomau_Ten}}</span>
+                            </div>
+                            <ul class="dropdown-menu list-tc" id="dropdownSort" role="menu" style="max-width: fit-content;margin-top:0; max-height: 350px; overflow-y: auto;">
+                                <li>
+                                    <a ng-click="changeTramKiemduyet()" class="{{!ob.Thongsomau.Thongsomau_ID}} d-b td-n pY-5 bgcH-grey-100 c-grey-700"><span> Tất cả</span></a>
+                                </li>
+                                <li ng-repeat="t in thongsos track by t.Thongsomau_ID">
+                                    <a ng-click="changeTramKiemduyet(t)" class="{{t.Thongsomau_ID === ob.Thongsomau.Thongsomau_ID}} d-b td-n pY-5 bgcH-grey-100 c-grey-700"><span> {{t.Thongsomau_Ten}}</span></a>
+                                </li>
+                            </ul>
+                        </div>-->
+                        <div id="chartdiv1" style="height: 300px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('.adv-search .dropdown-menu').on('click', function (event) {
+        event.stopPropagation();
+    });
+    $('.dropdown-date a.dropdown-toggle').click(function () {
+        var subMenu = $(this).next('.dropdown-menu');
+        subMenu.toggleClass('show');
+    });
+    $(".adv-search .dropdown-menu .dropdown, .adv-search .dropdown-menu .dropup").click(function () {
+        var dropdownClassCheck = $(this).hasClass('dropdown');
+        var buttonOffset = $(this).offset().top;
+        var scrollboxOffset = $('.adv-search').offset().top;
+        var buttonHeight = $(this).height();
+        var scrollBoxHeight = $('.adv-search').height();
+        var dropDownButtonHeight = $(this).children('ul').height();
+        dropdownSpaceCheck = scrollBoxHeight > buttonOffset - scrollboxOffset + buttonHeight + dropDownButtonHeight;
+        if (dropdownClassCheck && !dropdownSpaceCheck) {
+            $(this).removeClass('dropdown').addClass('dropup');
+        }
+        else if (!dropdownClassCheck && dropdownSpaceCheck) {
+            $(this).removeClass('dropup').addClass('dropdown');
+        }
+    })
+</script>

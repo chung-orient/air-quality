@@ -1,0 +1,130 @@
+﻿<div id="Ad_KiemduyetCtr">
+    <div class="bar-white-olook top-bar" style="padding:10px; background-color: #fff; margin-bottom: 10px">
+        <div class="d-flex">
+            <div class="col-md-4" style="padding-left:0px;">
+                <ul class="utop">
+                    <li>
+                        <div class="btn-active dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            <span ng-if="!ob.Loaiquantrac">Loại quan trắc</span>
+                            <span ng-if="ob.Loaiquantrac">{{ob.Loaiquantrac.Loaiquantrac_Ten}}</span>
+                        </div>
+                        <ul class="dropdown-menu list-tc" id="dropdownSort" role="menu" style="min-width: 100px;margin-top:0;">
+                            <li ng-repeat="t in loaiquantracs track by t.Loaiquantrac_ID">
+                                <a ng-click="changeTypeDubao(t)" class="{{t.Loaiquantrac_ID === ob.Loaiquantrac.Loaiquantrac_ID}} d-b td-n pY-5 bgcH-grey-100 c-grey-700"><span> {{t.Loaiquantrac_Ten}}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="utop" style="display: inline-block;width:max-content;"></ul>
+            </div>
+            <div class="col-md-4 action-right pR-0">
+                <ul class="utop">
+                    <li>
+                        <div class="btn-active" ng-click="Refresh()" style="text-align:center;">
+                            <i class="la la-sync"></i>
+                            <span>Refresh</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="divContent" style="padding-right:2px;">
+        <div class="bg-white top-page" style="padding:50px 20px;max-height: calc(100vh - 201px);min-height:calc(100vh - 201px); overflow-x:hidden;">
+            <div ng-if="ob.Loaiquantrac" class="text-center">
+                <div class="row">
+                    <div class="col-md-12 mB-20"><h3>Các thông số quan trắc</h3></div>
+                </div>
+                <div class="row" style="justify-content: center">
+                    <div class="col-md-2 mB-20" style="height: fit-content">
+                        <div class="input-group">
+                            <label class="fw-500 mR-10 mT-5">SO2 (ug/m3)</label>
+                            <input ng-model="Dubao.SO2" style="font-weight:500" type="number" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-md-2 mB-20" style="height: fit-content">
+                        <div class="input-group">
+                            <label class="fw-500 mR-10 mT-5">NO2 (ug/m3)</label>
+                            <input ng-model="Dubao.NO2" style="font-weight:500" type="number" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-md-2 mB-20" style="height: fit-content">
+                        <div class="input-group">
+                            <label class="fw-500 mR-10 mT-5">CO (ug/m3)</label>
+                            <input ng-model="Dubao.CO" style="font-weight:500" type="number" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-md-2 mB-20" style="height: fit-content">
+                        <div class="input-group">
+                            <label class="fw-500 mR-10 mT-5">PM-10 (ug/m3)</label>
+                            <input ng-model="Dubao.PM10" style="font-weight:500" type="number" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-md-2 mB-20" style="height: fit-content">
+                        <div class="input-group">
+                            <label class="fw-500 mR-10 mT-5">PM-2.5 (ug/m3)</label>
+                            <input ng-model="Dubao.PM25" style="font-weight:500" type="number" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="button" class="btn btn-primary" ng-click="DubaoKetqua()" style="margin: 0 auto">Dự báo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fades" id="ModalKetquadubao" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-md animated zoomIn faster" style="margin: 1rem auto">
+            <div class="modal-content no-border">
+                <div modal-movable class="modal-header head-modal no-border">
+                    <h4 class="modal-title">{{modalTitle}}</h4>
+                    <button type="button" class="close" data-dismiss="modal" ng-click="Close_Form('focusBtnAdd')">
+                        <i class="la la-times-circle"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="padding:10px 20px; max-height: calc(100vh - 350px); overflow-y: auto; background-color: {{AQIDetail.color}}">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <img ng-src="{{AQIDetail.img}}" style="width:60px;display:block;margin:0  auto;" alt="">
+                            <h1 style="color: #333">AQI {{AQI}}</h1>
+                            <span style="font-weight: 600; color: #333">{{AQIDetail.contents}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer" style="border-top:none!important;display:block;font-weight:500">
+                    <button type="button" class="btn btn-secondary btnCancelFrom" data-dismiss="modal" ng-click="Close_Form('focusBtnAdd')" style="float:left">Thoát</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('.adv-search .dropdown-menu').on('click', function (event) {
+        event.stopPropagation();
+    });
+    $('.dropdown-date a.dropdown-toggle').click(function () {
+        var subMenu = $(this).next('.dropdown-menu');
+        subMenu.toggleClass('show');
+    });
+    $(".adv-search .dropdown-menu .dropdown, .adv-search .dropdown-menu .dropup").click(function () {
+        var dropdownClassCheck = $(this).hasClass('dropdown');
+        var buttonOffset = $(this).offset().top;
+        var scrollboxOffset = $('.adv-search').offset().top;
+        var buttonHeight = $(this).height();
+        var scrollBoxHeight = $('.adv-search').height();
+        var dropDownButtonHeight = $(this).children('ul').height();
+        dropdownSpaceCheck = scrollBoxHeight > buttonOffset - scrollboxOffset + buttonHeight + dropDownButtonHeight;
+        if (dropdownClassCheck && !dropdownSpaceCheck) {
+            $(this).removeClass('dropdown').addClass('dropup');
+        }
+        else if (!dropdownClassCheck && dropdownSpaceCheck) {
+            $(this).removeClass('dropup').addClass('dropdown');
+        }
+    })
+</script>

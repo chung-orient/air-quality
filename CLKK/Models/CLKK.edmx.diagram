@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6cb01a350df1441f9ff01bb3ce823423" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="CLKKModel.CMS_Album" Width="1.5" PointX="3" PointY="47.125" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_Comments" Width="1.5" PointX="5.25" PointY="28.5" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_Config" Width="1.5" PointX="9.75" PointY="18.875" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_ContactUs" Width="1.5" PointX="3" PointY="42.75" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_DocType" Width="1.5" PointX="3.75" PointY="23.125" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_Document" Width="1.5" PointX="6" PointY="21.75" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_Domain" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_Email" Width="1.5" PointX="2.75" PointY="1.375" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_Gallery" Width="1.5" PointX="5.25" PointY="47.625" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_Map" Width="1.5" PointX="4.75" PointY="1.375" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_Media" Width="1.5" PointX="5.25" PointY="10.75" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_MediaGroup" Width="1.5" PointX="3" PointY="11.25" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_News" Width="1.5" PointX="3" PointY="27.625" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_Notice" Width="1.5" PointX="3" PointY="16.125" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_Question" Width="1.5" PointX="3" PointY="33" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_SlideShow" Width="1.5" PointX="3" PointY="38.625" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_Social" Width="1.5" PointX="3" PointY="6.625" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_Topic" Width="1.5" PointX="0.75" PointY="23" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_TopicFlag" Width="1.5" PointX="12.75" PointY="1.375" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_TopicLink" Width="1.5" PointX="14.75" PointY="1.375" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_UserConfig" Width="1.5" PointX="12" PointY="15" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_UserCounter" Width="1.5" PointX="14.75" PointY="11.375" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_UserGroup" Width="1.5" PointX="9.75" PointY="15.5" />
+        <EntityTypeShape EntityType="CLKKModel.CMS_Users" Width="1.5" PointX="12" PointY="18.875" />
+        <EntityTypeShape EntityType="CLKKModel.Setting" Width="1.5" PointX="14.75" PointY="15.375" />
+        <EntityTypeShape EntityType="CLKKModel.TD_CoquanQuanly" Width="1.5" PointX="7.75" PointY="11.875" />
+        <EntityTypeShape EntityType="CLKKModel.TD_Diadanh" Width="1.5" PointX="7.75" PointY="2" />
+        <EntityTypeShape EntityType="CLKKModel.TD_Loaiquantrac" Width="1.5" PointX="7.75" PointY="5.75" />
+        <EntityTypeShape EntityType="CLKKModel.TD_PPLaymau" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CLKKModel.TD_QCVN" Width="1.5" PointX="7.75" PointY="9.125" />
+        <EntityTypeShape EntityType="CLKKModel.TD_Tramquantrac" Width="1.5" PointX="10" PointY="3.875" />
+        <AssociationConnector Association="CLKKModel.FK_CMS_Album_CMS_Topic" />
+        <AssociationConnector Association="CLKKModel.FK_CMS_Gallary_CMS_Album" />
+        <AssociationConnector Association="CLKKModel.FK_CMS_Comments_CMS_News" />
+        <AssociationConnector Association="CLKKModel.FK_CMS_UserConfig_CMS_Config" />
+        <AssociationConnector Association="CLKKModel.FK_CMS_ContactUs_CMS_Topic" />
+        <AssociationConnector Association="CLKKModel.FK_CMS_Document_CMS_DocType" />
+        <AssociationConnector Association="CLKKModel.FK_CMS_Document_CMS_Topic" />
+        <AssociationConnector Association="CLKKModel.FK_CMS_SlideShow_CMS_SlideGroup" />
+        <AssociationConnector Association="CLKKModel.FK_CMS_MediaGroup_CMS_Topic" />
+        <AssociationConnector Association="CLKKModel.FK_CMS_News_CMS_Topic" />
+        <AssociationConnector Association="CLKKModel.FK_CMS_Notice_CMS_Topic" />
+        <AssociationConnector Association="CLKKModel.FK_CMS_Question_CMS_Topic" />
+        <AssociationConnector Association="CLKKModel.FK_CMS_SlideShow_CMS_Topic" />
+        <AssociationConnector Association="CLKKModel.FK_CMS_Social_CMS_Topic" />
+        <AssociationConnector Association="CLKKModel.FK_CMS_Topic_CMS_Topic" />
+        <AssociationConnector Association="CLKKModel.FK_CMS_UserConfig_CMS_UserGroup" />
+        <AssociationConnector Association="CLKKModel.FK_CMS_Users_CMS_UserGroup" />
+        <AssociationConnector Association="CLKKModel.FK_TD_Tramquantrac_TD_CoquanQuanly" />
+        <AssociationConnector Association="CLKKModel.FK_TD_Tramquantrac_TD_Diadanh" />
+        <AssociationConnector Association="CLKKModel.FK_TD_Tramquantrac_TD_Loaiquantrac" />
+        <AssociationConnector Association="CLKKModel.FK_TD_Tramquantrac_TD_QCVN" />
+        <EntityTypeShape EntityType="CLKKModel.TD_ThongsoKetqua" Width="1.5" PointX="17.75" PointY="6.875" />
+        <EntityTypeShape EntityType="CLKKModel.TD_Laymau" Width="1.5" PointX="12.25" PointY="9.25" />
+        <AssociationConnector Association="CLKKModel.FK_TD_Laymau_TD_Tramquantrac" />
+        <EntityTypeShape EntityType="CLKKModel.TD_Thongso" Width="1.5" PointX="15.5" PointY="6.625" />
+        <AssociationConnector Association="CLKKModel.FK_TD_Thongso_TD_Laymau" />
+        <AssociationConnector Association="CLKKModel.FK_TD_Thongso_TD_Tramquantrac" />
+        <AssociationConnector Association="CLKKModel.FK_TD_ThongsoKetqua_TD_Thongso" />
+        <EntityTypeShape EntityType="CLKKModel.TD_Thongsomau" Width="1.5" PointX="13" PointY="4.5" />
+        <AssociationConnector Association="CLKKModel.FK_TD_Thongsomau_TD_Loaiquantrac" />
+        <AssociationConnector Association="CLKKModel.FK_TD_Thongsomau_TD_PPLaymau" />
+        <EntityTypeShape EntityType="CLKKModel.TD_Kiemduyet" Width="1.5" PointX="12.25" PointY="22.5" />
+        <AssociationConnector Association="CLKKModel.FK_TD_Kiemduyet_TD_Tramquantrac" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

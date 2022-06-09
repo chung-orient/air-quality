@@ -1,0 +1,251 @@
+﻿<div id="Ad_LaymauCtr">
+    <div class="bar-white-olook top-bar" style="padding:10px; background-color: #fff; margin-bottom: 10px">
+        <div class="d-flex">
+            <div class="col-md-4" style="padding-left:0px;">
+                <ul class="utop">
+                    <li ng-if="ob.Loaiquantrac">
+                        <div class="btn-active {{focusBtnAdd}}" ng-click="Modal_AddLaymau('add')" style="text-align:center;padding:4px 5px;">
+                            <i class="la la-plus-circle"></i>
+                            <span>Thêm mới</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-active dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            <span ng-if="!ob.Loaiquantrac">Loại quan trắc</span>
+                            <span ng-if="ob.Loaiquantrac">{{ob.Loaiquantrac.Loaiquantrac_Ten}}</span>
+                        </div>
+                        <ul class="dropdown-menu list-tc" id="dropdownSort" role="menu" style="min-width: 100px;margin-top:0;">
+                            <li ng-repeat="t in loaiquantracs track by t.Loaiquantrac_ID">
+                                <a ng-click="changeTypeLaymau(t)" class="{{t.Loaiquantrac_ID === ob.Loaiquantrac.Loaiquantrac_ID}} d-b td-n pY-5 bgcH-grey-100 c-grey-700"><span> {{t.Loaiquantrac_Ten}}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li ng-if="checkLen > 0">
+                        <div class="btn-active {{checkLen == 0 ? 'notactive' : ''}}" ng-click="Del_Laymau(laymaus)" style="text-align:center;">
+                            <i class="la la-trash"></i>
+                            <span>Xóa</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="utop" style="display: inline-block;width:max-content;">
+                    <li>
+                        <div class="searchbar adv-search true">
+                            <input style="width: 400px;padding:4px 30px;border:1px solid #63bbc5;" class="search_input {{focusSearch}}" type="text" ng-focus="focusSearch = true" ng-blur="focusSearch = false" placeholder="Tìm kiếm ..." ng-model="option.s" my-enter="search()">
+                            <a class="search_icon left-icon" ng-click="search()"><i class="fa fa-search {{option.s!=''}}"></i></a>
+                            <a class="search_icon" data-toggle="dropdown" style="margin-top: 7px !important">
+                                <span class="arrow"><i class="la la-angle-down"></i></span>
+                            </a>
+                            <ul class="dropdown-menu menu-task" style="max-height: calc(100vh - 200px); overflow-y: auto; overflow-x: hidden; margin-left: 0px;min-width: 399px !important;max-width: 399px !important; box-shadow: 0 1px 2px rgb(0 0 0 / 7%), 0 2px 4px rgb(0 0 0 / 7%), 0 4px 8px rgb(0 0 0 / 7%), 0 8px 16px rgb(0 0 0 / 7%), 0 16px 32px rgb(0 0 0 / 7%), 0 32px 64px rgb(0 0 0 / 7%) !important;">
+                                <li>
+                                    <label class="fw-500">Trạm quan trắc</label>
+                                    <div class="ip-us" tabindex="-1">
+                                        <ul style="float: left; padding: 0px;" ng-if="option.tramquantracs">
+                                            <li style="height: 36px; float: left; list-style-type: none; margin-top: -2px" ng-repeat="m in option.tramquantracs track by $index">
+                                                <div class="label btn-primary" style="white-space:unset;display: inline-flex;">
+                                                    <strong ng-bind="m.Tramquantrac_Ten" style="padding:5px"></strong>
+                                                    <i class="la la-times" style="color:#fff;" ng-click="removetag(option.tramquantracs, null ,$index)"></i>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <input ng-keyup="complete_AdvSearch(option.searchT,option,$event,'1','tramquantrac')" ng-click="complete_AdvSearch(option.searchT,option,$event,'1','tramquantrac')" ng-model="option.searchT" class="ipautoUser {{option.Focus1}}" style="border: none; background-color: transparent; padding: 7px 0px;" placeholder="Ấn để thêm" />
+
+                                    </div>
+                                    <div ng-if="option.Focus1 && tramquantracs_advsearch.length > 0" class="bg-white" style="border: 1px solid #ced4da; border-radius: 5px; position: relative; z-index: 9; min-width: 96%">
+                                        <ul style="z-index: 1001; margin: 0; padding: 0; margin-top: 5px; max-height: 264px; overflow: auto;" tabindex="0" ng-keydown="handleKeyDown($event)" aria-expanded="true" aria-hidden="false">
+                                            <li class="li-search {{focusedIndex == $index?'focus':''}}" ng-repeat="u in tramquantracs_advsearch| limitTo : 20 " ng-click="clickAdd_AdvSearch(u,'tramquantrac')" ng-mouseover="$parent.focusedIndex = $index">
+                                                <div style="display:flex" ng-class="u.Trangthai">
+                                                    <div style="margin-left:5px">
+                                                        <span ng-bind="u.Tramquantrac_Ten" style="padding:5px"></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="clr"></div>
+                                    </div>
+                                </li>
+                                <li class="mT-10">
+                                    <button type="button" class="btn btn-secondary btnCancelFrom" ng-click="RemoveDieukien()" style="float:right">Bỏ chọn</button>
+                                    <button type="button" class="btn btn-primary btnAddForm" ng-click="List_Laymau()" style="float:right; margin-right: 5px">Thực hiện</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 action-right pR-0">
+                <ul class="utop">
+                    <li>
+                        <div class="btn-active dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            <span class="las la-sort-amount-up-alt"></span>
+                            <span>Sắp xếp</span>
+                        </div>
+                        <ul class="dropdown-menu list-tc" id="dropdownSort" role="menu" style="min-width: 100px;margin-top:0;">
+                            <li ng-repeat="t in ListSortCC track by t.id">
+                                <a ng-click="setSortCC(t)" class="{{t.id === opition.sortDetail}} d-b td-n pY-5 bgcH-grey-100 c-grey-700"><span class="{{t.typeStyle}}"></span><span> {{t.text}}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="btn-active" ng-click="Refresh()" style="text-align:center;">
+                            <i class="la la-sync"></i>
+                            <span>Refresh</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="divContent" style="padding-right:2px;">
+        <div class="row row-content bg-white top-page" style="margin:0;max-height: calc(100vh - 201px);min-height:calc(100vh - 201px); overflow-x:hidden;">
+            <table class="table table-condensed table-hover tbpad">
+                <thead>
+                    <tr>
+                        <th class="sticky text-center" width="40" align="center" style="padding:10px 15px;">
+                            <div class="checkbox checkbox-circle checkbox-info peers ai-c">
+                                <input type="checkbox" id="input_All" name="input_All" ng-model="CheckAll" ng-change="toggleAll(laymaus, CheckAll)">
+                                <label class="p-0" for="input_All"></label>
+                            </div>
+                        </th>
+                        <th class="text-center row-danhmuc sticky" width="80">STT</th>
+                        <th class="row-danhmuc sticky">Tên lệnh</th>
+                        <th class="row-danhmuc sticky" width="180">Trạm quan trắc</th>
+                        <th class="row-danhmuc sticky text-center" width="150">Ngày tạo</th>
+                        <th class="row-danhmuc sticky text-center" width="100"></th>
+                        <th class="text-center row-danhmuc sticky" width="120">Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody align="center">
+                    <tr class="row-dm" ng-repeat="t in laymaus track by $index" ng-class="{'active-row': t.selectRow || t.checked, 'lock-dm': !t.Trangthai}" ng-mouseleave="t.hover = false" ng-mouseover="t.hover = true">
+                        <td width="40" align="center" style="padding:0px 15px;">
+                            <div ng-if="t.checked || t.hover" class="checkbox checkbox-circle checkbox-info peers ai-c">
+                                <input type="checkbox" id="input_{{t.Laymau_ID}}" name="input_{{t.Laymau_ID}}" ng-model="t.checked" ng-change="CheckChecked(laymaus)">
+                                <label class="p-0" for="input_{{t.Laymau_ID}}"></label>
+                            </div>
+                        </td>
+                        <td class="text-center row-content-danhmuc" width="80" ng-bind="$index + 1 + paxpz"></td>
+                        <td class="row-ct-danhmuc" align="left" style="padding:5px !important;">
+                            <a ng-click="ModalViewEditLaymau(t)" ng-bind="t.TenLenh"></a>
+                        </td>
+                        <td class="row-ct-danhmuc" align="left" width="180">
+                            <span ng-repeat="dd in tramquantracs" ng-if="t.Tramquantrac_ID === dd.Tramquantrac_ID">{{dd.Tramquantrac_Ten}}</span>
+                        </td>
+                        <td class="row-ct-danhmuc" align="center" width="150">
+                            {{t.Ngaytao | date: 'dd/MM/yyyy'}}
+                        </td>
+                        <td class="row-ct-danhmuc" align="center" width="100">
+                            <a ng-click="openModalImport_Thongso(t)" uib-tooltip="Thực hiện lệnh" ng-if="!t.Trangthai"><i style="font-size: 18px;" class="la la-telegram"></i></a>
+                        </td>
+                        <td class="row-ct-danhmuc" width="120" style="text-align:left;">
+                            <div class="card-nhom bg{{t.Trangthai?'kh':'close'}}" style="white-space:normal;margin:5px auto; min-width: max-content" ng-repeat="p in ListTrangthaiLaymau" ng-if="t.Trangthai == p.value" ng-bind="p.text"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="col-md-12" ng-if="laymaus.length == 0" style="margin:0px;text-align:center; font-weight:bold;">Không có dữ liệu trong bảng</div>
+
+            <pagination ng-if="option.noOfPages>1" num-pages="option.noOfPages" current-page="option.currentPage" class="pagination"></pagination>
+            <div class="pag-info" ng-if="option.Total>0">
+                <div class="btn-group" style="margin-right:5px">
+                    <a style="font-weight: 500;display: flex;background: #e9ecef;padding: 5px 10px;border-radius:3px" data-toggle="dropdown">
+                        <span class="title" style="margin-right:5px">{{option.numPerPage}}</span>
+                        <span class="arrow"><i class="ti-angle-down"></i></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" style="width: 80px;min-width: auto;margin-left: -20px;margin-top: -10px;">
+                        <li ng-repeat="p in option.Pages"><a ng-click="setPageSize(p)" class="d-b td-n pY-10 pX-10 bgcH-grey-100">{{p}}</a></li>
+                    </ul>
+                </div>
+                <span style="font-size:14px;font-weight:500">Hiển thị {{(option.currentPage-1)*option.numPerPage+1}}-{{(option.currentPage-1)*option.numPerPage+laymaus.length}} của {{option.Total}}</span>
+            </div>
+        </div>
+    </div>
+    <!-- Modal add ly do -->
+    <div class="modal fades" id="ModalAddLaymau" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg animated zoomIn faster" style="margin: 1rem auto; max-width: 1000px">
+            <div class="modal-content no-border">
+                <div modal-movable class="modal-header head-modal no-border">
+                    <h4 class="modal-title">{{modalTitle}}</h4>
+                    <button type="button" class="close" data-dismiss="modal" ng-click="Close_Form('focusBtnAdd')">
+                        <i class="la la-times-circle"></i>
+                    </button>
+                </div>
+                <div class="modal-body" style="padding:10px 20px; max-height: calc(100vh - 175px); overflow-y: auto;">
+                    <form id="frLaymau" name="frLaymau">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">Tên lệnh</label>
+                                    <input ng-model="Laymau.TenLenh" style="font-weight:500" type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">Trạm quan trắc</label>
+                                    <select data-js-select2 class="form-control text-company" ng-model="Laymau.Tramquantrac_ID" ng-options="item.Tramquantrac_ID as item.Tramquantrac_Ten for item in tramquantracs" required></select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">Số chai</label>
+                                    <input ng-model="Laymau.Sochai" style="font-weight:500" type="number" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">Nội dung lệnh</label>
+                                    <input ng-model="Laymau.Noidunglenh" style="font-weight:500" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">DataLogger ID</label>
+                                    <input ng-model="Laymau.DataLoggerID" style="font-weight:500" type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="fw-500">Thứ tự<span style="color:red;"> (*) </span></label>
+                                    <input ng-model="Laymau.STT" style="font-weight:500" type="number" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer" style="border-top:none!important;display:block;font-weight:500">
+                    <button type="button" class="btn btn-secondary btnCancelFrom" data-dismiss="modal" ng-click="Close_Form('focusBtnAdd')" style="float:left">Thoát</button>
+                    <button type="button" class="btn btn-primary btnAddForm" ng-click="Add_Laymau(frLaymau)" style="float:right">Lưu lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-include="'/App/Admin/Import/ModalImport.html'"></div>
+    <div ng-include="'/App/Danhmuc/ModalUploadData.html'"></div>
+</div>
+<script>
+    $('.adv-search .dropdown-menu').on('click', function (event) {
+        event.stopPropagation();
+    });
+    $('.dropdown-date a.dropdown-toggle').click(function () {
+        var subMenu = $(this).next('.dropdown-menu');
+        subMenu.toggleClass('show');
+    });
+    $(".adv-search .dropdown-menu .dropdown, .adv-search .dropdown-menu .dropup").click(function () {
+        var dropdownClassCheck = $(this).hasClass('dropdown');
+        var buttonOffset = $(this).offset().top;
+        var scrollboxOffset = $('.adv-search').offset().top;
+        var buttonHeight = $(this).height();
+        var scrollBoxHeight = $('.adv-search').height();
+        var dropDownButtonHeight = $(this).children('ul').height();
+        dropdownSpaceCheck = scrollBoxHeight > buttonOffset - scrollboxOffset + buttonHeight + dropDownButtonHeight;
+        if (dropdownClassCheck && !dropdownSpaceCheck) {
+            $(this).removeClass('dropdown').addClass('dropup');
+        }
+        else if (!dropdownClassCheck && dropdownSpaceCheck) {
+            $(this).removeClass('dropup').addClass('dropdown');
+        }
+    })
+</script>

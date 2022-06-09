@@ -1,0 +1,2730 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CLKKModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CMS_Album">
+          <Key>
+            <PropertyRef Name="Album_ID" />
+          </Key>
+          <Property Name="Album_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Topic_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Album_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Des" Type="nvarchar" MaxLength="250" />
+          <Property Name="CreatedDate" Type="smalldatetime" />
+          <Property Name="IsLang" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsOrder" Type="int" />
+          <Property Name="CreatedBy" Type="smalldatetime" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CMS_Comments">
+          <Key>
+            <PropertyRef Name="Comments_ID" />
+          </Key>
+          <Property Name="Comments_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="News_ID" Type="varchar" MaxLength="50" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" />
+          <Property Name="Contents" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Avartar" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="CMS_Config">
+          <Key>
+            <PropertyRef Name="Module_ID" />
+          </Key>
+          <Property Name="Module_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Module_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Module_Icon" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsMain" Type="bit" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="IsOrder" Type="int" />
+          <Property Name="IsFlag" Type="int" />
+          <Property Name="IsType" Type="int" />
+          <Property Name="Parent_ID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CMS_ContactUs">
+          <Key>
+            <PropertyRef Name="ContactUs_ID" />
+          </Key>
+          <Property Name="ContactUs_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Topic_ID" Type="varchar" MaxLength="50" />
+          <Property Name="ContactUs_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Company" Type="nvarchar" MaxLength="250" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="Tel" Type="varchar" MaxLength="20" />
+          <Property Name="Mobile" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Nick" Type="varchar" MaxLength="50" />
+          <Property Name="Contents" Type="nvarchar(max)" />
+          <Property Name="IsLang" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CMS_DocType">
+          <Key>
+            <PropertyRef Name="DocType_ID" />
+          </Key>
+          <Property Name="DocType_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocType_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Des" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsLang" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsOrder" Type="int" />
+          <Property Name="CreatedBy" Type="smalldatetime" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CMS_Document">
+          <Key>
+            <PropertyRef Name="Document_ID" />
+          </Key>
+          <Property Name="Document_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Topic_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Document_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="DocType_ID" Type="int" />
+          <Property Name="Provider_ID" Type="int" />
+          <Property Name="Filed_ID" Type="int" />
+          <Property Name="Contents" Type="nvarchar(max)" />
+          <Property Name="NoCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="SignerName" Type="nvarchar" MaxLength="250" />
+          <Property Name="PromDate" Type="smalldatetime" />
+          <Property Name="EffectDate" Type="smalldatetime" />
+          <Property Name="EndDate" Type="smalldatetime" />
+          <Property Name="FileSource" Type="nvarchar" MaxLength="250" />
+          <Property Name="FileGenKey" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsURL" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsDownload" Type="int" />
+          <Property Name="IsLang" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsOrder" Type="int" />
+          <Property Name="CreatedBy" Type="smalldatetime" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CMS_Domain">
+          <Key>
+            <PropertyRef Name="Domain_ID" />
+          </Key>
+          <Property Name="Domain_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Domain_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Domain_Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="InOfDate" Type="smalldatetime" />
+          <Property Name="OutOfDate" Type="smalldatetime" />
+          <Property Name="IsOrder" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CMS_Email">
+          <Key>
+            <PropertyRef Name="Email_ID" />
+          </Key>
+          <Property Name="Email_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" />
+          <Property Name="CreatedBy" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CMS_Gallery">
+          <Key>
+            <PropertyRef Name="Gallery_ID" />
+          </Key>
+          <Property Name="Gallery_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Album_ID" Type="int" />
+          <Property Name="Contents" Type="nvarchar(max)" />
+          <Property Name="FileSource" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsOrder" Type="int" />
+          <Property Name="IsHot" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CMS_Map">
+          <Key>
+            <PropertyRef Name="Map_ID" />
+          </Key>
+          <Property Name="Map_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Link_Map" Type="nvarchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CMS_Media">
+          <Key>
+            <PropertyRef Name="SlideShow_ID" />
+          </Key>
+          <Property Name="SlideShow_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SlideShow_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="SlideGroup_ID" Type="int" />
+          <Property Name="IsType" Type="int" />
+          <Property Name="FlvImage" Type="nvarchar" MaxLength="250" />
+          <Property Name="Contents" Type="nvarchar(max)" />
+          <Property Name="Images" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="StartDate" Type="smalldatetime" />
+          <Property Name="EndDate" Type="smalldatetime" />
+          <Property Name="IsLang" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsOrder" Type="int" />
+          <Property Name="CreatedBy" Type="smalldatetime" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsView" Type="int" />
+          <Property Name="IsLike" Type="int" />
+          <Property Name="Dislike" Type="int" />
+        </EntityType>
+        <EntityType Name="CMS_MediaGroup">
+          <Key>
+            <PropertyRef Name="SlideGroup_ID" />
+          </Key>
+          <Property Name="SlideGroup_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SlideGroup_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Topic_ID" Type="varchar" MaxLength="50" />
+          <Property Name="IsHot" Type="bit" Nullable="false" />
+          <Property Name="IsPosition" Type="int" />
+          <Property Name="Des" Type="nvarchar(max)" />
+          <Property Name="IsPlay" Type="int" />
+          <Property Name="IsLang" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsOrder" Type="int" />
+          <Property Name="CreatedBy" Type="smalldatetime" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CMS_News">
+          <Key>
+            <PropertyRef Name="News_ID" />
+          </Key>
+          <Property Name="News_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Topic_ID" Type="varchar" MaxLength="50" />
+          <Property Name="News_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsHot" Type="bit" Nullable="false" />
+          <Property Name="Images" Type="nvarchar" MaxLength="250" />
+          <Property Name="NewType" Type="int" />
+          <Property Name="Contents" Type="nvarchar(max)" />
+          <Property Name="Details" Type="nvarchar(max)" />
+          <Property Name="Keywords" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="StartDate" Type="smalldatetime" />
+          <Property Name="EndDate" Type="smalldatetime" />
+          <Property Name="IsVisitor" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsOrder" Type="int" />
+          <Property Name="CreatedBy" Type="smalldatetime" Nullable="false" />
+          <Property Name="Users_ID" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CMS_Notice">
+          <Key>
+            <PropertyRef Name="Notice_ID" />
+          </Key>
+          <Property Name="Notice_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Notice_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Topic_ID" Type="varchar" MaxLength="50" />
+          <Property Name="IsHot" Type="bit" Nullable="false" />
+          <Property Name="Images" Type="nvarchar" MaxLength="250" />
+          <Property Name="Contents" Type="nvarchar(max)" />
+          <Property Name="Details" Type="nvarchar(max)" />
+          <Property Name="Keywords" Type="nvarchar(max)" />
+          <Property Name="IsWriter" Type="nvarchar" MaxLength="250" />
+          <Property Name="StartDate" Type="smalldatetime" />
+          <Property Name="EndDate" Type="smalldatetime" />
+          <Property Name="IsVisitor" Type="int" />
+          <Property Name="IsLang" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsOrder" Type="int" />
+          <Property Name="CreatedBy" Type="smalldatetime" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CMS_Question">
+          <Key>
+            <PropertyRef Name="Question_ID" />
+          </Key>
+          <Property Name="Question_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Question_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Topic_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Contents" Type="nvarchar(max)" />
+          <Property Name="Department_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="SenderName" Type="nvarchar" MaxLength="250" />
+          <Property Name="SenderSex" Type="bit" Nullable="false" />
+          <Property Name="SenderAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="SenderTelephone" Type="varchar" MaxLength="20" />
+          <Property Name="SenderMobile" Type="varchar" MaxLength="20" />
+          <Property Name="SenderEmail" Type="nvarchar" MaxLength="250" />
+          <Property Name="SenderNickName" Type="nvarchar" MaxLength="250" />
+          <Property Name="CreatedDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="ReplyContents" Type="nvarchar(max)" />
+          <Property Name="ReplyName" Type="nvarchar" MaxLength="250" />
+          <Property Name="ReplyCreatedDate" Type="smalldatetime" />
+          <Property Name="IsLang" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="CMS_SlideShow">
+          <Key>
+            <PropertyRef Name="SlideShow_ID" />
+          </Key>
+          <Property Name="SlideShow_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SlideShow_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Images" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="Des" Type="nvarchar(max)" />
+          <Property Name="IsLang" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsOrder" Type="int" />
+          <Property Name="CreatedBy" Type="smalldatetime" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Topic_ID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CMS_Social">
+          <Key>
+            <PropertyRef Name="Social_ID" />
+          </Key>
+          <Property Name="Social_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Social_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Images" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="Des" Type="nvarchar(max)" />
+          <Property Name="IsLang" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsOrder" Type="int" />
+          <Property Name="CreatedBy" Type="smalldatetime" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Topic_ID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CMS_Topic">
+          <Key>
+            <PropertyRef Name="Topic_ID" />
+          </Key>
+          <Property Name="Topic_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Topic_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Parent_ID" Type="varchar" MaxLength="50" />
+          <Property Name="IsMenu" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsOrder" Type="int" />
+          <Property Name="CreatedBy" Type="smalldatetime" Nullable="false" />
+          <Property Name="Users_ID" Type="nvarchar" MaxLength="100" />
+          <Property Name="Contents" Type="nvarchar(max)" />
+          <Property Name="Topic_Type" Type="int" />
+        </EntityType>
+        <EntityType Name="CMS_TopicFlag">
+          <Key>
+            <PropertyRef Name="TopicFlag_ID" />
+          </Key>
+          <Property Name="TopicFlag_ID" Type="int" Nullable="false" />
+          <Property Name="TopicFlag_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="IsOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="CMS_TopicLink">
+          <Key>
+            <PropertyRef Name="TopicLink_ID" />
+          </Key>
+          <Property Name="TopicLink_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TopicLink_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="CMS_UserConfig">
+          <Key>
+            <PropertyRef Name="UserConfig_ID" />
+          </Key>
+          <Property Name="UserConfig_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserGroup_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Module_ID" Type="varchar" MaxLength="50" />
+          <Property Name="IsCreate" Type="bit" Nullable="false" />
+          <Property Name="IsRead" Type="bit" Nullable="false" />
+          <Property Name="IsUpdate" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CMS_UserCounter">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="day" Type="int" />
+          <Property Name="onlineDay" Type="int" />
+          <Property Name="week" Type="int" />
+          <Property Name="onlineWeek" Type="int" />
+          <Property Name="month" Type="int" />
+          <Property Name="onlineMonth" Type="int" />
+          <Property Name="year" Type="int" />
+          <Property Name="onlineYear" Type="int" />
+          <Property Name="sum" Type="int" />
+        </EntityType>
+        <EntityType Name="CMS_UserGroup">
+          <Key>
+            <PropertyRef Name="UserGroup_ID" />
+          </Key>
+          <Property Name="UserGroup_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserGroup_Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CMS_Users">
+          <Key>
+            <PropertyRef Name="Users_ID" />
+          </Key>
+          <Property Name="Users_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Users_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="UserGroup_ID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsOrder" Type="int" />
+          <Property Name="VN" Type="nvarchar" MaxLength="500" />
+          <Property Name="EN" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TD_CoquanQuanly">
+          <Key>
+            <PropertyRef Name="CoquanQuanly_ID" />
+          </Key>
+          <Property Name="CoquanQuanly_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CoquanQuanly_Ten" Type="nvarchar" MaxLength="250" />
+          <Property Name="STT" Type="int" />
+          <Property Name="Trangthai" Type="bit" Nullable="false" />
+          <Property Name="MaCoquan" Type="varchar" MaxLength="50" />
+          <Property Name="DaumoiLienhe" Type="nvarchar" MaxLength="50" />
+          <Property Name="SDT" Type="varchar" MaxLength="50" />
+          <Property Name="Diadanh_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Mota" Type="nvarchar" MaxLength="500" />
+          <Property Name="Kinhdo" Type="float" />
+          <Property Name="Vido" Type="float" />
+          <Property Name="CapCha_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Level" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TD_Diadanh">
+          <Key>
+            <PropertyRef Name="Diadanh_ID" />
+          </Key>
+          <Property Name="Diadanh_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Diadanh_Ten" Type="nvarchar" MaxLength="250" />
+          <Property Name="CapCha_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Level" Type="int" Nullable="false" />
+          <Property Name="STT" Type="int" />
+          <Property Name="Trangthai" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TD_Kiemduyet">
+          <Key>
+            <PropertyRef Name="Kiemduyet_ID" />
+          </Key>
+          <Property Name="Kiemduyet_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tramquantrac_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Giatriam" Type="bit" Nullable="false" />
+          <Property Name="Ngoaikhoang" Type="bit" Nullable="false" />
+          <Property Name="Loaiquantrac_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ngaytao" Type="datetime" Nullable="false" />
+          <Property Name="Nguoitao" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Thongsomau_Ten" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Khongcogiatri" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TD_Laymau">
+          <Key>
+            <PropertyRef Name="Laymau_ID" />
+          </Key>
+          <Property Name="Laymau_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenLenh" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Ngaytao" Type="datetime" Nullable="false" />
+          <Property Name="Trangthai" Type="bit" Nullable="false" />
+          <Property Name="Tramquantrac_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sochai" Type="int" Nullable="false" />
+          <Property Name="Noidunglenh" Type="varchar" MaxLength="50" />
+          <Property Name="DataLoggerID" Type="varchar" MaxLength="50" />
+          <Property Name="Nguoitao" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="STT" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TD_Loaiquantrac">
+          <Key>
+            <PropertyRef Name="Loaiquantrac_ID" />
+          </Key>
+          <Property Name="Loaiquantrac_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Loaiquantrac_Ten" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Trangthai" Type="bit" Nullable="false" />
+          <Property Name="STT" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TD_PPLaymau">
+          <Key>
+            <PropertyRef Name="PPLaymau_ID" />
+          </Key>
+          <Property Name="PPLaymau_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PPLaymau_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PPLaymau_Mota" Type="nvarchar" MaxLength="250" />
+          <Property Name="STT" Type="int" Nullable="false" />
+          <Property Name="Trangthai" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TD_QCVN">
+          <Key>
+            <PropertyRef Name="QCVN_ID" />
+          </Key>
+          <Property Name="QCVN_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SoQCVN" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Trangthai" Type="bit" Nullable="false" />
+          <Property Name="STT" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TD_Thongso">
+          <Key>
+            <PropertyRef Name="Thongso_ID" />
+          </Key>
+          <Property Name="Thongso_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Laymau_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Ngaythuchien" Type="datetime" />
+          <Property Name="Nguoitao" Type="varchar" MaxLength="50" />
+          <Property Name="STT" Type="int" Nullable="false" />
+          <Property Name="Trangthai" Type="bit" Nullable="false" />
+          <Property Name="Tramquantrac_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Ngaytao" Type="datetime" Nullable="false" />
+          <Property Name="AQI" Type="int" />
+        </EntityType>
+        <EntityType Name="TD_ThongsoKetqua">
+          <Key>
+            <PropertyRef Name="ThongsoKetqua_ID" />
+          </Key>
+          <Property Name="ThongsoKetqua_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tenthongso" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Donvi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Giatrithongso" Type="float" />
+          <Property Name="Ghichu" Type="nvarchar" MaxLength="250" />
+          <Property Name="Thongso_ID" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TD_Thongsomau">
+          <Key>
+            <PropertyRef Name="Thongsomau_ID" />
+          </Key>
+          <Property Name="Thongsomau_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Thongsomau_Ten" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Loaiquantrac_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Donvi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="STT" Type="int" Nullable="false" />
+          <Property Name="Trangthai" Type="bit" Nullable="false" />
+          <Property Name="PPLaymau_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Ngaytao" Type="smalldatetime" Nullable="false" />
+          <Property Name="Nguoitao" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Max" Type="float" />
+          <Property Name="Min" Type="float" />
+          <Property Name="Delta" Type="float" />
+        </EntityType>
+        <EntityType Name="TD_Tramquantrac">
+          <Key>
+            <PropertyRef Name="Tramquantrac_ID" />
+          </Key>
+          <Property Name="Tramquantrac_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tramquantrac_Ten" Type="nvarchar" MaxLength="250" />
+          <Property Name="STT" Type="int" />
+          <Property Name="Trangthai" Type="bit" Nullable="false" />
+          <Property Name="Loaiquantrac_ID" Type="varchar" MaxLength="50" />
+          <Property Name="MaTram" Type="varchar" MaxLength="50" />
+          <Property Name="Kinhdo" Type="float" />
+          <Property Name="Vido" Type="float" />
+          <Property Name="Diadanh_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Loai" Type="int" />
+          <Property Name="CoquanQuanly_ID" Type="varchar" MaxLength="50" />
+          <Property Name="TansuatNhanDL" Type="int" />
+          <Property Name="Diachi" Type="nvarchar" MaxLength="250" />
+          <Property Name="Mota" Type="nvarchar" MaxLength="500" />
+          <Property Name="QCVN_ID" Type="varchar" MaxLength="50" />
+          <Property Name="LoaiQCVN" Type="int" />
+          <Property Name="QCVN_Heso1" Type="float" />
+          <Property Name="QCVN_Heso2" Type="float" />
+          <Property Name="Ngaytao" Type="smalldatetime" Nullable="false" />
+          <Property Name="Nguoitao" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CMS_Album_CMS_Topic">
+          <End Role="CMS_Topic" Type="Self.CMS_Topic" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CMS_Album" Type="Self.CMS_Album" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_Album">
+              <PropertyRef Name="Topic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_Comments_CMS_News">
+          <End Role="CMS_News" Type="Self.CMS_News" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CMS_Comments" Type="Self.CMS_Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_News">
+              <PropertyRef Name="News_ID" />
+            </Principal>
+            <Dependent Role="CMS_Comments">
+              <PropertyRef Name="News_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_ContactUs_CMS_Topic">
+          <End Role="CMS_Topic" Type="Self.CMS_Topic" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CMS_ContactUs" Type="Self.CMS_ContactUs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_ContactUs">
+              <PropertyRef Name="Topic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_Document_CMS_DocType">
+          <End Role="CMS_DocType" Type="Self.CMS_DocType" Multiplicity="0..1" />
+          <End Role="CMS_Document" Type="Self.CMS_Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_DocType">
+              <PropertyRef Name="DocType_ID" />
+            </Principal>
+            <Dependent Role="CMS_Document">
+              <PropertyRef Name="DocType_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_Document_CMS_Topic">
+          <End Role="CMS_Topic" Type="Self.CMS_Topic" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CMS_Document" Type="Self.CMS_Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_Document">
+              <PropertyRef Name="Topic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_Gallary_CMS_Album">
+          <End Role="CMS_Album" Type="Self.CMS_Album" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CMS_Gallery" Type="Self.CMS_Gallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Album">
+              <PropertyRef Name="Album_ID" />
+            </Principal>
+            <Dependent Role="CMS_Gallery">
+              <PropertyRef Name="Album_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_MediaGroup_CMS_Topic">
+          <End Role="CMS_Topic" Type="Self.CMS_Topic" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CMS_MediaGroup" Type="Self.CMS_MediaGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_MediaGroup">
+              <PropertyRef Name="Topic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_News_CMS_Topic">
+          <End Role="CMS_Topic" Type="Self.CMS_Topic" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CMS_News" Type="Self.CMS_News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_News">
+              <PropertyRef Name="Topic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_Notice_CMS_Topic">
+          <End Role="CMS_Topic" Type="Self.CMS_Topic" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CMS_Notice" Type="Self.CMS_Notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_Notice">
+              <PropertyRef Name="Topic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_Question_CMS_Topic">
+          <End Role="CMS_Topic" Type="Self.CMS_Topic" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CMS_Question" Type="Self.CMS_Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_Question">
+              <PropertyRef Name="Topic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_SlideShow_CMS_SlideGroup">
+          <End Role="CMS_MediaGroup" Type="Self.CMS_MediaGroup" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CMS_Media" Type="Self.CMS_Media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_MediaGroup">
+              <PropertyRef Name="SlideGroup_ID" />
+            </Principal>
+            <Dependent Role="CMS_Media">
+              <PropertyRef Name="SlideGroup_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_SlideShow_CMS_Topic">
+          <End Role="CMS_Topic" Type="Self.CMS_Topic" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CMS_SlideShow" Type="Self.CMS_SlideShow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_SlideShow">
+              <PropertyRef Name="Topic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_Social_CMS_Topic">
+          <End Role="CMS_Topic" Type="Self.CMS_Topic" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CMS_Social" Type="Self.CMS_Social" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_Social">
+              <PropertyRef Name="Topic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_Topic_CMS_Topic">
+          <End Role="CMS_Topic" Type="Self.CMS_Topic" Multiplicity="0..1" />
+          <End Role="CMS_Topic1" Type="Self.CMS_Topic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_Topic1">
+              <PropertyRef Name="Parent_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_UserConfig_CMS_Config">
+          <End Role="CMS_Config" Type="Self.CMS_Config" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CMS_UserConfig" Type="Self.CMS_UserConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Config">
+              <PropertyRef Name="Module_ID" />
+            </Principal>
+            <Dependent Role="CMS_UserConfig">
+              <PropertyRef Name="Module_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_UserConfig_CMS_UserGroup">
+          <End Role="CMS_UserGroup" Type="Self.CMS_UserGroup" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CMS_UserConfig" Type="Self.CMS_UserConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_UserGroup">
+              <PropertyRef Name="UserGroup_ID" />
+            </Principal>
+            <Dependent Role="CMS_UserConfig">
+              <PropertyRef Name="UserGroup_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_Users_CMS_UserGroup">
+          <End Role="CMS_UserGroup" Type="Self.CMS_UserGroup" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CMS_Users" Type="Self.CMS_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_UserGroup">
+              <PropertyRef Name="UserGroup_ID" />
+            </Principal>
+            <Dependent Role="CMS_Users">
+              <PropertyRef Name="UserGroup_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TD_Kiemduyet_TD_Tramquantrac">
+          <End Role="TD_Tramquantrac" Type="Self.TD_Tramquantrac" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TD_Kiemduyet" Type="Self.TD_Kiemduyet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_Tramquantrac">
+              <PropertyRef Name="Tramquantrac_ID" />
+            </Principal>
+            <Dependent Role="TD_Kiemduyet">
+              <PropertyRef Name="Tramquantrac_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TD_Laymau_TD_Tramquantrac">
+          <End Role="TD_Tramquantrac" Type="Self.TD_Tramquantrac" Multiplicity="1" />
+          <End Role="TD_Laymau" Type="Self.TD_Laymau" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_Tramquantrac">
+              <PropertyRef Name="Tramquantrac_ID" />
+            </Principal>
+            <Dependent Role="TD_Laymau">
+              <PropertyRef Name="Tramquantrac_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TD_Thongso_TD_Laymau">
+          <End Role="TD_Laymau" Type="Self.TD_Laymau" Multiplicity="0..1" />
+          <End Role="TD_Thongso" Type="Self.TD_Thongso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_Laymau">
+              <PropertyRef Name="Laymau_ID" />
+            </Principal>
+            <Dependent Role="TD_Thongso">
+              <PropertyRef Name="Laymau_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TD_Thongso_TD_Tramquantrac">
+          <End Role="TD_Tramquantrac" Type="Self.TD_Tramquantrac" Multiplicity="0..1" />
+          <End Role="TD_Thongso" Type="Self.TD_Thongso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_Tramquantrac">
+              <PropertyRef Name="Tramquantrac_ID" />
+            </Principal>
+            <Dependent Role="TD_Thongso">
+              <PropertyRef Name="Tramquantrac_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TD_ThongsoKetqua_TD_Thongso">
+          <End Role="TD_Thongso" Type="Self.TD_Thongso" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TD_ThongsoKetqua" Type="Self.TD_ThongsoKetqua" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_Thongso">
+              <PropertyRef Name="Thongso_ID" />
+            </Principal>
+            <Dependent Role="TD_ThongsoKetqua">
+              <PropertyRef Name="Thongso_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TD_Thongsomau_TD_Loaiquantrac">
+          <End Role="TD_Loaiquantrac" Type="Self.TD_Loaiquantrac" Multiplicity="1" />
+          <End Role="TD_Thongsomau" Type="Self.TD_Thongsomau" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_Loaiquantrac">
+              <PropertyRef Name="Loaiquantrac_ID" />
+            </Principal>
+            <Dependent Role="TD_Thongsomau">
+              <PropertyRef Name="Loaiquantrac_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TD_Thongsomau_TD_PPLaymau">
+          <End Role="TD_PPLaymau" Type="Self.TD_PPLaymau" Multiplicity="0..1" />
+          <End Role="TD_Thongsomau" Type="Self.TD_Thongsomau" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_PPLaymau">
+              <PropertyRef Name="PPLaymau_ID" />
+            </Principal>
+            <Dependent Role="TD_Thongsomau">
+              <PropertyRef Name="PPLaymau_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TD_Tramquantrac_TD_CoquanQuanly">
+          <End Role="TD_CoquanQuanly" Type="Self.TD_CoquanQuanly" Multiplicity="0..1" />
+          <End Role="TD_Tramquantrac" Type="Self.TD_Tramquantrac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_CoquanQuanly">
+              <PropertyRef Name="CoquanQuanly_ID" />
+            </Principal>
+            <Dependent Role="TD_Tramquantrac">
+              <PropertyRef Name="CoquanQuanly_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TD_Tramquantrac_TD_Diadanh">
+          <End Role="TD_Diadanh" Type="Self.TD_Diadanh" Multiplicity="0..1" />
+          <End Role="TD_Tramquantrac" Type="Self.TD_Tramquantrac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_Diadanh">
+              <PropertyRef Name="Diadanh_ID" />
+            </Principal>
+            <Dependent Role="TD_Tramquantrac">
+              <PropertyRef Name="Diadanh_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TD_Tramquantrac_TD_Loaiquantrac">
+          <End Role="TD_Loaiquantrac" Type="Self.TD_Loaiquantrac" Multiplicity="0..1" />
+          <End Role="TD_Tramquantrac" Type="Self.TD_Tramquantrac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_Loaiquantrac">
+              <PropertyRef Name="Loaiquantrac_ID" />
+            </Principal>
+            <Dependent Role="TD_Tramquantrac">
+              <PropertyRef Name="Loaiquantrac_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TD_Tramquantrac_TD_QCVN">
+          <End Role="TD_QCVN" Type="Self.TD_QCVN" Multiplicity="0..1" />
+          <End Role="TD_Tramquantrac" Type="Self.TD_Tramquantrac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_QCVN">
+              <PropertyRef Name="QCVN_ID" />
+            </Principal>
+            <Dependent Role="TD_Tramquantrac">
+              <PropertyRef Name="QCVN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CLKKModelStoreContainer">
+          <EntitySet Name="CMS_Album" EntityType="Self.CMS_Album" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_Comments" EntityType="Self.CMS_Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_Config" EntityType="Self.CMS_Config" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_ContactUs" EntityType="Self.CMS_ContactUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_DocType" EntityType="Self.CMS_DocType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_Document" EntityType="Self.CMS_Document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_Domain" EntityType="Self.CMS_Domain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_Email" EntityType="Self.CMS_Email" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_Gallery" EntityType="Self.CMS_Gallery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_Map" EntityType="Self.CMS_Map" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_Media" EntityType="Self.CMS_Media" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_MediaGroup" EntityType="Self.CMS_MediaGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_News" EntityType="Self.CMS_News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_Notice" EntityType="Self.CMS_Notice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_Question" EntityType="Self.CMS_Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_SlideShow" EntityType="Self.CMS_SlideShow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_Social" EntityType="Self.CMS_Social" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_Topic" EntityType="Self.CMS_Topic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_TopicFlag" EntityType="Self.CMS_TopicFlag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_TopicLink" EntityType="Self.CMS_TopicLink" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_UserConfig" EntityType="Self.CMS_UserConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_UserCounter" EntityType="Self.CMS_UserCounter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_UserGroup" EntityType="Self.CMS_UserGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_Users" EntityType="Self.CMS_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Setting" EntityType="Self.Setting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TD_CoquanQuanly" EntityType="Self.TD_CoquanQuanly" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TD_Diadanh" EntityType="Self.TD_Diadanh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TD_Kiemduyet" EntityType="Self.TD_Kiemduyet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TD_Laymau" EntityType="Self.TD_Laymau" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TD_Loaiquantrac" EntityType="Self.TD_Loaiquantrac" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TD_PPLaymau" EntityType="Self.TD_PPLaymau" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TD_QCVN" EntityType="Self.TD_QCVN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TD_Thongso" EntityType="Self.TD_Thongso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TD_ThongsoKetqua" EntityType="Self.TD_ThongsoKetqua" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TD_Thongsomau" EntityType="Self.TD_Thongsomau" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TD_Tramquantrac" EntityType="Self.TD_Tramquantrac" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CMS_Album_CMS_Topic" Association="Self.FK_CMS_Album_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_Album" EntitySet="CMS_Album" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_Comments_CMS_News" Association="Self.FK_CMS_Comments_CMS_News">
+            <End Role="CMS_News" EntitySet="CMS_News" />
+            <End Role="CMS_Comments" EntitySet="CMS_Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_ContactUs_CMS_Topic" Association="Self.FK_CMS_ContactUs_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_ContactUs" EntitySet="CMS_ContactUs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_Document_CMS_DocType" Association="Self.FK_CMS_Document_CMS_DocType">
+            <End Role="CMS_DocType" EntitySet="CMS_DocType" />
+            <End Role="CMS_Document" EntitySet="CMS_Document" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_Document_CMS_Topic" Association="Self.FK_CMS_Document_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_Document" EntitySet="CMS_Document" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_Gallary_CMS_Album" Association="Self.FK_CMS_Gallary_CMS_Album">
+            <End Role="CMS_Album" EntitySet="CMS_Album" />
+            <End Role="CMS_Gallery" EntitySet="CMS_Gallery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_MediaGroup_CMS_Topic" Association="Self.FK_CMS_MediaGroup_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_MediaGroup" EntitySet="CMS_MediaGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_News_CMS_Topic" Association="Self.FK_CMS_News_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_News" EntitySet="CMS_News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_Notice_CMS_Topic" Association="Self.FK_CMS_Notice_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_Notice" EntitySet="CMS_Notice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_Question_CMS_Topic" Association="Self.FK_CMS_Question_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_Question" EntitySet="CMS_Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_SlideShow_CMS_SlideGroup" Association="Self.FK_CMS_SlideShow_CMS_SlideGroup">
+            <End Role="CMS_MediaGroup" EntitySet="CMS_MediaGroup" />
+            <End Role="CMS_Media" EntitySet="CMS_Media" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_SlideShow_CMS_Topic" Association="Self.FK_CMS_SlideShow_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_SlideShow" EntitySet="CMS_SlideShow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_Social_CMS_Topic" Association="Self.FK_CMS_Social_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_Social" EntitySet="CMS_Social" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_Topic_CMS_Topic" Association="Self.FK_CMS_Topic_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_Topic1" EntitySet="CMS_Topic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_UserConfig_CMS_Config" Association="Self.FK_CMS_UserConfig_CMS_Config">
+            <End Role="CMS_Config" EntitySet="CMS_Config" />
+            <End Role="CMS_UserConfig" EntitySet="CMS_UserConfig" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_UserConfig_CMS_UserGroup" Association="Self.FK_CMS_UserConfig_CMS_UserGroup">
+            <End Role="CMS_UserGroup" EntitySet="CMS_UserGroup" />
+            <End Role="CMS_UserConfig" EntitySet="CMS_UserConfig" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_Users_CMS_UserGroup" Association="Self.FK_CMS_Users_CMS_UserGroup">
+            <End Role="CMS_UserGroup" EntitySet="CMS_UserGroup" />
+            <End Role="CMS_Users" EntitySet="CMS_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TD_Kiemduyet_TD_Tramquantrac" Association="Self.FK_TD_Kiemduyet_TD_Tramquantrac">
+            <End Role="TD_Tramquantrac" EntitySet="TD_Tramquantrac" />
+            <End Role="TD_Kiemduyet" EntitySet="TD_Kiemduyet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TD_Laymau_TD_Tramquantrac" Association="Self.FK_TD_Laymau_TD_Tramquantrac">
+            <End Role="TD_Tramquantrac" EntitySet="TD_Tramquantrac" />
+            <End Role="TD_Laymau" EntitySet="TD_Laymau" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TD_Thongso_TD_Laymau" Association="Self.FK_TD_Thongso_TD_Laymau">
+            <End Role="TD_Laymau" EntitySet="TD_Laymau" />
+            <End Role="TD_Thongso" EntitySet="TD_Thongso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TD_Thongso_TD_Tramquantrac" Association="Self.FK_TD_Thongso_TD_Tramquantrac">
+            <End Role="TD_Tramquantrac" EntitySet="TD_Tramquantrac" />
+            <End Role="TD_Thongso" EntitySet="TD_Thongso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TD_ThongsoKetqua_TD_Thongso" Association="Self.FK_TD_ThongsoKetqua_TD_Thongso">
+            <End Role="TD_Thongso" EntitySet="TD_Thongso" />
+            <End Role="TD_ThongsoKetqua" EntitySet="TD_ThongsoKetqua" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TD_Thongsomau_TD_Loaiquantrac" Association="Self.FK_TD_Thongsomau_TD_Loaiquantrac">
+            <End Role="TD_Loaiquantrac" EntitySet="TD_Loaiquantrac" />
+            <End Role="TD_Thongsomau" EntitySet="TD_Thongsomau" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TD_Thongsomau_TD_PPLaymau" Association="Self.FK_TD_Thongsomau_TD_PPLaymau">
+            <End Role="TD_PPLaymau" EntitySet="TD_PPLaymau" />
+            <End Role="TD_Thongsomau" EntitySet="TD_Thongsomau" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TD_Tramquantrac_TD_CoquanQuanly" Association="Self.FK_TD_Tramquantrac_TD_CoquanQuanly">
+            <End Role="TD_CoquanQuanly" EntitySet="TD_CoquanQuanly" />
+            <End Role="TD_Tramquantrac" EntitySet="TD_Tramquantrac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TD_Tramquantrac_TD_Diadanh" Association="Self.FK_TD_Tramquantrac_TD_Diadanh">
+            <End Role="TD_Diadanh" EntitySet="TD_Diadanh" />
+            <End Role="TD_Tramquantrac" EntitySet="TD_Tramquantrac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TD_Tramquantrac_TD_Loaiquantrac" Association="Self.FK_TD_Tramquantrac_TD_Loaiquantrac">
+            <End Role="TD_Loaiquantrac" EntitySet="TD_Loaiquantrac" />
+            <End Role="TD_Tramquantrac" EntitySet="TD_Tramquantrac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TD_Tramquantrac_TD_QCVN" Association="Self.FK_TD_Tramquantrac_TD_QCVN">
+            <End Role="TD_QCVN" EntitySet="TD_QCVN" />
+            <End Role="TD_Tramquantrac" EntitySet="TD_Tramquantrac" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CLKKModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CLKKEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CMS_Album" EntityType="CLKKModel.CMS_Album" />
+          <EntitySet Name="CMS_Comments" EntityType="CLKKModel.CMS_Comments" />
+          <EntitySet Name="CMS_Config" EntityType="CLKKModel.CMS_Config" />
+          <EntitySet Name="CMS_ContactUs" EntityType="CLKKModel.CMS_ContactUs" />
+          <EntitySet Name="CMS_DocType" EntityType="CLKKModel.CMS_DocType" />
+          <EntitySet Name="CMS_Document" EntityType="CLKKModel.CMS_Document" />
+          <EntitySet Name="CMS_Domain" EntityType="CLKKModel.CMS_Domain" />
+          <EntitySet Name="CMS_Email" EntityType="CLKKModel.CMS_Email" />
+          <EntitySet Name="CMS_Gallery" EntityType="CLKKModel.CMS_Gallery" />
+          <EntitySet Name="CMS_Map" EntityType="CLKKModel.CMS_Map" />
+          <EntitySet Name="CMS_Media" EntityType="CLKKModel.CMS_Media" />
+          <EntitySet Name="CMS_MediaGroup" EntityType="CLKKModel.CMS_MediaGroup" />
+          <EntitySet Name="CMS_News" EntityType="CLKKModel.CMS_News" />
+          <EntitySet Name="CMS_Notice" EntityType="CLKKModel.CMS_Notice" />
+          <EntitySet Name="CMS_Question" EntityType="CLKKModel.CMS_Question" />
+          <EntitySet Name="CMS_SlideShow" EntityType="CLKKModel.CMS_SlideShow" />
+          <EntitySet Name="CMS_Social" EntityType="CLKKModel.CMS_Social" />
+          <EntitySet Name="CMS_Topic" EntityType="CLKKModel.CMS_Topic" />
+          <EntitySet Name="CMS_TopicFlag" EntityType="CLKKModel.CMS_TopicFlag" />
+          <EntitySet Name="CMS_TopicLink" EntityType="CLKKModel.CMS_TopicLink" />
+          <EntitySet Name="CMS_UserConfig" EntityType="CLKKModel.CMS_UserConfig" />
+          <EntitySet Name="CMS_UserCounter" EntityType="CLKKModel.CMS_UserCounter" />
+          <EntitySet Name="CMS_UserGroup" EntityType="CLKKModel.CMS_UserGroup" />
+          <EntitySet Name="CMS_Users" EntityType="CLKKModel.CMS_Users" />
+          <EntitySet Name="Setting" EntityType="CLKKModel.Setting" />
+          <EntitySet Name="TD_CoquanQuanly" EntityType="CLKKModel.TD_CoquanQuanly" />
+          <EntitySet Name="TD_Diadanh" EntityType="CLKKModel.TD_Diadanh" />
+          <EntitySet Name="TD_Loaiquantrac" EntityType="CLKKModel.TD_Loaiquantrac" />
+          <EntitySet Name="TD_PPLaymau" EntityType="CLKKModel.TD_PPLaymau" />
+          <EntitySet Name="TD_QCVN" EntityType="CLKKModel.TD_QCVN" />
+          <EntitySet Name="TD_Tramquantrac" EntityType="CLKKModel.TD_Tramquantrac" />
+          <AssociationSet Name="FK_CMS_Album_CMS_Topic" Association="CLKKModel.FK_CMS_Album_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_Album" EntitySet="CMS_Album" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_Gallary_CMS_Album" Association="CLKKModel.FK_CMS_Gallary_CMS_Album">
+            <End Role="CMS_Album" EntitySet="CMS_Album" />
+            <End Role="CMS_Gallery" EntitySet="CMS_Gallery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_Comments_CMS_News" Association="CLKKModel.FK_CMS_Comments_CMS_News">
+            <End Role="CMS_News" EntitySet="CMS_News" />
+            <End Role="CMS_Comments" EntitySet="CMS_Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_UserConfig_CMS_Config" Association="CLKKModel.FK_CMS_UserConfig_CMS_Config">
+            <End Role="CMS_Config" EntitySet="CMS_Config" />
+            <End Role="CMS_UserConfig" EntitySet="CMS_UserConfig" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_ContactUs_CMS_Topic" Association="CLKKModel.FK_CMS_ContactUs_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_ContactUs" EntitySet="CMS_ContactUs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_Document_CMS_DocType" Association="CLKKModel.FK_CMS_Document_CMS_DocType">
+            <End Role="CMS_DocType" EntitySet="CMS_DocType" />
+            <End Role="CMS_Document" EntitySet="CMS_Document" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_Document_CMS_Topic" Association="CLKKModel.FK_CMS_Document_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_Document" EntitySet="CMS_Document" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_SlideShow_CMS_SlideGroup" Association="CLKKModel.FK_CMS_SlideShow_CMS_SlideGroup">
+            <End Role="CMS_MediaGroup" EntitySet="CMS_MediaGroup" />
+            <End Role="CMS_Media" EntitySet="CMS_Media" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_MediaGroup_CMS_Topic" Association="CLKKModel.FK_CMS_MediaGroup_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_MediaGroup" EntitySet="CMS_MediaGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_News_CMS_Topic" Association="CLKKModel.FK_CMS_News_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_News" EntitySet="CMS_News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_Notice_CMS_Topic" Association="CLKKModel.FK_CMS_Notice_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_Notice" EntitySet="CMS_Notice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_Question_CMS_Topic" Association="CLKKModel.FK_CMS_Question_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_Question" EntitySet="CMS_Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_SlideShow_CMS_Topic" Association="CLKKModel.FK_CMS_SlideShow_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_SlideShow" EntitySet="CMS_SlideShow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_Social_CMS_Topic" Association="CLKKModel.FK_CMS_Social_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_Social" EntitySet="CMS_Social" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_Topic_CMS_Topic" Association="CLKKModel.FK_CMS_Topic_CMS_Topic">
+            <End Role="CMS_Topic" EntitySet="CMS_Topic" />
+            <End Role="CMS_Topic1" EntitySet="CMS_Topic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_UserConfig_CMS_UserGroup" Association="CLKKModel.FK_CMS_UserConfig_CMS_UserGroup">
+            <End Role="CMS_UserGroup" EntitySet="CMS_UserGroup" />
+            <End Role="CMS_UserConfig" EntitySet="CMS_UserConfig" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CMS_Users_CMS_UserGroup" Association="CLKKModel.FK_CMS_Users_CMS_UserGroup">
+            <End Role="CMS_UserGroup" EntitySet="CMS_UserGroup" />
+            <End Role="CMS_Users" EntitySet="CMS_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TD_Tramquantrac_TD_CoquanQuanly" Association="CLKKModel.FK_TD_Tramquantrac_TD_CoquanQuanly">
+            <End Role="TD_CoquanQuanly" EntitySet="TD_CoquanQuanly" />
+            <End Role="TD_Tramquantrac" EntitySet="TD_Tramquantrac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TD_Tramquantrac_TD_Diadanh" Association="CLKKModel.FK_TD_Tramquantrac_TD_Diadanh">
+            <End Role="TD_Diadanh" EntitySet="TD_Diadanh" />
+            <End Role="TD_Tramquantrac" EntitySet="TD_Tramquantrac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TD_Tramquantrac_TD_Loaiquantrac" Association="CLKKModel.FK_TD_Tramquantrac_TD_Loaiquantrac">
+            <End Role="TD_Loaiquantrac" EntitySet="TD_Loaiquantrac" />
+            <End Role="TD_Tramquantrac" EntitySet="TD_Tramquantrac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TD_Tramquantrac_TD_QCVN" Association="CLKKModel.FK_TD_Tramquantrac_TD_QCVN">
+            <End Role="TD_QCVN" EntitySet="TD_QCVN" />
+            <End Role="TD_Tramquantrac" EntitySet="TD_Tramquantrac" />
+          </AssociationSet>
+          <EntitySet Name="TD_ThongsoKetqua" EntityType="CLKKModel.TD_ThongsoKetqua" />
+          <EntitySet Name="TD_Laymau" EntityType="CLKKModel.TD_Laymau" />
+          <AssociationSet Name="FK_TD_Laymau_TD_Tramquantrac" Association="CLKKModel.FK_TD_Laymau_TD_Tramquantrac">
+            <End Role="TD_Tramquantrac" EntitySet="TD_Tramquantrac" />
+            <End Role="TD_Laymau" EntitySet="TD_Laymau" />
+          </AssociationSet>
+          <EntitySet Name="TD_Thongso" EntityType="CLKKModel.TD_Thongso" />
+          <AssociationSet Name="FK_TD_Thongso_TD_Laymau" Association="CLKKModel.FK_TD_Thongso_TD_Laymau">
+            <End Role="TD_Laymau" EntitySet="TD_Laymau" />
+            <End Role="TD_Thongso" EntitySet="TD_Thongso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TD_Thongso_TD_Tramquantrac" Association="CLKKModel.FK_TD_Thongso_TD_Tramquantrac">
+            <End Role="TD_Tramquantrac" EntitySet="TD_Tramquantrac" />
+            <End Role="TD_Thongso" EntitySet="TD_Thongso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TD_ThongsoKetqua_TD_Thongso" Association="CLKKModel.FK_TD_ThongsoKetqua_TD_Thongso">
+            <End Role="TD_Thongso" EntitySet="TD_Thongso" />
+            <End Role="TD_ThongsoKetqua" EntitySet="TD_ThongsoKetqua" />
+          </AssociationSet>
+          <EntitySet Name="TD_Thongsomau" EntityType="CLKKModel.TD_Thongsomau" />
+          <AssociationSet Name="FK_TD_Thongsomau_TD_Loaiquantrac" Association="CLKKModel.FK_TD_Thongsomau_TD_Loaiquantrac">
+            <End Role="TD_Loaiquantrac" EntitySet="TD_Loaiquantrac" />
+            <End Role="TD_Thongsomau" EntitySet="TD_Thongsomau" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TD_Thongsomau_TD_PPLaymau" Association="CLKKModel.FK_TD_Thongsomau_TD_PPLaymau">
+            <End Role="TD_PPLaymau" EntitySet="TD_PPLaymau" />
+            <End Role="TD_Thongsomau" EntitySet="TD_Thongsomau" />
+          </AssociationSet>
+          <EntitySet Name="TD_Kiemduyet" EntityType="CLKKModel.TD_Kiemduyet" />
+          <AssociationSet Name="FK_TD_Kiemduyet_TD_Tramquantrac" Association="CLKKModel.FK_TD_Kiemduyet_TD_Tramquantrac">
+            <End Role="TD_Tramquantrac" EntitySet="TD_Tramquantrac" />
+            <End Role="TD_Kiemduyet" EntitySet="TD_Kiemduyet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CMS_Album">
+          <Key>
+            <PropertyRef Name="Album_ID" />
+          </Key>
+          <Property Name="Album_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Topic_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Album_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Des" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="IsLang" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsOrder" Type="Int32" />
+          <Property Name="CreatedBy" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CMS_Topic" Relationship="CLKKModel.FK_CMS_Album_CMS_Topic" FromRole="CMS_Album" ToRole="CMS_Topic" />
+          <NavigationProperty Name="CMS_Gallery" Relationship="CLKKModel.FK_CMS_Gallary_CMS_Album" FromRole="CMS_Album" ToRole="CMS_Gallery" />
+        </EntityType>
+        <EntityType Name="CMS_Comments">
+          <Key>
+            <PropertyRef Name="Comments_ID" />
+          </Key>
+          <Property Name="Comments_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="News_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Avartar" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CMS_News" Relationship="CLKKModel.FK_CMS_Comments_CMS_News" FromRole="CMS_Comments" ToRole="CMS_News" />
+        </EntityType>
+        <EntityType Name="CMS_Config">
+          <Key>
+            <PropertyRef Name="Module_ID" />
+          </Key>
+          <Property Name="Module_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Module_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Module_Icon" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsMain" Type="Boolean" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="IsOrder" Type="Int32" />
+          <Property Name="IsFlag" Type="Int32" />
+          <Property Name="IsType" Type="Int32" />
+          <Property Name="Parent_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CMS_UserConfig" Relationship="CLKKModel.FK_CMS_UserConfig_CMS_Config" FromRole="CMS_Config" ToRole="CMS_UserConfig" />
+        </EntityType>
+        <EntityType Name="CMS_ContactUs">
+          <Key>
+            <PropertyRef Name="ContactUs_ID" />
+          </Key>
+          <Property Name="ContactUs_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Topic_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactUs_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Company" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Nick" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsLang" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="CMS_Topic" Relationship="CLKKModel.FK_CMS_ContactUs_CMS_Topic" FromRole="CMS_ContactUs" ToRole="CMS_Topic" />
+        </EntityType>
+        <EntityType Name="CMS_DocType">
+          <Key>
+            <PropertyRef Name="DocType_ID" />
+          </Key>
+          <Property Name="DocType_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocType_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Des" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsLang" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsOrder" Type="Int32" />
+          <Property Name="CreatedBy" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CMS_Document" Relationship="CLKKModel.FK_CMS_Document_CMS_DocType" FromRole="CMS_DocType" ToRole="CMS_Document" />
+        </EntityType>
+        <EntityType Name="CMS_Document">
+          <Key>
+            <PropertyRef Name="Document_ID" />
+          </Key>
+          <Property Name="Document_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Topic_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Document_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DocType_ID" Type="Int32" />
+          <Property Name="Provider_ID" Type="Int32" />
+          <Property Name="Filed_ID" Type="Int32" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SignerName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PromDate" Type="DateTime" Precision="0" />
+          <Property Name="EffectDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="FileSource" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="FileGenKey" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsURL" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsDownload" Type="Int32" />
+          <Property Name="IsLang" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsOrder" Type="Int32" />
+          <Property Name="CreatedBy" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CMS_DocType" Relationship="CLKKModel.FK_CMS_Document_CMS_DocType" FromRole="CMS_Document" ToRole="CMS_DocType" />
+          <NavigationProperty Name="CMS_Topic" Relationship="CLKKModel.FK_CMS_Document_CMS_Topic" FromRole="CMS_Document" ToRole="CMS_Topic" />
+        </EntityType>
+        <EntityType Name="CMS_Domain">
+          <Key>
+            <PropertyRef Name="Domain_ID" />
+          </Key>
+          <Property Name="Domain_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Domain_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Domain_Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="InOfDate" Type="DateTime" Precision="0" />
+          <Property Name="OutOfDate" Type="DateTime" Precision="0" />
+          <Property Name="IsOrder" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CMS_Email">
+          <Key>
+            <PropertyRef Name="Email_ID" />
+          </Key>
+          <Property Name="Email_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CMS_Gallery">
+          <Key>
+            <PropertyRef Name="Gallery_ID" />
+          </Key>
+          <Property Name="Gallery_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Album_ID" Type="Int32" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileSource" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsOrder" Type="Int32" />
+          <Property Name="IsHot" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CMS_Album" Relationship="CLKKModel.FK_CMS_Gallary_CMS_Album" FromRole="CMS_Gallery" ToRole="CMS_Album" />
+        </EntityType>
+        <EntityType Name="CMS_Map">
+          <Key>
+            <PropertyRef Name="Map_ID" />
+          </Key>
+          <Property Name="Map_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Link_Map" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CMS_Media">
+          <Key>
+            <PropertyRef Name="SlideShow_ID" />
+          </Key>
+          <Property Name="SlideShow_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SlideShow_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SlideGroup_ID" Type="Int32" />
+          <Property Name="IsType" Type="Int32" />
+          <Property Name="FlvImage" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Images" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="IsLang" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsOrder" Type="Int32" />
+          <Property Name="CreatedBy" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsView" Type="Int32" />
+          <Property Name="IsLike" Type="Int32" />
+          <Property Name="Dislike" Type="Int32" />
+          <NavigationProperty Name="CMS_MediaGroup" Relationship="CLKKModel.FK_CMS_SlideShow_CMS_SlideGroup" FromRole="CMS_Media" ToRole="CMS_MediaGroup" />
+        </EntityType>
+        <EntityType Name="CMS_MediaGroup">
+          <Key>
+            <PropertyRef Name="SlideGroup_ID" />
+          </Key>
+          <Property Name="SlideGroup_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SlideGroup_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Topic_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsHot" Type="Boolean" Nullable="false" />
+          <Property Name="IsPosition" Type="Int32" />
+          <Property Name="Des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsPlay" Type="Int32" />
+          <Property Name="IsLang" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsOrder" Type="Int32" />
+          <Property Name="CreatedBy" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CMS_Media" Relationship="CLKKModel.FK_CMS_SlideShow_CMS_SlideGroup" FromRole="CMS_MediaGroup" ToRole="CMS_Media" />
+          <NavigationProperty Name="CMS_Topic" Relationship="CLKKModel.FK_CMS_MediaGroup_CMS_Topic" FromRole="CMS_MediaGroup" ToRole="CMS_Topic" />
+        </EntityType>
+        <EntityType Name="CMS_News">
+          <Key>
+            <PropertyRef Name="News_ID" />
+          </Key>
+          <Property Name="News_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Topic_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="News_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsHot" Type="Boolean" Nullable="false" />
+          <Property Name="Images" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NewType" Type="Int32" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="IsVisitor" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsOrder" Type="Int32" />
+          <Property Name="CreatedBy" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Users_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CMS_Comments" Relationship="CLKKModel.FK_CMS_Comments_CMS_News" FromRole="CMS_News" ToRole="CMS_Comments" />
+          <NavigationProperty Name="CMS_Topic" Relationship="CLKKModel.FK_CMS_News_CMS_Topic" FromRole="CMS_News" ToRole="CMS_Topic" />
+        </EntityType>
+        <EntityType Name="CMS_Notice">
+          <Key>
+            <PropertyRef Name="Notice_ID" />
+          </Key>
+          <Property Name="Notice_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Notice_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Topic_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsHot" Type="Boolean" Nullable="false" />
+          <Property Name="Images" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsWriter" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="IsVisitor" Type="Int32" />
+          <Property Name="IsLang" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsOrder" Type="Int32" />
+          <Property Name="CreatedBy" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CMS_Topic" Relationship="CLKKModel.FK_CMS_Notice_CMS_Topic" FromRole="CMS_Notice" ToRole="CMS_Topic" />
+        </EntityType>
+        <EntityType Name="CMS_Question">
+          <Key>
+            <PropertyRef Name="Question_ID" />
+          </Key>
+          <Property Name="Question_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Topic_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Department_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SenderName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SenderSex" Type="Boolean" Nullable="false" />
+          <Property Name="SenderAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SenderTelephone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SenderMobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SenderEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SenderNickName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ReplyContents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReplyName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ReplyCreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="IsLang" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsOrder" Type="Int32" />
+          <NavigationProperty Name="CMS_Topic" Relationship="CLKKModel.FK_CMS_Question_CMS_Topic" FromRole="CMS_Question" ToRole="CMS_Topic" />
+        </EntityType>
+        <EntityType Name="CMS_SlideShow">
+          <Key>
+            <PropertyRef Name="SlideShow_ID" />
+          </Key>
+          <Property Name="SlideShow_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SlideShow_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Images" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsLang" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsOrder" Type="Int32" />
+          <Property Name="CreatedBy" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Topic_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CMS_Topic" Relationship="CLKKModel.FK_CMS_SlideShow_CMS_Topic" FromRole="CMS_SlideShow" ToRole="CMS_Topic" />
+        </EntityType>
+        <EntityType Name="CMS_Social">
+          <Key>
+            <PropertyRef Name="Social_ID" />
+          </Key>
+          <Property Name="Social_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Social_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Images" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsLang" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsOrder" Type="Int32" />
+          <Property Name="CreatedBy" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Topic_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CMS_Topic" Relationship="CLKKModel.FK_CMS_Social_CMS_Topic" FromRole="CMS_Social" ToRole="CMS_Topic" />
+        </EntityType>
+        <EntityType Name="CMS_Topic">
+          <Key>
+            <PropertyRef Name="Topic_ID" />
+          </Key>
+          <Property Name="Topic_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Topic_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Parent_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsMenu" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsOrder" Type="Int32" />
+          <Property Name="CreatedBy" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Users_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Topic_Type" Type="Int32" />
+          <NavigationProperty Name="CMS_Album" Relationship="CLKKModel.FK_CMS_Album_CMS_Topic" FromRole="CMS_Topic" ToRole="CMS_Album" />
+          <NavigationProperty Name="CMS_ContactUs" Relationship="CLKKModel.FK_CMS_ContactUs_CMS_Topic" FromRole="CMS_Topic" ToRole="CMS_ContactUs" />
+          <NavigationProperty Name="CMS_Document" Relationship="CLKKModel.FK_CMS_Document_CMS_Topic" FromRole="CMS_Topic" ToRole="CMS_Document" />
+          <NavigationProperty Name="CMS_MediaGroup" Relationship="CLKKModel.FK_CMS_MediaGroup_CMS_Topic" FromRole="CMS_Topic" ToRole="CMS_MediaGroup" />
+          <NavigationProperty Name="CMS_News" Relationship="CLKKModel.FK_CMS_News_CMS_Topic" FromRole="CMS_Topic" ToRole="CMS_News" />
+          <NavigationProperty Name="CMS_Notice" Relationship="CLKKModel.FK_CMS_Notice_CMS_Topic" FromRole="CMS_Topic" ToRole="CMS_Notice" />
+          <NavigationProperty Name="CMS_Question" Relationship="CLKKModel.FK_CMS_Question_CMS_Topic" FromRole="CMS_Topic" ToRole="CMS_Question" />
+          <NavigationProperty Name="CMS_SlideShow" Relationship="CLKKModel.FK_CMS_SlideShow_CMS_Topic" FromRole="CMS_Topic" ToRole="CMS_SlideShow" />
+          <NavigationProperty Name="CMS_Social" Relationship="CLKKModel.FK_CMS_Social_CMS_Topic" FromRole="CMS_Topic" ToRole="CMS_Social" />
+          <NavigationProperty Name="CMS_Topic1" Relationship="CLKKModel.FK_CMS_Topic_CMS_Topic" FromRole="CMS_Topic" ToRole="CMS_Topic1" />
+          <NavigationProperty Name="CMS_Topic2" Relationship="CLKKModel.FK_CMS_Topic_CMS_Topic" FromRole="CMS_Topic1" ToRole="CMS_Topic" />
+        </EntityType>
+        <EntityType Name="CMS_TopicFlag">
+          <Key>
+            <PropertyRef Name="TopicFlag_ID" />
+          </Key>
+          <Property Name="TopicFlag_ID" Type="Int32" Nullable="false" />
+          <Property Name="TopicFlag_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="IsOrder" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CMS_TopicLink">
+          <Key>
+            <PropertyRef Name="TopicLink_ID" />
+          </Key>
+          <Property Name="TopicLink_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TopicLink_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsOrder" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CMS_UserConfig">
+          <Key>
+            <PropertyRef Name="UserConfig_ID" />
+          </Key>
+          <Property Name="UserConfig_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserGroup_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Module_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsCreate" Type="Boolean" Nullable="false" />
+          <Property Name="IsRead" Type="Boolean" Nullable="false" />
+          <Property Name="IsUpdate" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CMS_Config" Relationship="CLKKModel.FK_CMS_UserConfig_CMS_Config" FromRole="CMS_UserConfig" ToRole="CMS_Config" />
+          <NavigationProperty Name="CMS_UserGroup" Relationship="CLKKModel.FK_CMS_UserConfig_CMS_UserGroup" FromRole="CMS_UserConfig" ToRole="CMS_UserGroup" />
+        </EntityType>
+        <EntityType Name="CMS_UserCounter">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="day" Type="Int32" />
+          <Property Name="onlineDay" Type="Int32" />
+          <Property Name="week" Type="Int32" />
+          <Property Name="onlineWeek" Type="Int32" />
+          <Property Name="month" Type="Int32" />
+          <Property Name="onlineMonth" Type="Int32" />
+          <Property Name="year" Type="Int32" />
+          <Property Name="onlineYear" Type="Int32" />
+          <Property Name="sum" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CMS_UserGroup">
+          <Key>
+            <PropertyRef Name="UserGroup_ID" />
+          </Key>
+          <Property Name="UserGroup_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserGroup_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CMS_UserConfig" Relationship="CLKKModel.FK_CMS_UserConfig_CMS_UserGroup" FromRole="CMS_UserGroup" ToRole="CMS_UserConfig" />
+          <NavigationProperty Name="CMS_Users" Relationship="CLKKModel.FK_CMS_Users_CMS_UserGroup" FromRole="CMS_UserGroup" ToRole="CMS_Users" />
+        </EntityType>
+        <EntityType Name="CMS_Users">
+          <Key>
+            <PropertyRef Name="Users_ID" />
+          </Key>
+          <Property Name="Users_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Users_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserGroup_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CMS_UserGroup" Relationship="CLKKModel.FK_CMS_Users_CMS_UserGroup" FromRole="CMS_Users" ToRole="CMS_UserGroup" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsOrder" Type="Int32" />
+          <Property Name="VN" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EN" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TD_CoquanQuanly">
+          <Key>
+            <PropertyRef Name="CoquanQuanly_ID" />
+          </Key>
+          <Property Name="CoquanQuanly_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CoquanQuanly_Ten" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="STT" Type="Int32" />
+          <Property Name="Trangthai" Type="Boolean" Nullable="false" />
+          <Property Name="MaCoquan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DaumoiLienhe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Diadanh_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mota" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Kinhdo" Type="Double" />
+          <Property Name="Vido" Type="Double" />
+          <Property Name="CapCha_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TD_Tramquantrac" Relationship="CLKKModel.FK_TD_Tramquantrac_TD_CoquanQuanly" FromRole="TD_CoquanQuanly" ToRole="TD_Tramquantrac" />
+        </EntityType>
+        <EntityType Name="TD_Diadanh">
+          <Key>
+            <PropertyRef Name="Diadanh_ID" />
+          </Key>
+          <Property Name="Diadanh_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Diadanh_Ten" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CapCha_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <Property Name="STT" Type="Int32" />
+          <Property Name="Trangthai" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TD_Tramquantrac" Relationship="CLKKModel.FK_TD_Tramquantrac_TD_Diadanh" FromRole="TD_Diadanh" ToRole="TD_Tramquantrac" />
+        </EntityType>
+        <EntityType Name="TD_Loaiquantrac">
+          <Key>
+            <PropertyRef Name="Loaiquantrac_ID" />
+          </Key>
+          <Property Name="Loaiquantrac_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Loaiquantrac_Ten" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Trangthai" Type="Boolean" Nullable="false" />
+          <Property Name="STT" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TD_Tramquantrac" Relationship="CLKKModel.FK_TD_Tramquantrac_TD_Loaiquantrac" FromRole="TD_Loaiquantrac" ToRole="TD_Tramquantrac" />
+          <NavigationProperty Name="TD_Thongsomau" Relationship="CLKKModel.FK_TD_Thongsomau_TD_Loaiquantrac" FromRole="TD_Loaiquantrac" ToRole="TD_Thongsomau" />
+        </EntityType>
+        <EntityType Name="TD_PPLaymau">
+          <Key>
+            <PropertyRef Name="PPLaymau_ID" />
+          </Key>
+          <Property Name="PPLaymau_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PPLaymau_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PPLaymau_Mota" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="STT" Type="Int32" Nullable="false" />
+          <Property Name="Trangthai" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TD_Thongsomau" Relationship="CLKKModel.FK_TD_Thongsomau_TD_PPLaymau" FromRole="TD_PPLaymau" ToRole="TD_Thongsomau" />
+        </EntityType>
+        <EntityType Name="TD_QCVN">
+          <Key>
+            <PropertyRef Name="QCVN_ID" />
+          </Key>
+          <Property Name="QCVN_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SoQCVN" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Trangthai" Type="Boolean" Nullable="false" />
+          <Property Name="STT" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TD_Tramquantrac" Relationship="CLKKModel.FK_TD_Tramquantrac_TD_QCVN" FromRole="TD_QCVN" ToRole="TD_Tramquantrac" />
+        </EntityType>
+        <EntityType Name="TD_Tramquantrac">
+          <Key>
+            <PropertyRef Name="Tramquantrac_ID" />
+          </Key>
+          <Property Name="Tramquantrac_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tramquantrac_Ten" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="STT" Type="Int32" />
+          <Property Name="Trangthai" Type="Boolean" Nullable="false" />
+          <Property Name="Loaiquantrac_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MaTram" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Kinhdo" Type="Double" />
+          <Property Name="Vido" Type="Double" />
+          <Property Name="Diadanh_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Loai" Type="Int32" />
+          <Property Name="CoquanQuanly_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TansuatNhanDL" Type="Int32" />
+          <Property Name="Diachi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Mota" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QCVN_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LoaiQCVN" Type="Int32" />
+          <Property Name="QCVN_Heso1" Type="Double" />
+          <Property Name="QCVN_Heso2" Type="Double" />
+          <Property Name="Ngaytao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Nguoitao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TD_CoquanQuanly" Relationship="CLKKModel.FK_TD_Tramquantrac_TD_CoquanQuanly" FromRole="TD_Tramquantrac" ToRole="TD_CoquanQuanly" />
+          <NavigationProperty Name="TD_Diadanh" Relationship="CLKKModel.FK_TD_Tramquantrac_TD_Diadanh" FromRole="TD_Tramquantrac" ToRole="TD_Diadanh" />
+          <NavigationProperty Name="TD_Loaiquantrac" Relationship="CLKKModel.FK_TD_Tramquantrac_TD_Loaiquantrac" FromRole="TD_Tramquantrac" ToRole="TD_Loaiquantrac" />
+          <NavigationProperty Name="TD_QCVN" Relationship="CLKKModel.FK_TD_Tramquantrac_TD_QCVN" FromRole="TD_Tramquantrac" ToRole="TD_QCVN" />
+          <NavigationProperty Name="TD_Laymau" Relationship="CLKKModel.FK_TD_Laymau_TD_Tramquantrac" FromRole="TD_Tramquantrac" ToRole="TD_Laymau" />
+          <NavigationProperty Name="TD_Thongso" Relationship="CLKKModel.FK_TD_Thongso_TD_Tramquantrac" FromRole="TD_Tramquantrac" ToRole="TD_Thongso" />
+          <NavigationProperty Name="TD_Kiemduyet" Relationship="CLKKModel.FK_TD_Kiemduyet_TD_Tramquantrac" FromRole="TD_Tramquantrac" ToRole="TD_Kiemduyet" />
+        </EntityType>
+        <Association Name="FK_CMS_Album_CMS_Topic">
+          <End Type="CLKKModel.CMS_Topic" Role="CMS_Topic" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLKKModel.CMS_Album" Role="CMS_Album" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_Album">
+              <PropertyRef Name="Topic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_Gallary_CMS_Album">
+          <End Type="CLKKModel.CMS_Album" Role="CMS_Album" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLKKModel.CMS_Gallery" Role="CMS_Gallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Album">
+              <PropertyRef Name="Album_ID" />
+            </Principal>
+            <Dependent Role="CMS_Gallery">
+              <PropertyRef Name="Album_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_Comments_CMS_News">
+          <End Type="CLKKModel.CMS_News" Role="CMS_News" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLKKModel.CMS_Comments" Role="CMS_Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_News">
+              <PropertyRef Name="News_ID" />
+            </Principal>
+            <Dependent Role="CMS_Comments">
+              <PropertyRef Name="News_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_UserConfig_CMS_Config">
+          <End Type="CLKKModel.CMS_Config" Role="CMS_Config" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLKKModel.CMS_UserConfig" Role="CMS_UserConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Config">
+              <PropertyRef Name="Module_ID" />
+            </Principal>
+            <Dependent Role="CMS_UserConfig">
+              <PropertyRef Name="Module_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_ContactUs_CMS_Topic">
+          <End Type="CLKKModel.CMS_Topic" Role="CMS_Topic" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLKKModel.CMS_ContactUs" Role="CMS_ContactUs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_ContactUs">
+              <PropertyRef Name="Topic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_Document_CMS_DocType">
+          <End Type="CLKKModel.CMS_DocType" Role="CMS_DocType" Multiplicity="0..1" />
+          <End Type="CLKKModel.CMS_Document" Role="CMS_Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_DocType">
+              <PropertyRef Name="DocType_ID" />
+            </Principal>
+            <Dependent Role="CMS_Document">
+              <PropertyRef Name="DocType_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_Document_CMS_Topic">
+          <End Type="CLKKModel.CMS_Topic" Role="CMS_Topic" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLKKModel.CMS_Document" Role="CMS_Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_Document">
+              <PropertyRef Name="Topic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_SlideShow_CMS_SlideGroup">
+          <End Type="CLKKModel.CMS_MediaGroup" Role="CMS_MediaGroup" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLKKModel.CMS_Media" Role="CMS_Media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_MediaGroup">
+              <PropertyRef Name="SlideGroup_ID" />
+            </Principal>
+            <Dependent Role="CMS_Media">
+              <PropertyRef Name="SlideGroup_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_MediaGroup_CMS_Topic">
+          <End Type="CLKKModel.CMS_Topic" Role="CMS_Topic" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLKKModel.CMS_MediaGroup" Role="CMS_MediaGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_MediaGroup">
+              <PropertyRef Name="Topic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_News_CMS_Topic">
+          <End Type="CLKKModel.CMS_Topic" Role="CMS_Topic" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLKKModel.CMS_News" Role="CMS_News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_News">
+              <PropertyRef Name="Topic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_Notice_CMS_Topic">
+          <End Type="CLKKModel.CMS_Topic" Role="CMS_Topic" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLKKModel.CMS_Notice" Role="CMS_Notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_Notice">
+              <PropertyRef Name="Topic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_Question_CMS_Topic">
+          <End Type="CLKKModel.CMS_Topic" Role="CMS_Topic" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLKKModel.CMS_Question" Role="CMS_Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_Question">
+              <PropertyRef Name="Topic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_SlideShow_CMS_Topic">
+          <End Type="CLKKModel.CMS_Topic" Role="CMS_Topic" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLKKModel.CMS_SlideShow" Role="CMS_SlideShow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_SlideShow">
+              <PropertyRef Name="Topic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_Social_CMS_Topic">
+          <End Type="CLKKModel.CMS_Topic" Role="CMS_Topic" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLKKModel.CMS_Social" Role="CMS_Social" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_Social">
+              <PropertyRef Name="Topic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_Topic_CMS_Topic">
+          <End Type="CLKKModel.CMS_Topic" Role="CMS_Topic" Multiplicity="0..1" />
+          <End Type="CLKKModel.CMS_Topic" Role="CMS_Topic1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_Topic">
+              <PropertyRef Name="Topic_ID" />
+            </Principal>
+            <Dependent Role="CMS_Topic1">
+              <PropertyRef Name="Parent_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_UserConfig_CMS_UserGroup">
+          <End Type="CLKKModel.CMS_UserGroup" Role="CMS_UserGroup" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLKKModel.CMS_UserConfig" Role="CMS_UserConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_UserGroup">
+              <PropertyRef Name="UserGroup_ID" />
+            </Principal>
+            <Dependent Role="CMS_UserConfig">
+              <PropertyRef Name="UserGroup_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CMS_Users_CMS_UserGroup">
+          <End Type="CLKKModel.CMS_UserGroup" Role="CMS_UserGroup" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLKKModel.CMS_Users" Role="CMS_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CMS_UserGroup">
+              <PropertyRef Name="UserGroup_ID" />
+            </Principal>
+            <Dependent Role="CMS_Users">
+              <PropertyRef Name="UserGroup_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TD_Tramquantrac_TD_CoquanQuanly">
+          <End Type="CLKKModel.TD_CoquanQuanly" Role="TD_CoquanQuanly" Multiplicity="0..1" />
+          <End Type="CLKKModel.TD_Tramquantrac" Role="TD_Tramquantrac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_CoquanQuanly">
+              <PropertyRef Name="CoquanQuanly_ID" />
+            </Principal>
+            <Dependent Role="TD_Tramquantrac">
+              <PropertyRef Name="CoquanQuanly_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TD_Tramquantrac_TD_Diadanh">
+          <End Type="CLKKModel.TD_Diadanh" Role="TD_Diadanh" Multiplicity="0..1" />
+          <End Type="CLKKModel.TD_Tramquantrac" Role="TD_Tramquantrac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_Diadanh">
+              <PropertyRef Name="Diadanh_ID" />
+            </Principal>
+            <Dependent Role="TD_Tramquantrac">
+              <PropertyRef Name="Diadanh_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TD_Tramquantrac_TD_Loaiquantrac">
+          <End Type="CLKKModel.TD_Loaiquantrac" Role="TD_Loaiquantrac" Multiplicity="0..1" />
+          <End Type="CLKKModel.TD_Tramquantrac" Role="TD_Tramquantrac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_Loaiquantrac">
+              <PropertyRef Name="Loaiquantrac_ID" />
+            </Principal>
+            <Dependent Role="TD_Tramquantrac">
+              <PropertyRef Name="Loaiquantrac_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TD_Tramquantrac_TD_QCVN">
+          <End Type="CLKKModel.TD_QCVN" Role="TD_QCVN" Multiplicity="0..1" />
+          <End Type="CLKKModel.TD_Tramquantrac" Role="TD_Tramquantrac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_QCVN">
+              <PropertyRef Name="QCVN_ID" />
+            </Principal>
+            <Dependent Role="TD_Tramquantrac">
+              <PropertyRef Name="QCVN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TD_ThongsoKetqua">
+          <Key>
+            <PropertyRef Name="ThongsoKetqua_ID" />
+          </Key>
+          <Property Name="ThongsoKetqua_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tenthongso" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Donvi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Giatrithongso" Type="Double" />
+          <Property Name="Ghichu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Thongso_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TD_Thongso" Relationship="CLKKModel.FK_TD_ThongsoKetqua_TD_Thongso" FromRole="TD_ThongsoKetqua" ToRole="TD_Thongso" />
+        </EntityType>
+        <EntityType Name="TD_Laymau">
+          <Key>
+            <PropertyRef Name="Laymau_ID" />
+          </Key>
+          <Property Name="Laymau_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TenLenh" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Ngaytao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Trangthai" Type="Boolean" Nullable="false" />
+          <Property Name="Tramquantrac_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sochai" Type="Int32" Nullable="false" />
+          <Property Name="Noidunglenh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DataLoggerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nguoitao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STT" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TD_Tramquantrac" Relationship="CLKKModel.FK_TD_Laymau_TD_Tramquantrac" FromRole="TD_Laymau" ToRole="TD_Tramquantrac" />
+          <NavigationProperty Name="TD_Thongso" Relationship="CLKKModel.FK_TD_Thongso_TD_Laymau" FromRole="TD_Laymau" ToRole="TD_Thongso" />
+        </EntityType>
+        <Association Name="FK_TD_Laymau_TD_Tramquantrac">
+          <End Type="CLKKModel.TD_Tramquantrac" Role="TD_Tramquantrac" Multiplicity="1" />
+          <End Type="CLKKModel.TD_Laymau" Role="TD_Laymau" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_Tramquantrac">
+              <PropertyRef Name="Tramquantrac_ID" />
+            </Principal>
+            <Dependent Role="TD_Laymau">
+              <PropertyRef Name="Tramquantrac_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TD_Thongso">
+          <Key>
+            <PropertyRef Name="Thongso_ID" />
+          </Key>
+          <Property Name="Thongso_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Laymau_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ngaythuchien" Type="DateTime" Precision="3" />
+          <Property Name="Nguoitao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STT" Type="Int32" Nullable="false" />
+          <Property Name="Trangthai" Type="Boolean" Nullable="false" />
+          <Property Name="Tramquantrac_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ngaytao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AQI" Type="Int32" />
+          <NavigationProperty Name="TD_Laymau" Relationship="CLKKModel.FK_TD_Thongso_TD_Laymau" FromRole="TD_Thongso" ToRole="TD_Laymau" />
+          <NavigationProperty Name="TD_Tramquantrac" Relationship="CLKKModel.FK_TD_Thongso_TD_Tramquantrac" FromRole="TD_Thongso" ToRole="TD_Tramquantrac" />
+          <NavigationProperty Name="TD_ThongsoKetqua" Relationship="CLKKModel.FK_TD_ThongsoKetqua_TD_Thongso" FromRole="TD_Thongso" ToRole="TD_ThongsoKetqua" />
+        </EntityType>
+        <Association Name="FK_TD_Thongso_TD_Laymau">
+          <End Type="CLKKModel.TD_Laymau" Role="TD_Laymau" Multiplicity="0..1" />
+          <End Type="CLKKModel.TD_Thongso" Role="TD_Thongso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_Laymau">
+              <PropertyRef Name="Laymau_ID" />
+            </Principal>
+            <Dependent Role="TD_Thongso">
+              <PropertyRef Name="Laymau_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TD_Thongso_TD_Tramquantrac">
+          <End Type="CLKKModel.TD_Tramquantrac" Role="TD_Tramquantrac" Multiplicity="0..1" />
+          <End Type="CLKKModel.TD_Thongso" Role="TD_Thongso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_Tramquantrac">
+              <PropertyRef Name="Tramquantrac_ID" />
+            </Principal>
+            <Dependent Role="TD_Thongso">
+              <PropertyRef Name="Tramquantrac_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TD_ThongsoKetqua_TD_Thongso">
+          <End Type="CLKKModel.TD_Thongso" Role="TD_Thongso" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLKKModel.TD_ThongsoKetqua" Role="TD_ThongsoKetqua" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_Thongso">
+              <PropertyRef Name="Thongso_ID" />
+            </Principal>
+            <Dependent Role="TD_ThongsoKetqua">
+              <PropertyRef Name="Thongso_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TD_Thongsomau">
+          <Key>
+            <PropertyRef Name="Thongsomau_ID" />
+          </Key>
+          <Property Name="Thongsomau_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Thongsomau_Ten" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Loaiquantrac_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Donvi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STT" Type="Int32" Nullable="false" />
+          <Property Name="Trangthai" Type="Boolean" Nullable="false" />
+          <Property Name="PPLaymau_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ngaytao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Nguoitao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Max" Type="Double" />
+          <Property Name="Min" Type="Double" />
+          <Property Name="Delta" Type="Double" />
+          <NavigationProperty Name="TD_Loaiquantrac" Relationship="CLKKModel.FK_TD_Thongsomau_TD_Loaiquantrac" FromRole="TD_Thongsomau" ToRole="TD_Loaiquantrac" />
+          <NavigationProperty Name="TD_PPLaymau" Relationship="CLKKModel.FK_TD_Thongsomau_TD_PPLaymau" FromRole="TD_Thongsomau" ToRole="TD_PPLaymau" />
+        </EntityType>
+        <Association Name="FK_TD_Thongsomau_TD_Loaiquantrac">
+          <End Type="CLKKModel.TD_Loaiquantrac" Role="TD_Loaiquantrac" Multiplicity="1" />
+          <End Type="CLKKModel.TD_Thongsomau" Role="TD_Thongsomau" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_Loaiquantrac">
+              <PropertyRef Name="Loaiquantrac_ID" />
+            </Principal>
+            <Dependent Role="TD_Thongsomau">
+              <PropertyRef Name="Loaiquantrac_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TD_Thongsomau_TD_PPLaymau">
+          <End Type="CLKKModel.TD_PPLaymau" Role="TD_PPLaymau" Multiplicity="0..1" />
+          <End Type="CLKKModel.TD_Thongsomau" Role="TD_Thongsomau" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_PPLaymau">
+              <PropertyRef Name="PPLaymau_ID" />
+            </Principal>
+            <Dependent Role="TD_Thongsomau">
+              <PropertyRef Name="PPLaymau_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TD_Kiemduyet">
+          <Key>
+            <PropertyRef Name="Kiemduyet_ID" />
+          </Key>
+          <Property Name="Kiemduyet_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tramquantrac_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Giatriam" Type="Boolean" Nullable="false" />
+          <Property Name="Ngoaikhoang" Type="Boolean" Nullable="false" />
+          <Property Name="Loaiquantrac_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ngaytao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Nguoitao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Thongsomau_Ten" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Khongcogiatri" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TD_Tramquantrac" Relationship="CLKKModel.FK_TD_Kiemduyet_TD_Tramquantrac" FromRole="TD_Kiemduyet" ToRole="TD_Tramquantrac" />
+        </EntityType>
+        <Association Name="FK_TD_Kiemduyet_TD_Tramquantrac">
+          <End Type="CLKKModel.TD_Tramquantrac" Role="TD_Tramquantrac" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLKKModel.TD_Kiemduyet" Role="TD_Kiemduyet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TD_Tramquantrac">
+              <PropertyRef Name="Tramquantrac_ID" />
+            </Principal>
+            <Dependent Role="TD_Kiemduyet">
+              <PropertyRef Name="Tramquantrac_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CLKKModelStoreContainer" CdmEntityContainer="CLKKEntities">
+          <EntitySetMapping Name="CMS_Album">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_Album">
+              <MappingFragment StoreEntitySet="CMS_Album">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Des" ColumnName="Des" />
+                <ScalarProperty Name="Album_Name" ColumnName="Album_Name" />
+                <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+                <ScalarProperty Name="Album_ID" ColumnName="Album_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_Comments">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_Comments">
+              <MappingFragment StoreEntitySet="CMS_Comments">
+                <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="News_ID" ColumnName="News_ID" />
+                <ScalarProperty Name="Comments_ID" ColumnName="Comments_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_Config">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_Config">
+              <MappingFragment StoreEntitySet="CMS_Config">
+                <ScalarProperty Name="Parent_ID" ColumnName="Parent_ID" />
+                <ScalarProperty Name="IsType" ColumnName="IsType" />
+                <ScalarProperty Name="IsFlag" ColumnName="IsFlag" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="Module_Icon" ColumnName="Module_Icon" />
+                <ScalarProperty Name="Module_Name" ColumnName="Module_Name" />
+                <ScalarProperty Name="Module_ID" ColumnName="Module_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_ContactUs">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_ContactUs">
+              <MappingFragment StoreEntitySet="CMS_ContactUs">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Nick" ColumnName="Nick" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="ContactUs_Name" ColumnName="ContactUs_Name" />
+                <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+                <ScalarProperty Name="ContactUs_ID" ColumnName="ContactUs_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_DocType">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_DocType">
+              <MappingFragment StoreEntitySet="CMS_DocType">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+                <ScalarProperty Name="Des" ColumnName="Des" />
+                <ScalarProperty Name="DocType_Name" ColumnName="DocType_Name" />
+                <ScalarProperty Name="DocType_ID" ColumnName="DocType_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_Document">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_Document">
+              <MappingFragment StoreEntitySet="CMS_Document">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+                <ScalarProperty Name="IsDownload" ColumnName="IsDownload" />
+                <ScalarProperty Name="IsURL" ColumnName="IsURL" />
+                <ScalarProperty Name="FileGenKey" ColumnName="FileGenKey" />
+                <ScalarProperty Name="FileSource" ColumnName="FileSource" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="EffectDate" ColumnName="EffectDate" />
+                <ScalarProperty Name="PromDate" ColumnName="PromDate" />
+                <ScalarProperty Name="SignerName" ColumnName="SignerName" />
+                <ScalarProperty Name="NoCode" ColumnName="NoCode" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Filed_ID" ColumnName="Filed_ID" />
+                <ScalarProperty Name="Provider_ID" ColumnName="Provider_ID" />
+                <ScalarProperty Name="DocType_ID" ColumnName="DocType_ID" />
+                <ScalarProperty Name="Document_Name" ColumnName="Document_Name" />
+                <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+                <ScalarProperty Name="Document_ID" ColumnName="Document_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_Domain">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_Domain">
+              <MappingFragment StoreEntitySet="CMS_Domain">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="OutOfDate" ColumnName="OutOfDate" />
+                <ScalarProperty Name="InOfDate" ColumnName="InOfDate" />
+                <ScalarProperty Name="Domain_Address" ColumnName="Domain_Address" />
+                <ScalarProperty Name="Domain_Name" ColumnName="Domain_Name" />
+                <ScalarProperty Name="Domain_ID" ColumnName="Domain_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_Email">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_Email">
+              <MappingFragment StoreEntitySet="CMS_Email">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Email_ID" ColumnName="Email_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_Gallery">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_Gallery">
+              <MappingFragment StoreEntitySet="CMS_Gallery">
+                <ScalarProperty Name="IsHot" ColumnName="IsHot" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="FileSource" ColumnName="FileSource" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Album_ID" ColumnName="Album_ID" />
+                <ScalarProperty Name="Gallery_ID" ColumnName="Gallery_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_Map">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_Map">
+              <MappingFragment StoreEntitySet="CMS_Map">
+                <ScalarProperty Name="Link_Map" ColumnName="Link_Map" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Map_ID" ColumnName="Map_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_Media">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_Media">
+              <MappingFragment StoreEntitySet="CMS_Media">
+                <ScalarProperty Name="Dislike" ColumnName="Dislike" />
+                <ScalarProperty Name="IsLike" ColumnName="IsLike" />
+                <ScalarProperty Name="IsView" ColumnName="IsView" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="IsUrl" ColumnName="IsUrl" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="FlvImage" ColumnName="FlvImage" />
+                <ScalarProperty Name="IsType" ColumnName="IsType" />
+                <ScalarProperty Name="SlideGroup_ID" ColumnName="SlideGroup_ID" />
+                <ScalarProperty Name="SlideShow_Name" ColumnName="SlideShow_Name" />
+                <ScalarProperty Name="SlideShow_ID" ColumnName="SlideShow_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_MediaGroup">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_MediaGroup">
+              <MappingFragment StoreEntitySet="CMS_MediaGroup">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+                <ScalarProperty Name="IsPlay" ColumnName="IsPlay" />
+                <ScalarProperty Name="Des" ColumnName="Des" />
+                <ScalarProperty Name="IsPosition" ColumnName="IsPosition" />
+                <ScalarProperty Name="IsHot" ColumnName="IsHot" />
+                <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+                <ScalarProperty Name="SlideGroup_Name" ColumnName="SlideGroup_Name" />
+                <ScalarProperty Name="SlideGroup_ID" ColumnName="SlideGroup_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_News">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_News">
+              <MappingFragment StoreEntitySet="CMS_News">
+                <ScalarProperty Name="Users_ID" ColumnName="Users_ID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsVisitor" ColumnName="IsVisitor" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="NewType" ColumnName="NewType" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="IsHot" ColumnName="IsHot" />
+                <ScalarProperty Name="News_Name" ColumnName="News_Name" />
+                <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+                <ScalarProperty Name="News_ID" ColumnName="News_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_Notice">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_Notice">
+              <MappingFragment StoreEntitySet="CMS_Notice">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+                <ScalarProperty Name="IsVisitor" ColumnName="IsVisitor" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="IsWriter" ColumnName="IsWriter" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="IsHot" ColumnName="IsHot" />
+                <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+                <ScalarProperty Name="Notice_Name" ColumnName="Notice_Name" />
+                <ScalarProperty Name="Notice_ID" ColumnName="Notice_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_Question">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_Question">
+              <MappingFragment StoreEntitySet="CMS_Question">
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+                <ScalarProperty Name="ReplyCreatedDate" ColumnName="ReplyCreatedDate" />
+                <ScalarProperty Name="ReplyName" ColumnName="ReplyName" />
+                <ScalarProperty Name="ReplyContents" ColumnName="ReplyContents" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="SenderNickName" ColumnName="SenderNickName" />
+                <ScalarProperty Name="SenderEmail" ColumnName="SenderEmail" />
+                <ScalarProperty Name="SenderMobile" ColumnName="SenderMobile" />
+                <ScalarProperty Name="SenderTelephone" ColumnName="SenderTelephone" />
+                <ScalarProperty Name="SenderAddress" ColumnName="SenderAddress" />
+                <ScalarProperty Name="SenderSex" ColumnName="SenderSex" />
+                <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+                <ScalarProperty Name="Department_Name" ColumnName="Department_Name" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+                <ScalarProperty Name="Question_Name" ColumnName="Question_Name" />
+                <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_SlideShow">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_SlideShow">
+              <MappingFragment StoreEntitySet="CMS_SlideShow">
+                <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+                <ScalarProperty Name="Des" ColumnName="Des" />
+                <ScalarProperty Name="IsUrl" ColumnName="IsUrl" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="SlideShow_Name" ColumnName="SlideShow_Name" />
+                <ScalarProperty Name="SlideShow_ID" ColumnName="SlideShow_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_Social">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_Social">
+              <MappingFragment StoreEntitySet="CMS_Social">
+                <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsLang" ColumnName="IsLang" />
+                <ScalarProperty Name="Des" ColumnName="Des" />
+                <ScalarProperty Name="IsUrl" ColumnName="IsUrl" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Social_Name" ColumnName="Social_Name" />
+                <ScalarProperty Name="Social_ID" ColumnName="Social_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_Topic">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_Topic">
+              <MappingFragment StoreEntitySet="CMS_Topic">
+                <ScalarProperty Name="Topic_Type" ColumnName="Topic_Type" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Users_ID" ColumnName="Users_ID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsMenu" ColumnName="IsMenu" />
+                <ScalarProperty Name="Parent_ID" ColumnName="Parent_ID" />
+                <ScalarProperty Name="Topic_Name" ColumnName="Topic_Name" />
+                <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_TopicFlag">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_TopicFlag">
+              <MappingFragment StoreEntitySet="CMS_TopicFlag">
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TopicFlag_Name" ColumnName="TopicFlag_Name" />
+                <ScalarProperty Name="TopicFlag_ID" ColumnName="TopicFlag_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_TopicLink">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_TopicLink">
+              <MappingFragment StoreEntitySet="CMS_TopicLink">
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IsUrl" ColumnName="IsUrl" />
+                <ScalarProperty Name="TopicLink_Name" ColumnName="TopicLink_Name" />
+                <ScalarProperty Name="TopicLink_ID" ColumnName="TopicLink_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_UserConfig">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_UserConfig">
+              <MappingFragment StoreEntitySet="CMS_UserConfig">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsUpdate" ColumnName="IsUpdate" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+                <ScalarProperty Name="IsCreate" ColumnName="IsCreate" />
+                <ScalarProperty Name="Module_ID" ColumnName="Module_ID" />
+                <ScalarProperty Name="UserGroup_ID" ColumnName="UserGroup_ID" />
+                <ScalarProperty Name="UserConfig_ID" ColumnName="UserConfig_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_UserCounter">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_UserCounter">
+              <MappingFragment StoreEntitySet="CMS_UserCounter">
+                <ScalarProperty Name="sum" ColumnName="sum" />
+                <ScalarProperty Name="onlineYear" ColumnName="onlineYear" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="onlineMonth" ColumnName="onlineMonth" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="onlineWeek" ColumnName="onlineWeek" />
+                <ScalarProperty Name="week" ColumnName="week" />
+                <ScalarProperty Name="onlineDay" ColumnName="onlineDay" />
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_UserGroup">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_UserGroup">
+              <MappingFragment StoreEntitySet="CMS_UserGroup">
+                <ScalarProperty Name="UserGroup_Name" ColumnName="UserGroup_Name" />
+                <ScalarProperty Name="UserGroup_ID" ColumnName="UserGroup_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_Users">
+            <EntityTypeMapping TypeName="CLKKModel.CMS_Users">
+              <MappingFragment StoreEntitySet="CMS_Users">
+                <ScalarProperty Name="UserGroup_ID" ColumnName="UserGroup_ID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Users_Name" ColumnName="Users_Name" />
+                <ScalarProperty Name="Users_ID" ColumnName="Users_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Setting">
+            <EntityTypeMapping TypeName="CLKKModel.Setting">
+              <MappingFragment StoreEntitySet="Setting">
+                <ScalarProperty Name="EN" ColumnName="EN" />
+                <ScalarProperty Name="VN" ColumnName="VN" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TD_CoquanQuanly">
+            <EntityTypeMapping TypeName="CLKKModel.TD_CoquanQuanly">
+              <MappingFragment StoreEntitySet="TD_CoquanQuanly">
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="CapCha_ID" ColumnName="CapCha_ID" />
+                <ScalarProperty Name="Vido" ColumnName="Vido" />
+                <ScalarProperty Name="Kinhdo" ColumnName="Kinhdo" />
+                <ScalarProperty Name="Mota" ColumnName="Mota" />
+                <ScalarProperty Name="Diadanh_ID" ColumnName="Diadanh_ID" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DaumoiLienhe" ColumnName="DaumoiLienhe" />
+                <ScalarProperty Name="MaCoquan" ColumnName="MaCoquan" />
+                <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+                <ScalarProperty Name="STT" ColumnName="STT" />
+                <ScalarProperty Name="CoquanQuanly_Ten" ColumnName="CoquanQuanly_Ten" />
+                <ScalarProperty Name="CoquanQuanly_ID" ColumnName="CoquanQuanly_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TD_Diadanh">
+            <EntityTypeMapping TypeName="CLKKModel.TD_Diadanh">
+              <MappingFragment StoreEntitySet="TD_Diadanh">
+                <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+                <ScalarProperty Name="STT" ColumnName="STT" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="CapCha_ID" ColumnName="CapCha_ID" />
+                <ScalarProperty Name="Diadanh_Ten" ColumnName="Diadanh_Ten" />
+                <ScalarProperty Name="Diadanh_ID" ColumnName="Diadanh_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TD_Loaiquantrac">
+            <EntityTypeMapping TypeName="CLKKModel.TD_Loaiquantrac">
+              <MappingFragment StoreEntitySet="TD_Loaiquantrac">
+                <ScalarProperty Name="STT" ColumnName="STT" />
+                <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+                <ScalarProperty Name="Loaiquantrac_Ten" ColumnName="Loaiquantrac_Ten" />
+                <ScalarProperty Name="Loaiquantrac_ID" ColumnName="Loaiquantrac_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TD_PPLaymau">
+            <EntityTypeMapping TypeName="CLKKModel.TD_PPLaymau">
+              <MappingFragment StoreEntitySet="TD_PPLaymau">
+                <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+                <ScalarProperty Name="STT" ColumnName="STT" />
+                <ScalarProperty Name="PPLaymau_Mota" ColumnName="PPLaymau_Mota" />
+                <ScalarProperty Name="PPLaymau_Code" ColumnName="PPLaymau_Code" />
+                <ScalarProperty Name="PPLaymau_ID" ColumnName="PPLaymau_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TD_QCVN">
+            <EntityTypeMapping TypeName="CLKKModel.TD_QCVN">
+              <MappingFragment StoreEntitySet="TD_QCVN">
+                <ScalarProperty Name="STT" ColumnName="STT" />
+                <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+                <ScalarProperty Name="SoQCVN" ColumnName="SoQCVN" />
+                <ScalarProperty Name="QCVN_ID" ColumnName="QCVN_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TD_Tramquantrac">
+            <EntityTypeMapping TypeName="CLKKModel.TD_Tramquantrac">
+              <MappingFragment StoreEntitySet="TD_Tramquantrac">
+                <ScalarProperty Name="Nguoitao" ColumnName="Nguoitao" />
+                <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
+                <ScalarProperty Name="QCVN_Heso2" ColumnName="QCVN_Heso2" />
+                <ScalarProperty Name="QCVN_Heso1" ColumnName="QCVN_Heso1" />
+                <ScalarProperty Name="LoaiQCVN" ColumnName="LoaiQCVN" />
+                <ScalarProperty Name="QCVN_ID" ColumnName="QCVN_ID" />
+                <ScalarProperty Name="Mota" ColumnName="Mota" />
+                <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+                <ScalarProperty Name="TansuatNhanDL" ColumnName="TansuatNhanDL" />
+                <ScalarProperty Name="CoquanQuanly_ID" ColumnName="CoquanQuanly_ID" />
+                <ScalarProperty Name="Loai" ColumnName="Loai" />
+                <ScalarProperty Name="Diadanh_ID" ColumnName="Diadanh_ID" />
+                <ScalarProperty Name="Vido" ColumnName="Vido" />
+                <ScalarProperty Name="Kinhdo" ColumnName="Kinhdo" />
+                <ScalarProperty Name="MaTram" ColumnName="MaTram" />
+                <ScalarProperty Name="Loaiquantrac_ID" ColumnName="Loaiquantrac_ID" />
+                <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+                <ScalarProperty Name="STT" ColumnName="STT" />
+                <ScalarProperty Name="Tramquantrac_Ten" ColumnName="Tramquantrac_Ten" />
+                <ScalarProperty Name="Tramquantrac_ID" ColumnName="Tramquantrac_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TD_ThongsoKetqua">
+            <EntityTypeMapping TypeName="CLKKModel.TD_ThongsoKetqua">
+              <MappingFragment StoreEntitySet="TD_ThongsoKetqua">
+                <ScalarProperty Name="Thongso_ID" ColumnName="Thongso_ID" />
+                <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+                <ScalarProperty Name="Giatrithongso" ColumnName="Giatrithongso" />
+                <ScalarProperty Name="Donvi" ColumnName="Donvi" />
+                <ScalarProperty Name="Tenthongso" ColumnName="Tenthongso" />
+                <ScalarProperty Name="ThongsoKetqua_ID" ColumnName="ThongsoKetqua_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TD_Laymau">
+            <EntityTypeMapping TypeName="CLKKModel.TD_Laymau">
+              <MappingFragment StoreEntitySet="TD_Laymau">
+                <ScalarProperty Name="STT" ColumnName="STT" />
+                <ScalarProperty Name="Nguoitao" ColumnName="Nguoitao" />
+                <ScalarProperty Name="DataLoggerID" ColumnName="DataLoggerID" />
+                <ScalarProperty Name="Noidunglenh" ColumnName="Noidunglenh" />
+                <ScalarProperty Name="Sochai" ColumnName="Sochai" />
+                <ScalarProperty Name="Tramquantrac_ID" ColumnName="Tramquantrac_ID" />
+                <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+                <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
+                <ScalarProperty Name="TenLenh" ColumnName="TenLenh" />
+                <ScalarProperty Name="Laymau_ID" ColumnName="Laymau_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TD_Thongso">
+            <EntityTypeMapping TypeName="CLKKModel.TD_Thongso">
+              <MappingFragment StoreEntitySet="TD_Thongso">
+                <ScalarProperty Name="AQI" ColumnName="AQI" />
+                <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
+                <ScalarProperty Name="Tramquantrac_ID" ColumnName="Tramquantrac_ID" />
+                <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+                <ScalarProperty Name="STT" ColumnName="STT" />
+                <ScalarProperty Name="Nguoitao" ColumnName="Nguoitao" />
+                <ScalarProperty Name="Ngaythuchien" ColumnName="Ngaythuchien" />
+                <ScalarProperty Name="Laymau_ID" ColumnName="Laymau_ID" />
+                <ScalarProperty Name="Thongso_ID" ColumnName="Thongso_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TD_Thongsomau">
+            <EntityTypeMapping TypeName="CLKKModel.TD_Thongsomau">
+              <MappingFragment StoreEntitySet="TD_Thongsomau">
+                <ScalarProperty Name="Delta" ColumnName="Delta" />
+                <ScalarProperty Name="Min" ColumnName="Min" />
+                <ScalarProperty Name="Max" ColumnName="Max" />
+                <ScalarProperty Name="Nguoitao" ColumnName="Nguoitao" />
+                <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
+                <ScalarProperty Name="PPLaymau_ID" ColumnName="PPLaymau_ID" />
+                <ScalarProperty Name="Trangthai" ColumnName="Trangthai" />
+                <ScalarProperty Name="STT" ColumnName="STT" />
+                <ScalarProperty Name="Donvi" ColumnName="Donvi" />
+                <ScalarProperty Name="Loaiquantrac_ID" ColumnName="Loaiquantrac_ID" />
+                <ScalarProperty Name="Thongsomau_Ten" ColumnName="Thongsomau_Ten" />
+                <ScalarProperty Name="Thongsomau_ID" ColumnName="Thongsomau_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TD_Kiemduyet">
+            <EntityTypeMapping TypeName="CLKKModel.TD_Kiemduyet">
+              <MappingFragment StoreEntitySet="TD_Kiemduyet">
+                <ScalarProperty Name="Khongcogiatri" ColumnName="Khongcogiatri" />
+                <ScalarProperty Name="Thongsomau_Ten" ColumnName="Thongsomau_Ten" />
+                <ScalarProperty Name="Nguoitao" ColumnName="Nguoitao" />
+                <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
+                <ScalarProperty Name="Loaiquantrac_ID" ColumnName="Loaiquantrac_ID" />
+                <ScalarProperty Name="Ngoaikhoang" ColumnName="Ngoaikhoang" />
+                <ScalarProperty Name="Giatriam" ColumnName="Giatriam" />
+                <ScalarProperty Name="Tramquantrac_ID" ColumnName="Tramquantrac_ID" />
+                <ScalarProperty Name="Kiemduyet_ID" ColumnName="Kiemduyet_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

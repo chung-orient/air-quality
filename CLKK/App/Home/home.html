@@ -1,0 +1,125 @@
+﻿<div id="content" class="content" style="min-height: calc(100vh - 180px);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="stitle" style="margin:6px 0"><i class="fa fa-navicon"></i> Chọn điểm đo</h2>
+                <div class="d-flex">
+                    <select ng-options="item.Tramquantrac_ID as item.Tramquantrac_Ten for item in tramquantracs" style="width: 100% !important; margin-right: 10px" data-js-select2 class="form-control text-form-view" ng-model="ob.Tramquantrac_ID"></select>
+                    <div class="dropdown datetimeinput">
+                        <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#">
+                            <div class="input-group">
+                                <input type="text" class="form-control" ng-model="ob.Time" placeholder="Chọn thời gian" data-date-time-input="DD/MM/YYYY HH:mm" />
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <datetimepicker ng-model="ob.Time" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',startView:'minute', minView:'minute' }"></datetimepicker>
+                        </ul>
+                    </div>
+                </div>
+                <h4>Chỉ số Chất lượng không khí ngày {{ob.Time | date: 'dd/MM/yyyy HH:mm'}}</h4>
+                <div id="dailyAQISpan" class="dailyAQISpan35" data-aqi="35" style="color: rgb(34, 34, 34); background-color: {{AQIDetail.color}}">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <span class="dailyAQI">AQI <br> {{AQIView.AQI}}</span>
+                            </div>
+                            <div class="col-xs-6">
+                                <span class="aqiText" style="height: 84px;"><span class="aqiTextInner">{{AQIDetail.name}}</span></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <i class="fa fa-tint fa-2x" aria-hidden="true" style="float:left;margin-right:10px;margin-top:8px"></i>
+                                <small class="humidText text-center">Độ ẩm <br><strong> {{RH}}%</strong></small>
+                            </div>
+                            <div class="col-xs-6">
+                                <i class="fa fa-thermometer-empty fa-2x" aria-hidden="true" style="float:left;margin-right:10px;margin-top:8px"></i>
+                                <small class="tempText text-center">Nhiệt độ<br> <strong> {{Temp}}°C</strong></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <img ng-src="{{AQIDetail.img}}" style="width:60px;display:block;margin:12px  auto;" alt="">
+
+                        <small style="font-size:17px;display:block;text-align:center">{{AQIDetail.contents}}</small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6" style="margin-top:12px;">
+                        <span class="indicatorAQI"><a href="/?site_id=1">Nồng độ</a> </span>
+                    </div>
+                    <div class="col-xs-6" style="margin-top:12px;">
+                        <span class="indicatorAQI selectedMenu"><a href="/public?site_id=1">Chỉ số</a> </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="aqi_desc">
+                    <h2 style="margin-top: 6px" class="stitle"><i class="fa fa-navicon"></i> Bảng quy đổi giá trị AQI</h2>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr class="active">
+                                <th style="width: 100px;">Giá trị AQI</th>
+                                <th>Đánh giá</th>
+                                <th>Ảnh hưởng sức khỏe</th>
+                                <th>Màu sắc</th>
+                            </tr>
+                            <tr>
+                                <td>0-50</td>
+                                <td>Tốt</td>
+                                <td>Chất lượng không khí tốt, không ảnh hưởng tới sức khỏe</td>
+                                <td><label class="color" style="background-color: #00E400">XANH</label></td>
+                            </tr>
+                            <tr>
+                                <td>51-100</td>
+                                <td>Trung bình</td>
+                                <td>Chất lượng không khí ở mức chấp nhận được. Tuy nhiên, đối với những người nhạy cảm (người già, trẻ em, người mắc các bệnh hô hấp, tim mạch…) có thể chịu những tác động nhất định tới sức khỏe.</td>
+                                <td><label class="color" style="background-color: #FFFF00;color: #cdcdcd">VÀNG</label></td>
+                            </tr>
+                            <tr>
+                                <td>101-150</td>
+                                <td>Kém</td>
+                                <td>Những người nhạy cảm gặp phải các vấn đề về sức khỏe, những người bình thường ít ảnh hưởng.</td>
+                                <td><label class="color" style="background-color: #FF7E00">DA CAM</label></td>
+                            </tr>
+                            <tr>
+                                <td>151-200</td>
+                                <td>Xấu</td>
+                                <td>Những người bình thường bắt đầu có các ảnh hưởng tới sức khỏe, nhóm người nhạy cảm có thể gặp những vấn đề sức khỏe nghiêm trọng hơn.</td>
+                                <td><label class="color" style="background-color: #FF0000">ĐỎ</label></td>
+                            </tr>
+                            <tr>
+                                <td>201-300</td>
+                                <td>Rất xấu</td>
+                                <td>Cảnh báo hưởng tới sức khỏe: mọi người bị ảnh hưởng tới sức khỏe nghiêm trọng hơn.</td>
+                                <td><label class="color" style="background-color: #8F3F97">TÍM</label></td>
+                            </tr>
+                            <tr>
+                                <td>301</td>
+                                <td>Nguy hại</td>
+                                <td>Cảnh báo hưởng tới sức khỏe: mọi người bị ảnh hưởng tới sức khỏe nghiêm trọng hơn.</td>
+                                <td><label class="color" style="background-color: #7E0023">NÂU</label></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <p><strong>(*)</strong> Nhóm nhạy cảm bao gồm: trẻ em, người già và những người mắc bệnh hô hấp</p>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <p>
+                        - Số liệu sử dụng để tính toán AQI là giá trị quan trắc trung bình 1 giờ
+                    </p>
+                    <p>
+                        - QCVN 05:2013/BTNMT - Quy chuẩn kỹ thuật quốc gia về chất lượng không khí xung quanh ban hành kèm theo Thông tư số 32/2013/TT-BTNMT ngày 25/10/ 2013 của Bộ trưởng Bộ Tài nguyên và Môi trường.
+                    </p>
+                    <p>
+                        - Chỉ số chất lượng không khí (AQI): Tính theo hướng dẫn tại Quyết định1459/QĐ-TCMT ngày 12/11/2019 của Tổng cục Môi trường về việc ban hành Hướng dẫn kỹ thuật tính toán và công bố chỉ số chất lượng không khí Việt Nam (VN_AQI)
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

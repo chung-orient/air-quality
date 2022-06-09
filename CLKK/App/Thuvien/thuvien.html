@@ -1,0 +1,75 @@
+﻿<div id="content" class="content">
+    <div class="container">
+        <div class="row">
+            <div ng-if="!ob.detail_thuvien" class="col-md-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="pageTitle">{{Topic.Topic_Name}}</h2>
+                    </div>
+                </div>
+                <hr>
+                <div ng-repeat="ti in thuviens" class="row news-item">
+                    <div class="col-sm-12">
+                        <article>
+                            <div class="col-md-4 col-sm-5 col-6" style="padding:0">
+                                <div class="imgBox">
+                                    <div class="imgbg" style="background-image:url({{ti.Images}})"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-7 col-6">
+                                <a ng-click="GetDetail_Tintuc(ti)"><h3>{{ti.News_Name}}</h3></a>
+                                <div class="byline">
+                                    <span>{{ti.CreatedBy | date: 'dd/MM/yyyy'}}</span>
+                                </div>
+                                <p ng-bind="ti.Description"></p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="ob.detail_thuvien" class="col-md-8">
+                <article>
+                    <article>
+                        <h3>{{Thuvien.News_Name}}</h3>
+                        <div class="byline">
+                            <span>{{Thuvien.CreatedBy | date: 'dd/MM/yyyy'}}</span>
+                            <span><i class="fa fa-clock-o"></i> {{Thuvien.CreatedBy | date: 'hh:mm'}}</span>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <span class="st_sharethis_large" displaytext="ShareThis"></span>
+                                <span class="st_facebook_large" displaytext="Facebook"></span>
+                                <span class="st_twitter_large" displaytext="Tweet"></span>
+                                <span class="st_linkedin_large" displaytext="LinkedIn"></span>
+                                <span class="st_pinterest_large" displaytext="Pinterest"></span>
+                                <span class="st_email_large" displaytext="Email"></span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="content-detail" ng-bind-html="Thuvien.Contents"></div>
+                    </article>
+
+                </article>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Thư viện
+                    </div>
+                    <div class="panel-body">
+                        <div class="row news-item" ng-repeat="to in topics_thuvien">
+                            <div class="col-sm-12">
+                                <article>
+                                    <div class="col-md-12 col-sm-12 col-12" style="padding-left: 0">
+                                        <a ng-href="{{baseUrl + '#/thuvien/' + to.Topic_ID}}">{{to.Topic_Name}}</a>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

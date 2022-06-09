@@ -1,0 +1,64 @@
+﻿<div class="modal fadess" id="ModalUpload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg w1000">
+        <div class="modal-content">
+            <!-- Modal Header -->
+
+            <div modal-movable class="modal-header head-modal">
+                <h4 class="modal-title">Import dữ liệu từ file Excel</h4>
+                <button type="button" class="close"
+                        data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Back</span>
+                </button>
+
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body" style="padding:0px 15px 10px 15px;overflow: initial;">
+                <form role="form" name="frmBC_Excel" id="frmBC_Excel">
+
+                    <div class="row" style="margin: 15px 0px">
+                        <div class="col-md-12 form-group mB-0">
+                            <!--<input type="file" name="ExcelFile" accept=".xls, .xlsx" />-->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-primary inputimgFile" style="border-radius: 3px; margin-top: 5px;display:inline-block" ng-click="openAttachfile($event)">
+                                                <i style="color: #fff; font-size: 18px;margin: 0" class="las las la-folder-open" aria-hidden="true"></i>&nbsp;Chọn file
+                                            </button>
+
+                                            <!--<lable ng-bind="''" ng-if="FilesAttachImport.length == 0"></lable>-->
+                                            <span ng-bind="ListCVTemp[0].name"></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a type="button" class="btn btn-primary inputimgFile" style="border-radius: 3px; margin-top: 5px;display:inline-block" href="{{fileUrl}}/Portals/{{ob.fileMau}}">
+                                                <i style="color: #fff; font-size: 18px;margin: 0" class="las la-download" aria-hidden="true"></i> &nbsp;Tải File mẫu
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mT-30">
+                                <div class="col-md-12">
+                                    <b class="c-red-500" style="color: red;">*Ghi chú: Bạn phải tải file mẫu về để nhập dữ liệu trước khi import</b>
+                                </div>
+                            </div>
+                            <input type="file" style="display:none" name="ExcelFile" id="ExcelFile" accept=".xls, .xlsx" ngf-select="UploadFiles($files)" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--Modal Footer-->
+            <div class="modal-footer" style="border-top:none!important;display:block;font-weight:500">
+                <button type="button" class="btn btn-secondary btnCancelFrom" data-dismiss="modal" style="float:left">Hủy</button>
+                <button type="button" class="btn btn-primary" style="float:right" ng-click="ImportExcel(frmBC_Excel)">Thực hiện</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    a.inputimgFile:hover {
+        color: #fff !important;
+    }
+</style>
